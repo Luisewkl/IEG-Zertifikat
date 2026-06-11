@@ -11,7 +11,7 @@ const CURRICULUM = [
     meta: 'Strategic Orientation · Foundational',
     title: 'Claude im Überblick — Projects, Cowork & Code',
     desc: 'Organisation durch Projects, Visualisierung im Chat, Claude Cowork als autonomer Assistent und Entwicklung mit Claude Code, Skills und Konnektoren.',
-    duration: '20 Min.',
+    duration: '15 Min.',
     videos: [
       { url: 'https://www.youtube.com/embed/EE9qr6Bfwj8', title: 'Claude im Überblick', caption: 'Video 0.1 · Claude Features im Überblick' },
     ],
@@ -132,7 +132,7 @@ const CURRICULUM = [
     meta: 'Beginner · Module 1',
     title: 'Foundations & The Analyst\u2019s Workbench',
     desc: 'Claude-Grundlagen, Chat-Organisation, die drei Modelle (Haiku, Sonnet, Opus), zentrale Funktionen, Personalisierung und Datenschutz.',
-    duration: '30 Min.',
+    duration: '40 Min.',
     videos: [
       { url: 'https://www.youtube.com/embed/51vysjHcJ5A', title: 'Claude kompletter Grundkurs (2026)', caption: 'Video 1.1 \u00b7 Claude Grundkurs \u2014 von Beginner zu Profi (30:42)' },
     ],
@@ -250,7 +250,7 @@ const CURRICULUM = [
     meta: 'Intermediate · Module 2',
     title: 'Prompt Engineering Masterclass',
     desc: 'Die 6 Bausteine des perfekten Prompts, XML-Tags, Few-Shot, Chain of Thought, Prompt Chaining, Self-Reflection, Pre-filling und System Prompts.',
-    duration: '35 Min.',
+    duration: '60 Min.',
     videos: [
       { url: 'https://www.youtube.com/embed/m4rFoTPpeAA', title: 'Prompt Engineering Praxis', caption: 'Video 2.1 · Prompt Engineering in der Praxis' },
       { url: 'https://www.youtube.com/embed/ysPbXH0LpIE', title: 'Anthropic Best Practices', caption: 'Video 2.2 · Prompt Engineering 101 nach Anthropic' },
@@ -379,7 +379,7 @@ const CURRICULUM = [
     meta: 'Advanced \u00b7 Module 3',
     title: 'Claude Skills \u2014 KI-Experten auf Knopfdruck',
     desc: 'Skills als wiederverwendbare Arbeitsanweisungen. Von der Wissensgewinnung mit NotebookLM \u00fcber die Skill-Konfiguration bis zur Anwendung.',
-    duration: '30 Min.',
+    duration: '20 Min.',
     videos: [
       { url: 'https://www.youtube.com/embed/XHVgq4zodpE', title: 'Claude Skills', caption: 'Video 3.1 \u00b7 Claude Skills erstellen und anwenden' },
     ],
