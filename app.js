@@ -1,29 +1,154 @@
 /* ============================================
    IEG Claude Academy — App Logic
+   v5.0 — Mit Supabase Login
    ============================================ */
 
-// ---------- STATE ----------
+// ============ AUTH & STATE ============
 const STORAGE_KEY = 'ieg-academy-progress-v1';
-let state = loadState();
-let previewMode = false; // Wenn true: alle Module direkt zugänglich (für Review/Vorschau)
+let state = { completed: [], finalPassed: false, userName: '', completionDate: '' };
+let currentUser = null;
+let supabaseReady = false;
+let previewMode = false;
 
-function loadState() {
+// Warte auf Supabase, dann initialisieren
+document.addEventListener('supabaseReady', initWithSupabase);
+window.addEventListener('load', () => {
+  // Falls Supabase nicht konfiguriert → lokaler Fallback
+  setTimeout(() => {
+    if (!supabaseReady) {
+      console.log('Supabase nicht konfiguriert — lokaler Modus');
+      state = loadLocalState();
+      renderEverything();
+      setupNavObserver();
+    }
+  }, 2000);
+});
+
+async function initWithSupabase() {
+  supabaseReady = true;
+  if (!window.supabaseClient) {
+    state = loadLocalState();
+    renderEverything();
+    setupNavObserver();
+    return;
+  }
+
+  // Session prüfen → wenn nicht eingeloggt, zu login.html
+  const { data: { session } } = await window.supabaseClient.auth.getSession();
+  if (!session) {
+    window.location.href = 'login.html';
+    return;
+  }
+
+  currentUser = session.user;
+  updateUserDisplay();
+  state = await loadCloudState();
+  renderEverything();
+  setupNavObserver();
+}
+
+function updateUserDisplay() {
+  if (!currentUser) return;
+  const name = currentUser.user_metadata?.full_name || currentUser.email.split('@')[0];
+  const el = document.getElementById('userDisplayName');
+  if (el) el.textContent = name;
+  // Prefill Name-Feld für Zertifikat
+  if (!state.userName) state.userName = name;
+}
+
+// ============ STATE: CLOUD vs LOCAL ============
+async function loadCloudState() {
+  try {
+    // Fortschritt laden
+    const { data: progressRows } = await window.supabaseClient
+      .from('progress')
+      .select('module_id, passed')
+      .eq('user_id', currentUser.id);
+
+    const completed = (progressRows || []).filter(r => r.passed).map(r => r.module_id);
+
+    // Final Exam laden
+    const { data: examRow } = await window.supabaseClient
+      .from('final_exam')
+      .select('passed, user_name, completed_at')
+      .eq('user_id', currentUser.id)
+      .single();
+
+    return {
+      completed,
+      finalPassed: examRow?.passed || false,
+      userName: examRow?.user_name || currentUser.user_metadata?.full_name || '',
+      completionDate: examRow?.completed_at || ''
+    };
+  } catch (e) {
+    console.error('Cloud state load error:', e);
+    return loadLocalState();
+  }
+}
+
+async function saveModuleComplete(moduleId) {
+  if (window.supabaseClient && currentUser) {
+    try {
+      await window.supabaseClient.from('progress').upsert({
+        user_id: currentUser.id,
+        module_id: moduleId,
+        passed: true,
+        completed_at: new Date().toISOString()
+      }, { onConflict: 'user_id,module_id' });
+    } catch (e) { console.error('Save module error:', e); }
+  } else {
+    saveLocalState();
+  }
+}
+
+async function saveFinalExam(userName) {
+  if (window.supabaseClient && currentUser) {
+    try {
+      await window.supabaseClient.from('final_exam').upsert({
+        user_id: currentUser.id,
+        passed: true,
+        user_name: userName,
+        completed_at: new Date().toISOString()
+      }, { onConflict: 'user_id' });
+    } catch (e) { console.error('Save final exam error:', e); }
+  } else {
+    saveLocalState();
+  }
+}
+
+// Local fallback
+function loadLocalState() {
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) return JSON.parse(saved);
-  } catch (e) { /* fall through */ }
-  return {
-    completed: [],
-    finalPassed: false,
-    userName: '',
-    completionDate: ''
-  };
+  } catch (e) {}
+  return { completed: [], finalPassed: false, userName: '', completionDate: '' };
 }
 
-function saveState() {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-  } catch (e) { /* localStorage full or disabled */ }
+function saveLocalState() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+}
+
+// Logout
+async function logout() {
+  if (window.supabaseClient) {
+    await window.supabaseClient.auth.signOut();
+  }
+  window.location.href = 'login.html';
+}
+
+async function resetProgress() {
+  if (!confirm('Möchten Sie Ihren gesamten Lernfortschritt wirklich zurücksetzen?')) return;
+
+  if (window.supabaseClient && currentUser) {
+    await window.supabaseClient.from('progress').delete().eq('user_id', currentUser.id);
+    await window.supabaseClient.from('final_exam').delete().eq('user_id', currentUser.id);
+  }
+
+  state = { completed: [], finalPassed: false, userName: '', completionDate: '' };
+  localStorage.removeItem(STORAGE_KEY);
+  renderEverything();
+  document.getElementById('curriculum').scrollIntoView({ behavior: 'smooth' });
 }
 
 function togglePreviewMode() {
@@ -31,65 +156,45 @@ function togglePreviewMode() {
   const btn = document.getElementById('previewToggle');
   if (btn) {
     btn.classList.toggle('active', previewMode);
-    btn.textContent = previewMode ? '✓ Vorschau-Modus aktiv' : 'Vorschau-Modus';
+    btn.textContent = previewMode ? '✓ Vorschau aktiv' : 'Vorschau aktivieren';
   }
   renderEverything();
 }
 
-function resetProgress() {
-  if (!confirm('Möchten Sie Ihren gesamten Lernfortschritt wirklich zurücksetzen? Diese Aktion kann nicht rückgängig gemacht werden.')) return;
-  state = { completed: [], finalPassed: false, userName: '', completionDate: '' };
-  saveState();
-  renderEverything();
-  document.getElementById('curriculum').scrollIntoView({behavior:'smooth'});
-}
-
-// ---------- LOCKING LOGIC ----------
-// Module 0 always unlocked. Module N unlocks when module N-1 is completed.
-// Im Preview-Modus sind alle Module unlocked.
+// ============ LOCKING LOGIC ============
 function isModuleUnlocked(moduleId) {
   if (previewMode) return true;
   if (moduleId === 0) return true;
   return state.completed.includes(moduleId - 1);
 }
-
 function isFinalUnlocked() {
   if (previewMode) return true;
   return CURRICULUM.every(m => state.completed.includes(m.id));
 }
-
 function isModuleCompleted(moduleId) {
   return state.completed.includes(moduleId);
 }
 
-// ---------- RENDER MODULES ----------
+// ============ RENDER MODULES ============
 function renderModules() {
   const grid = document.getElementById('modulesGrid');
+  if (!grid) return;
   grid.innerHTML = '';
 
   CURRICULUM.forEach((mod) => {
     const unlocked = isModuleUnlocked(mod.id);
     const completed = isModuleCompleted(mod.id);
-
     const cardClass = completed ? 'completed' : (unlocked ? 'unlocked' : 'locked');
-    // Ist das hier das "nächste" Modul (aktiv = freigeschaltet aber nicht abgeschlossen)?
     const isNext = unlocked && !completed && !previewMode;
 
     const statusIcon = completed
       ? `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>`
       : (unlocked
-          ? `<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>`
-          : `<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="1"/><path d="M8 11V7a4 4 0 1 1 8 0v4"/></svg>`);
+        ? `<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>`
+        : `<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="1"/><path d="M8 11V7a4 4 0 1 1 8 0v4"/></svg>`);
 
-    const statusText = completed
-      ? 'Abgeschlossen'
-      : (unlocked
-          ? (isNext ? '▶ Jetzt verfügbar' : 'Verfügbar')
-          : `Erst nach Modul ${String(mod.id - 1).padStart(2, '0')}`);
-
-    const actionLabel = completed
-      ? 'Wiederholen'
-      : (unlocked ? 'Jetzt starten' : 'Gesperrt');
+    const statusText = completed ? 'Abgeschlossen'
+      : (unlocked ? (isNext ? '▶ Jetzt verfügbar' : 'Verfügbar') : `Erst nach Modul ${String(mod.id - 1).padStart(2, '0')}`);
 
     const card = document.createElement('div');
     card.className = `module-card ${cardClass}${isNext ? ' module-next' : ''}`;
@@ -101,60 +206,45 @@ function renderModules() {
       <div class="module-meta">${mod.meta} · ${mod.duration}</div>
       <div class="module-title">${mod.title}</div>
       <div class="module-desc">${mod.desc}</div>
-      <div class="module-status-bar">
-        <div class="module-status-fill" style="width:${completed ? 100 : 0}%"></div>
-      </div>
+      <div class="module-status-bar"><div class="module-status-fill" style="width:${completed ? 100 : 0}%"></div></div>
       <div class="module-footer">
         <span class="module-status">${statusText}</span>
-        ${unlocked ? `<span class="module-action">${actionLabel}
-          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-        </span>` : `<span class="module-action" style="color:var(--text-faint);">🔒 Gesperrt</span>`}
-      </div>
-    `;
+        ${unlocked
+          ? `<span class="module-action">${completed ? 'Wiederholen' : 'Jetzt starten'}
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>`
+          : `<span class="module-action" style="color:var(--text-faint);">🔒 Gesperrt</span>`}
+      </div>`;
 
-    if (unlocked) {
-      card.addEventListener('click', () => openModule(mod.id));
-    }
-
+    if (unlocked) card.addEventListener('click', () => openModule(mod.id));
     grid.appendChild(card);
   });
 
-  // FINAL EXAM CARD
+  // Final Exam Card
   const finalUnlocked = isFinalUnlocked();
   const finalPassed = state.finalPassed;
   const finalClass = finalPassed ? 'completed unlocked' : (finalUnlocked ? 'unlocked' : 'locked');
   const finalCard = document.createElement('div');
   finalCard.className = `module-card final-exam ${finalClass}`;
-
-  const finalStatusIcon = finalPassed
+  const finalIcon = finalPassed
     ? `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>`
     : (finalUnlocked
-        ? `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 L15 9 L22 9 L17 14 L19 21 L12 17 L5 21 L7 14 L2 9 L9 9 Z"/></svg>`
-        : `<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="1"/><path d="M8 11V7a4 4 0 1 1 8 0v4"/></svg>`);
+      ? `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 L15 9 L22 9 L17 14 L19 21 L12 17 L5 21 L7 14 L2 9 L9 9 Z"/></svg>`
+      : `<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="1"/><path d="M8 11V7a4 4 0 1 1 8 0v4"/></svg>`);
 
   finalCard.innerHTML = `
-    <div class="module-header">
-      <div class="module-number">07</div>
-      <div class="module-status-icon ${finalClass}">${finalStatusIcon}</div>
-    </div>
-    <div class="module-meta">Final Examination · 15 Fragen</div>
-    <div class="module-title">IEG Claude Mastery — Final Examination</div>
-    <div class="module-desc">
-      Das umfassende Abschluss-Examen über alle sechs Module. Pass-Threshold: 70 %. Bei Bestehen
-      wird Ihr persönliches IEG Claude Certificate ausgestellt.
-    </div>
+    <div class="module-header"><div class="module-number">07</div><div class="module-status-icon ${finalClass}">${finalIcon}</div></div>
+    <div class="module-meta">Abschlussprüfung · 15 Fragen</div>
+    <div class="module-title">IEG Claude Academy — Abschlussprüfung</div>
+    <div class="module-desc">Das umfassende Abschluss-Examen über alle sechs Module. Pass-Threshold: 70 %. Bei Bestehen wird Ihr persönliches IEG Claude Certificate ausgestellt.</div>
     <div class="module-footer">
       <span class="module-status">${finalPassed ? 'Bestanden' : (finalUnlocked ? 'Verfügbar' : 'Alle Module abschließen')}</span>
-      ${finalUnlocked ? `<span class="module-action">${finalPassed ? 'Wiederholen' : 'Examen starten'}
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-      </span>` : `<span class="module-action" style="color:rgba(255,255,255,0.4);">🔒 Gesperrt</span>`}
-    </div>
-  `;
+      ${finalUnlocked
+        ? `<span class="module-action">${finalPassed ? 'Wiederholen' : 'Prüfung starten'}
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>`
+        : `<span class="module-action" style="color:rgba(255,255,255,0.4);">🔒 Gesperrt</span>`}
+    </div>`;
 
-  if (finalUnlocked) {
-    finalCard.addEventListener('click', startFinalExam);
-  }
-
+  if (finalUnlocked) finalCard.addEventListener('click', startFinalExam);
   grid.appendChild(finalCard);
 }
 
@@ -162,46 +252,36 @@ function renderProgress() {
   const completedCount = state.completed.length;
   const totalCount = CURRICULUM.length;
   const percent = Math.round((completedCount / totalCount) * 100);
-
-  document.getElementById('progressFill').style.width = percent + '%';
-  document.getElementById('progressText').textContent = `${completedCount} von ${totalCount} Modulen abgeschlossen`;
-  document.getElementById('progressPercent').textContent = percent + '%';
-  document.getElementById('navProgress').textContent = `${completedCount}/${totalCount}`;
+  const fill = document.getElementById('progressFill');
+  const text = document.getElementById('progressText');
+  const pct = document.getElementById('progressPercent');
+  const nav = document.getElementById('navProgress');
+  if (fill) fill.style.width = percent + '%';
+  if (text) text.textContent = `${completedCount} von ${totalCount} Modulen abgeschlossen`;
+  if (pct) pct.textContent = percent + '%';
+  if (nav) nav.textContent = `${completedCount}/${totalCount}`;
 }
 
-// ---------- MODULE NAVIGATION ----------
-// Klick auf ein Modul → Navigation zur eigenen Modul-Seite (modules/modul-XX.html)
+// ============ MODULE NAVIGATION ============
 function openModule(moduleId) {
   const filename = `modules/modul-${String(moduleId).padStart(2, '0')}.html`;
   window.location.href = filename;
 }
-
 function closeModule() {
-  document.getElementById('moduleModal').style.display = 'none';
-  document.body.style.overflow = '';
+  const m = document.getElementById('moduleModal');
+  if (m) { m.style.display = 'none'; document.body.style.overflow = ''; }
 }
 
-// ---------- QUIZ ENGINE ----------
+// ============ QUIZ ENGINE ============
 let currentQuiz = null;
 
 function startQuiz(moduleId, isFinal = false) {
   const questions = isFinal ? FINAL_EXAM : CURRICULUM.find(m => m.id === moduleId).quiz;
-  const title = isFinal
-    ? 'Final Examination'
-    : `Modul ${String(moduleId).padStart(2, '0')} · Quiz`;
-  const subtitle = isFinal
-    ? `${questions.length} Fragen · Pass-Threshold ${PASS_THRESHOLD}%`
-    : `${questions.length} Fragen · Pass-Threshold ${PASS_THRESHOLD}%`;
-
-  currentQuiz = {
-    moduleId, isFinal, questions,
-    currentIndex: 0,
-    answers: new Array(questions.length).fill(null),
-    title, subtitle
-  };
-
-  document.getElementById('quizModal').style.display = 'flex';
-  document.body.style.overflow = 'hidden';
+  const title = isFinal ? 'Abschlussprüfung' : `Modul ${String(moduleId).padStart(2, '0')} · Quiz`;
+  const subtitle = `${questions.length} Fragen · Pass-Threshold ${PASS_THRESHOLD}%`;
+  currentQuiz = { moduleId, isFinal, questions, currentIndex: 0, answers: new Array(questions.length).fill(null), title, subtitle };
+  const m = document.getElementById('quizModal');
+  if (m) { m.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
   renderQuizQuestion();
 }
 
@@ -225,39 +305,27 @@ function renderQuizQuestion() {
       if (i === q.correct) cls += ' correct';
       else if (i === userAnswer) cls += ' wrong';
     }
-    const marker = String.fromCharCode(65 + i); // A, B, C, D
-    return `
-      <button class="${cls}" ${answered ? 'disabled' : ''} onclick="answerQuestion(${i})">
-        <span class="quiz-option-marker">${marker}</span>
-        <span>${opt}</span>
-      </button>
-    `;
+    return `<button class="${cls}" ${answered ? 'disabled' : ''} onclick="answerQuestion(${i})">
+      <span class="quiz-option-marker">${String.fromCharCode(65 + i)}</span><span>${opt}</span></button>`;
   }).join('');
 
-  const explanationHtml = answered ? `
-    <div class="quiz-explanation">
-      <strong>${userAnswer === q.correct ? '✓ Richtig.' : '✗ Nicht ganz.'}</strong> ${q.explanation}
-    </div>
-  ` : '';
+  const explanationHtml = answered
+    ? `<div class="quiz-explanation"><strong>${userAnswer === q.correct ? '✓ Richtig.' : '✗ Nicht ganz.'}</strong> ${q.explanation}</div>`
+    : '';
 
   const isLast = idx === total - 1;
   const allAnswered = currentQuiz.answers.every(a => a !== null);
+  const navHtml = `<div class="quiz-nav">
+    <button class="btn btn-ghost" onclick="prevQuestion()" style="color:var(--text);border:1px solid var(--bone-soft);" ${idx === 0 ? 'disabled style="opacity:0.3"' : ''}>← Zurück</button>
+    ${answered
+      ? (isLast && allAnswered
+        ? `<button class="btn btn-primary" onclick="finishQuiz()">Auswerten →</button>`
+        : `<button class="btn btn-primary" onclick="nextQuestion()" ${idx === total - 1 ? 'disabled style="opacity:0.5"' : ''}>Nächste →</button>`)
+      : `<span style="color:var(--text-faint);font-size:13px;align-self:center;">Antwort wählen</span>`}
+  </div>`;
 
-  const navHtml = `
-    <div class="quiz-nav">
-      <button class="btn btn-ghost" onclick="prevQuestion()" style="color:var(--ink);border:1px solid var(--bone-soft);" ${idx === 0 ? 'disabled style="opacity:0.3"' : ''}>
-        ← Zurück
-      </button>
-      ${answered
-        ? (isLast && allAnswered
-            ? `<button class="btn btn-primary" onclick="finishQuiz()">Quiz auswerten →</button>`
-            : `<button class="btn btn-primary" onclick="nextQuestion()" ${idx === total - 1 ? 'disabled style="opacity:0.5"' : ''}>Nächste Frage →</button>`)
-        : `<span style="color:var(--text-faint);font-size:13px;align-self:center;">Wählen Sie eine Antwort</span>`
-      }
-    </div>
-  `;
-
-  document.getElementById('quizModalBody').innerHTML = `
+  const body = document.getElementById('quizModalBody');
+  if (body) body.innerHTML = `
     <div class="quiz-header">
       <div class="quiz-eyebrow">${currentQuiz.title}</div>
       <div class="quiz-title">Frage ${idx + 1} von ${total}</div>
@@ -266,264 +334,176 @@ function renderQuizQuestion() {
     <div class="quiz-progress">${dotsHtml}</div>
     <div class="quiz-question">${q.q}</div>
     <div class="quiz-options">${optionsHtml}</div>
-    ${explanationHtml}
-    ${navHtml}
-  `;
+    ${explanationHtml}${navHtml}`;
 }
 
-function answerQuestion(optionIndex) {
-  currentQuiz.answers[currentQuiz.currentIndex] = optionIndex;
-  renderQuizQuestion();
-}
+function answerQuestion(i) { currentQuiz.answers[currentQuiz.currentIndex] = i; renderQuizQuestion(); }
+function nextQuestion() { if (currentQuiz.currentIndex < currentQuiz.questions.length - 1) { currentQuiz.currentIndex++; renderQuizQuestion(); } }
+function prevQuestion() { if (currentQuiz.currentIndex > 0) { currentQuiz.currentIndex--; renderQuizQuestion(); } }
 
-function nextQuestion() {
-  if (currentQuiz.currentIndex < currentQuiz.questions.length - 1) {
-    currentQuiz.currentIndex++;
-    renderQuizQuestion();
-  }
-}
-
-function prevQuestion() {
-  if (currentQuiz.currentIndex > 0) {
-    currentQuiz.currentIndex--;
-    renderQuizQuestion();
-  }
-}
-
-function finishQuiz() {
+async function finishQuiz() {
   const total = currentQuiz.questions.length;
   let correct = 0;
-  currentQuiz.questions.forEach((q, i) => {
-    if (currentQuiz.answers[i] === q.correct) correct++;
-  });
+  currentQuiz.questions.forEach((q, i) => { if (currentQuiz.answers[i] === q.correct) correct++; });
   const percent = Math.round((correct / total) * 100);
   const passed = percent >= PASS_THRESHOLD;
 
-  // SAVE STATE
   if (passed) {
     if (currentQuiz.isFinal) {
       state.finalPassed = true;
       state.completionDate = new Date().toISOString();
+      await saveFinalExam(state.userName);
     } else {
       const id = currentQuiz.moduleId;
-      if (!state.completed.includes(id)) state.completed.push(id);
+      if (!state.completed.includes(id)) {
+        state.completed.push(id);
+        await saveModuleComplete(id);
+      }
     }
-    saveState();
   }
 
-  const title = passed
-    ? (currentQuiz.isFinal ? 'Bestanden!' : 'Modul abgeschlossen')
-    : 'Knapp daneben';
-
+  const title = passed ? (currentQuiz.isFinal ? 'Bestanden!' : 'Modul abgeschlossen') : 'Knapp daneben';
   const msg = passed
     ? (currentQuiz.isFinal
-        ? 'Glückwunsch — Sie haben das IEG Claude Mastery Final Examination bestanden. Ihr persönliches Zertifikat wartet auf Sie.'
-        : `Sie haben das Modul erfolgreich abgeschlossen. Das nächste Kapitel ist nun freigeschaltet.`)
-    : `Sie benötigen mindestens ${PASS_THRESHOLD}% zum Bestehen. Sehen Sie sich das Material noch einmal an und versuchen Sie es erneut — ohne Zeitlimit.`;
+      ? 'Glückwunsch — Sie haben die Abschlussprüfung bestanden. Ihr Zertifikat wartet auf Sie.'
+      : `Sie haben das Modul erfolgreich abgeschlossen. Das nächste Kapitel ist nun freigeschaltet.`)
+    : `Sie benötigen mindestens ${PASS_THRESHOLD}% zum Bestehen. Sehen Sie sich das Material noch einmal an.`;
 
   const actions = passed
     ? (currentQuiz.isFinal
-        ? `<button class="btn btn-primary" onclick="closeQuiz(); showCertificate();">Zum Zertifikat →</button>`
-        : `<button class="btn btn-primary" onclick="closeQuiz(); renderEverything();">Weiter zum nächsten Modul →</button>`)
-    : `<button class="btn btn-primary" onclick="restartQuiz()">Quiz erneut versuchen</button>
-       <button class="btn btn-ghost" style="color:var(--ink);border:1px solid var(--bone-soft);" onclick="closeQuiz();">Material erneut lesen</button>`;
+      ? `<button class="btn btn-primary" onclick="closeQuiz(); showCertificate();">Zum Zertifikat →</button>`
+      : `<button class="btn btn-primary" onclick="closeQuiz(); renderEverything();">Weiter →</button>`)
+    : `<button class="btn btn-primary" onclick="restartQuiz()">Erneut versuchen</button>
+       <button class="btn btn-ghost" style="color:var(--text);border:1px solid var(--bone-soft);" onclick="closeQuiz();">Material lesen</button>`;
 
-  document.getElementById('quizModalBody').innerHTML = `
-    <div class="quiz-result">
-      <div class="quiz-result-icon ${passed ? 'pass' : 'fail'}">
-        ${passed ? '✓' : '!'}
-      </div>
-      <div class="quiz-result-title">${title}</div>
-      <div class="quiz-result-score">${correct} / ${total} richtig · ${percent}%</div>
-      <div class="quiz-result-msg">${msg}</div>
-      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">${actions}</div>
-    </div>
-  `;
+  const body = document.getElementById('quizModalBody');
+  if (body) body.innerHTML = `<div class="quiz-result">
+    <div class="quiz-result-icon ${passed ? 'pass' : 'fail'}">${passed ? '✓' : '!'}</div>
+    <div class="quiz-result-title">${title}</div>
+    <div class="quiz-result-score">${correct} / ${total} richtig · ${percent}%</div>
+    <div class="quiz-result-msg">${msg}</div>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">${actions}</div>
+  </div>`;
 }
 
-function restartQuiz() {
-  startQuiz(currentQuiz.moduleId, currentQuiz.isFinal);
-}
-
+function restartQuiz() { startQuiz(currentQuiz.moduleId, currentQuiz.isFinal); }
 function closeQuiz() {
-  document.getElementById('quizModal').style.display = 'none';
-  document.body.style.overflow = '';
+  const m = document.getElementById('quizModal');
+  if (m) { m.style.display = 'none'; document.body.style.overflow = ''; }
   currentQuiz = null;
   renderEverything();
 }
 
-// ---------- FINAL EXAM ENTRY ----------
+// ============ FINAL EXAM ============
 function startFinalExam() {
   if (!isFinalUnlocked()) return;
-  // Ask for name first if not set
   if (!state.userName) {
-    document.getElementById('nameModal').style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-    setTimeout(() => document.getElementById('userNameInput').focus(), 100);
+    const nm = document.getElementById('nameModal');
+    if (nm) { nm.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+    setTimeout(() => { const inp = document.getElementById('userNameInput'); if (inp) inp.focus(); }, 100);
   } else {
     startQuiz(null, true);
   }
 }
-
 function submitName() {
   const input = document.getElementById('userNameInput');
-  const name = input.value.trim();
-  if (name.length < 2) {
-    input.style.borderColor = 'var(--rust)';
-    return;
-  }
+  const name = input ? input.value.trim() : '';
+  if (name.length < 2) { if (input) input.style.borderColor = 'var(--rust)'; return; }
   state.userName = name;
-  saveState();
-  document.getElementById('nameModal').style.display = 'none';
-  document.body.style.overflow = '';
+  const nm = document.getElementById('nameModal');
+  if (nm) { nm.style.display = 'none'; document.body.style.overflow = ''; }
   startQuiz(null, true);
 }
 
-// ---------- CERTIFICATE ----------
+// ============ CERTIFICATE ============
 function showCertificate() {
-  document.getElementById('certificate').scrollIntoView({behavior:'smooth'});
+  const el = document.getElementById('certificate');
+  if (el) el.scrollIntoView({ behavior: 'smooth' });
   renderCertificate();
 }
 
 function renderCertificate() {
   const lockedEl = document.getElementById('certLockedState');
   const unlockedEl = document.getElementById('certUnlockedState');
+  if (!lockedEl || !unlockedEl) return;
 
   if (!state.finalPassed) {
     lockedEl.style.display = 'block';
     unlockedEl.style.display = 'none';
-
-    // Update status hint
-    const completedCount = state.completed.length;
-    let statusText = '';
-    if (state.finalPassed) {
-      statusText = 'Status: freigeschaltet';
-    } else if (isFinalUnlocked()) {
-      statusText = 'Status: Final Examination verfügbar';
-    } else {
-      statusText = `Status: ${completedCount} von 6 Modulen abgeschlossen`;
+    const statusEl = document.getElementById('certStatus');
+    if (statusEl) {
+      if (isFinalUnlocked()) statusEl.textContent = 'Status: Abschlussprüfung verfügbar';
+      else statusEl.textContent = `Status: ${state.completed.length} von 6 Modulen abgeschlossen`;
     }
-    document.getElementById('certStatus').textContent = statusText;
     return;
   }
 
-  // CERTIFICATE UNLOCKED
   lockedEl.style.display = 'none';
   unlockedEl.style.display = 'block';
-
   const date = new Date(state.completionDate || Date.now());
-  const dateStr = date.toLocaleDateString('de-DE', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  });
-
-  const certId = `IEG-CC-${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}${String(date.getDate()).padStart(2,'0')}-${Math.random().toString(36).substr(2, 4).toUpperCase()}`;
+  const dateStr = date.toLocaleDateString('de-DE', { year: 'numeric', month: 'long', day: 'numeric' });
+  const certId = `IEG-CC-${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}${String(date.getDate()).padStart(2,'0')}-${Math.random().toString(36).substr(2,4).toUpperCase()}`;
 
   unlockedEl.innerHTML = `
     <div class="section-eyebrow">/ Certificate · Issued</div>
     <h2 class="section-title">Ihr Zertifikat ist bereit</h2>
-    <p class="section-lede" style="margin-bottom:48px;">
-      Glückwunsch zur erfolgreichen Absolvierung des IEG Claude Mastery Programs.
-      Drucken oder speichern Sie Ihr Zertifikat für Ihre Unterlagen.
-    </p>
-
+    <p class="section-lede" style="margin-bottom:48px;">Glückwunsch zur erfolgreichen Absolvierung des IEG Claude Academy Kurses.</p>
     <div class="certificate" id="certificateEl">
-      <div class="cert-corner cert-corner-tl"></div>
-      <div class="cert-corner cert-corner-tr"></div>
-      <div class="cert-corner cert-corner-bl"></div>
-      <div class="cert-corner cert-corner-br"></div>
-
+      <div class="cert-corner cert-corner-tl"></div><div class="cert-corner cert-corner-tr"></div>
+      <div class="cert-corner cert-corner-bl"></div><div class="cert-corner cert-corner-br"></div>
       <img src="assets/ieg-logo.png" alt="IEG" class="cert-logo-img">
       <div class="cert-issuing-line">Investment Banking Group · Internal Training</div>
-
       <div class="cert-this-certifies">Hiermit wird bestätigt, dass</div>
       <div class="cert-name">${escapeHtml(state.userName)}</div>
-
-      <div class="cert-completed">erfolgreich das folgende Programm abgeschlossen hat:</div>
-
-      <div class="cert-program">Claude Mastery Curriculum</div>
-      <div class="cert-program-sub">A Professional Learning Path for Investment Banking</div>
-
+      <div class="cert-completed">erfolgreich den folgenden Kurs abgeschlossen hat:</div>
+      <div class="cert-program">IEG Claude Academy</div>
+      <div class="cert-program-sub">Claude Training for Investment Banking Teams</div>
       <div class="cert-meta">
-        <div class="cert-meta-item">
-          <div class="cert-meta-label">Ausgestellt am</div>
-          <div class="cert-meta-value">${dateStr}</div>
-        </div>
-        <div class="cert-meta-item">
-          <div class="cert-meta-label">Zertifikat-ID</div>
-          <div class="cert-meta-value" style="font-family:var(--mono);font-size:13px;">${certId}</div>
-        </div>
-        <div class="cert-meta-item">
-          <div class="cert-meta-label">Ausstellende Stelle</div>
-          <div class="cert-meta-value cert-signature">S. Heilmann</div>
-          <div style="font-family:var(--mono);font-size:10px;color:var(--text-muted);margin-top:4px;letter-spacing:0.06em;">GROUP CEO, IEG</div>
-        </div>
+        <div class="cert-meta-item"><div class="cert-meta-label">Ausgestellt am</div><div class="cert-meta-value">${dateStr}</div></div>
+        <div class="cert-meta-item"><div class="cert-meta-label">Zertifikat-ID</div><div class="cert-meta-value" style="font-family:var(--mono);font-size:13px;">${certId}</div></div>
+        <div class="cert-meta-item"><div class="cert-meta-label">Ausstellende Stelle</div><div class="cert-meta-value cert-signature">S. Heilmann</div><div style="font-family:var(--mono);font-size:10px;color:var(--text-muted);margin-top:4px;letter-spacing:0.06em;">GROUP CEO, IEG</div></div>
       </div>
     </div>
-
     <div class="cert-actions">
       <button class="btn btn-primary" onclick="window.print()">
         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v8H6z"/></svg>
         Zertifikat drucken
       </button>
-      <button class="btn btn-ghost" style="color:var(--ink);border:1px solid var(--bone-soft);" onclick="document.getElementById('curriculum').scrollIntoView({behavior:'smooth'})">
-        Curriculum erneut ansehen
-      </button>
-    </div>
-  `;
+    </div>`;
 }
 
 function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
 
-// ---------- NAV SCROLL HIGHLIGHTING ----------
+// ============ NAV + KEYBOARD ============
 function setupNavObserver() {
   const sections = ['home', 'curriculum', 'team', 'certificate'];
   const navLinks = document.querySelectorAll('.nav-link');
-
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        const id = entry.target.id;
-        navLinks.forEach(link => {
-          link.classList.toggle('active', link.dataset.nav === id);
-        });
+        navLinks.forEach(link => link.classList.toggle('active', link.dataset.nav === entry.target.id));
       }
     });
   }, { threshold: 0.3, rootMargin: '-80px 0px 0px 0px' });
-
-  sections.forEach(id => {
-    const el = document.getElementById(id);
-    if (el) observer.observe(el);
-  });
+  sections.forEach(id => { const el = document.getElementById(id); if (el) observer.observe(el); });
 }
 
-// ---------- KEYBOARD ----------
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    if (document.getElementById('moduleModal').style.display === 'flex') closeModule();
-    else if (document.getElementById('quizModal').style.display === 'flex') closeQuiz();
-    else if (document.getElementById('nameModal').style.display === 'flex') {
-      document.getElementById('nameModal').style.display = 'none';
-      document.body.style.overflow = '';
-    }
-  }
-  if (document.getElementById('nameModal').style.display === 'flex' && e.key === 'Enter') {
-    submitName();
-  }
+  if (e.key !== 'Escape') return;
+  const qm = document.getElementById('quizModal');
+  const nm = document.getElementById('nameModal');
+  if (qm && qm.style.display === 'flex') closeQuiz();
+  if (nm && nm.style.display === 'flex') { nm.style.display = 'none'; document.body.style.overflow = ''; }
+});
+document.addEventListener('keydown', (e) => {
+  const nm = document.getElementById('nameModal');
+  if (e.key === 'Enter' && nm && nm.style.display === 'flex') submitName();
 });
 
-// ---------- RENDER ALL ----------
 function renderEverything() {
   renderModules();
   renderProgress();
   renderCertificate();
 }
-
-// ---------- INIT ----------
-document.addEventListener('DOMContentLoaded', () => {
-  renderEverything();
-  setupNavObserver();
-});
