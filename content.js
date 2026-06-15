@@ -11,7 +11,7 @@ const CURRICULUM = [
     meta: 'Strategic Orientation · Foundational',
     title: 'Claude im Überblick — Projects, Cowork & Code',
     desc: 'Organisation durch Projects, Visualisierung im Chat, Claude Cowork als autonomer Assistent und Entwicklung mit Claude Code, Skills und Konnektoren.',
-    duration: '20 Min.',
+    duration: '15 Min.',
     videos: [
       { url: 'https://www.youtube.com/embed/EE9qr6Bfwj8', title: 'Claude im Überblick', caption: 'Video 0.1 · Claude Features im Überblick' },
     ],
@@ -132,7 +132,7 @@ const CURRICULUM = [
     meta: 'Beginner · Module 1',
     title: 'Foundations & The Analyst\u2019s Workbench',
     desc: 'Claude-Grundlagen, Chat-Organisation, die drei Modelle (Haiku, Sonnet, Opus), zentrale Funktionen, Personalisierung und Datenschutz.',
-    duration: '30 Min.',
+    duration: '45 Min.',
     videos: [
       { url: 'https://www.youtube.com/embed/51vysjHcJ5A', title: 'Claude kompletter Grundkurs (2026)', caption: 'Video 1.1 \u00b7 Claude Grundkurs \u2014 von Beginner zu Profi (30:42)' },
     ],
@@ -484,7 +484,7 @@ const CURRICULUM = [
     meta: 'Professional \u00b7 Module 4',
     title: 'Security & Data Safety',
     desc: 'What never to paste, the vibecoding trap, the lethal trifecta of connectors, and the golden rules for working safely with AI.',
-    duration: '25 Min.',
+    duration: '15 Min.',
     videos: [],
     images: [],
     longContent: '',
@@ -625,7 +625,7 @@ const CURRICULUM = [
     meta: 'Expert \u00b7 Module 5',
     title: 'Finance Automation \u2014 Skills in der Praxis',
     desc: 'Modulare Skills f\u00fcr Finanzprozesse: Data Cleaning, Branding, Dynamic Dashboards, PowerPoint-Generierung und der "Super Skill" f\u00fcr Full Cycle Automation.',
-    duration: '30 Min.',
+    duration: '20 Min.',
     videos: [
       { url: 'https://www.youtube.com/embed/h0XeJi6OAVI', title: 'Finance Automation mit Claude Skills', caption: 'Video 5.1 \u00b7 Kreditkartenabrechnung vollautomatisiert mit Claude Skills' },
     ],
