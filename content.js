@@ -361,114 +361,14 @@ const CURRICULUM = [
   {
     id: 3,
     number: '03',
-    meta: 'Fortgeschritten · Modul 3',
-    title: 'Skills und wiederverwendbare Arbeitsabläufe',
-    desc: 'Einführung in Skills als strukturierte, wiederverwendbare Arbeitsanweisungen — von der inhaltlichen Vorbereitung bis zur praktischen Anwendung im Arbeitsalltag.',
-    duration: '30 Min.',
-    videos: [
-      { url: 'https://www.youtube.com/embed/XHVgq4zodpE', title: 'Claude Skills', caption: 'Video 3.1 · Claude Skills erstellen und anwenden' },
-    ],
-    images: [],
-    longContent: '',
-    content: `
-      <h3>1. Was sind Claude Skills?</h3>
-      <p>Ein Skill ist eine <strong>fest definierte, wiederverwendbare Arbeitsanweisung</strong>.</p>
-      <table>
-        <thead><tr><th>Eigenschaft</th><th>Projekte</th><th>Skills</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Übertragbarkeit</strong></td><td>Isoliert</td><td>In jedem Chat nutzbar</td></tr>
-          <tr><td><strong>Kombinierbarkeit</strong></td><td>Festgefahren</td><td>Flexibel kombinierbar</td></tr>
-          <tr><td><strong>Systematik</strong></td><td>Manuell</td><td>Definierte Prozesse</td></tr>
-        </tbody>
-      </table>
-      <div class="callout">
-        <div class="callout-title">Kernidee</div>
-        <p>Statt der KI jedes Mal zu sagen was sie tun soll, baust du eine <strong>Sammlung klar definierter Prozesse</strong> auf.</p>
-      </div>
-
-      <h3>2. Wissensgewinnung mit NotebookLM</h3>
-      <ul>
-        <li><strong>Deep Research:</strong> NotebookLM durchsucht über 60 Quellen.</li>
-        <li><strong>Wissen strukturieren:</strong> Rohmaterial in ein klares System überführen.</li>
-      </ul>
-
-      <h3>3. Den Skill in Claude konfigurieren</h3>
-      <p>Im <strong>Skill Creator Modus</strong> stellt Claude Rückfragen: Ziel, Zielgruppe, Output-Format, Sprache.</p>
-
-      <h3>4. Den Skill im Alltag anwenden</h3>
-      <ul>
-        <li>Über das <strong>Plus-Symbol</strong> im Chat auswählen.</li>
-        <li>Geringer Prompt-Aufwand dank verankertem Expertenwissen.</li>
-      </ul>
-
-      <h3>5. Skalierbarkeit</h3>
-      <p>Nicht auf Landing Pages beschränkt — einsetzbar für E-Mail-Funnels, Content-Strategien, Unternehmensstrategien.</p>
-    `,
-    quiz: [
-      {
-        q: 'Was unterscheidet einen Claude Skill von einer Projektanweisung?',
-        options: [
-          'Skills funktionieren nur mit Claude Opus',
-          'Ein Skill ist nur für private Notizen gedacht',
-          'Projektanweisungen sind flexibler als Skills',
-          'Skills sind übertragbar und in jedem Chat nutzbar, Projektanweisungen sind isoliert'
-        ],
-        correct: 3,
-        explanation: 'Skills sind übertragbar und kombinierbar — Projektanweisungen bleiben an ein Projekt gebunden.'
-      },
-      {
-        q: 'Welches Tool wird für die Wissensgewinnung vor der Skill-Erstellung empfohlen?',
-        options: ['Google Docs', 'NotebookLM mit Deep Research', 'Microsoft Word', 'ChatGPT'],
-        correct: 1,
-        explanation: 'NotebookLM mit Deep Research durchsucht über 60 Quellen.'
-      },
-      {
-        q: 'Welche Rückfragen stellt Claude im Skill Creator Modus?',
-        options: [
-          'Ziel, Zielgruppe, Output-Format und Sprache',
-          'Claude stellt keine Rückfragen',
-          'Nur nach dem Namen des Skills',
-          'Nur nach dem Preis'
-        ],
-        correct: 0,
-        explanation: 'Claude fragt interaktiv: Ziel, Zielgruppe, Format, Sprache.'
-      },
-      {
-        q: 'Warum reicht bei einem fertigen Skill oft ein kurzer Prompt?',
-        options: [
-          'Weil Skills nur einfache Aufgaben erledigen',
-          'Weil der Skill den Prompt automatisch verlängert',
-          'Weil das Expertenwissen bereits im Skill verankert ist',
-          'Weil Skills mit zufälligen Texten arbeiten'
-        ],
-        correct: 2,
-        explanation: 'Frameworks und Abläufe sind bereits gespeichert — der Skill sorgt automatisch für Qualität.'
-      },
-      {
-        q: 'Was ist das übergeordnete Ziel des Skill-Systems?',
-        options: [
-          'Nur Landing Pages zu erstellen',
-          'Claude durch ein anderes Tool zu ersetzen',
-          'Möglichst viele einzelne Prompts zu schreiben',
-          'Weg von einzelnen Prompts hin zu einem festen Arbeitssystem'
-        ],
-        correct: 3,
-        explanation: 'Ziel: Von isolierten Prompts zu einem systematischen Arbeitssystem.'
-      }
-    ]
-  },
-  {
-    id: 4,
-    number: '04',
-    meta: 'Sicherheit · Modul 4',
+    meta: 'Sicherheit · Modul 3',
     title: 'Sicherer Umgang mit Daten und Tools',
     desc: 'Grundlagen für den sicheren Einsatz von Claude: sensible Inhalte, typische Risikofelder, Konnektoren und zentrale Regeln für datenschutzbewusstes Arbeiten.',
     duration: '15 Min.',
     videos: [],
     images: [],
-    longContent: '',
-    content: `
-      <h3>Never paste these into a personal account</h3>
+    longContent: '',  
+         content: `<h3>Never paste these into a personal account</h3>
       <p>Some data should never touch your personal AI account. If you've pasted a few of these, you're not alone. Just stop now.</p>
       <div class="callout callout-warn">
         <div class="callout-title">Never paste</div>
@@ -560,7 +460,104 @@ const CURRICULUM = [
         explanation: 'Monthly review: disconnect anything not actively in use.'
       }
     ]
-  },
+  
+  {
+    id: 4,
+    number: '04',
+    meta: 'Fortgeschritten· Modul 4',
+    title: 'Skills und wiederverwendbare Arbeitsabläufe',
+    desc: 'Grundlagen für den sicheren Einsatz von Claude: sensible Inhalte, typische Risikofelder, Konnektoren und zentrale Regeln für datenschutzbewusstes Arbeiten.',
+    duration: '45 Min.',
+    videos: [],
+    images: [],
+    longContent: '',
+    content: `,
+      <h3>1. Was sind Claude Skills?</h3>
+      <p>Ein Skill ist eine <strong>fest definierte, wiederverwendbare Arbeitsanweisung</strong>.</p>
+      <table>
+        <thead><tr><th>Eigenschaft</th><th>Projekte</th><th>Skills</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Übertragbarkeit</strong></td><td>Isoliert</td><td>In jedem Chat nutzbar</td></tr>
+          <tr><td><strong>Kombinierbarkeit</strong></td><td>Festgefahren</td><td>Flexibel kombinierbar</td></tr>
+          <tr><td><strong>Systematik</strong></td><td>Manuell</td><td>Definierte Prozesse</td></tr>
+        </tbody>
+      </table>
+      <div class="callout">
+        <div class="callout-title">Kernidee</div>
+        <p>Statt der KI jedes Mal zu sagen was sie tun soll, baust du eine <strong>Sammlung klar definierter Prozesse</strong> auf.</p>
+      </div>
+
+      <h3>2. Wissensgewinnung mit NotebookLM</h3>
+      <ul>
+        <li><strong>Deep Research:</strong> NotebookLM durchsucht über 60 Quellen.</li>
+        <li><strong>Wissen strukturieren:</strong> Rohmaterial in ein klares System überführen.</li>
+      </ul>
+
+      <h3>3. Den Skill in Claude konfigurieren</h3>
+      <p>Im <strong>Skill Creator Modus</strong> stellt Claude Rückfragen: Ziel, Zielgruppe, Output-Format, Sprache.</p>
+
+      <h3>4. Den Skill im Alltag anwenden</h3>
+      <ul>
+        <li>Über das <strong>Plus-Symbol</strong> im Chat auswählen.</li>
+        <li>Geringer Prompt-Aufwand dank verankertem Expertenwissen.</li>
+      </ul>
+
+      <h3>5. Skalierbarkeit</h3>
+      <p>Nicht auf Landing Pages beschränkt — einsetzbar für E-Mail-Funnels, Content-Strategien, Unternehmensstrategien.</p>
+    `,
+    quiz: [
+      {
+        q: 'Was unterscheidet einen Claude Skill von einer Projektanweisung?',
+        options: [
+          'Skills funktionieren nur mit Claude Opus',
+          'Ein Skill ist nur für private Notizen gedacht',
+          'Projektanweisungen sind flexibler als Skills',
+          'Skills sind übertragbar und in jedem Chat nutzbar, Projektanweisungen sind isoliert'
+        ],
+        correct: 3,
+        explanation: 'Skills sind übertragbar und kombinierbar — Projektanweisungen bleiben an ein Projekt gebunden.'
+      },
+      {
+        q: 'Welches Tool wird für die Wissensgewinnung vor der Skill-Erstellung empfohlen?',
+        options: ['Google Docs', 'NotebookLM mit Deep Research', 'Microsoft Word', 'ChatGPT'],
+        correct: 1,
+        explanation: 'NotebookLM mit Deep Research durchsucht über 60 Quellen.'
+      },
+      {
+        q: 'Welche Rückfragen stellt Claude im Skill Creator Modus?',
+        options: [
+          'Ziel, Zielgruppe, Output-Format und Sprache',
+          'Claude stellt keine Rückfragen',
+          'Nur nach dem Namen des Skills',
+          'Nur nach dem Preis'
+        ],
+        correct: 0,
+        explanation: 'Claude fragt interaktiv: Ziel, Zielgruppe, Format, Sprache.'
+      },
+      {
+        q: 'Warum reicht bei einem fertigen Skill oft ein kurzer Prompt?',
+        options: [
+          'Weil Skills nur einfache Aufgaben erledigen',
+          'Weil der Skill den Prompt automatisch verlängert',
+          'Weil das Expertenwissen bereits im Skill verankert ist',
+          'Weil Skills mit zufälligen Texten arbeiten'
+        ],
+        correct: 2,
+        explanation: 'Frameworks und Abläufe sind bereits gespeichert — der Skill sorgt automatisch für Qualität.'
+      },
+      {
+        q: 'Was ist das übergeordnete Ziel des Skill-Systems?',
+        options: [
+          'Nur Landing Pages zu erstellen',
+          'Claude durch ein anderes Tool zu ersetzen',
+          'Möglichst viele einzelne Prompts zu schreiben',
+          'Weg von einzelnen Prompts hin zu einem festen Arbeitssystem'
+        ],
+        correct: 3,
+        explanation: 'Ziel: Von isolierten Prompts zu einem systematischen Arbeitssystem.'
+      }
+    ]
+     ,
   {
     id: 5,
     number: '05',
