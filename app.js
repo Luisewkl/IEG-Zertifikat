@@ -2,6 +2,14 @@
    IEG Claude Academy — App Logic v6.0
    ============================================ */
 
+// ===== LOGIN CHECK (SOFORT) =====
+// Prüft ob User eingeloggt ist. Wenn nicht → login.html
+(function checkLogin() {
+  if (localStorage.getItem('ieg_logged_in') !== 'yes') {
+    window.location.replace('login.html');
+  }
+})();
+
 // ===== STATE =====
 var STORAGE_KEY = 'ieg-academy-progress-v1';
 var state = loadLocalState();
