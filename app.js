@@ -10,19 +10,29 @@ let currentUser = null;
 let supabaseReady = false;
 let previewMode = false;
 
-// Sofort starten wenn DOM bereit
-document.addEventListener('DOMContentLoaded', () => {
-  // Login-Check über localStorage
-  const token = localStorage.getItem('sb_access_token');
-  if (!token) {
-    window.location.href = 'login.html';
+// Start wenn Seite geladen
+window.addEventListener('load', async () => {
+  // window.sb ist synchron in supabase-config.js erstellt
+  if (!window.sb) {
+    state = loadLocalState();
+    renderEverything();
+    setupNavObserver();
     return;
   }
 
-  // User ist eingeloggt → Seite aufbauen
-  currentUser = { name: localStorage.getItem('sb_user_name') || 'User' };
-  supabaseReady = true;
-  updateUserDisplay();
+  try {
+    const { data: { session } } = await window.sb.auth.getSession();
+    if (!session) {
+      window.location.href = 'login.html';
+      return;
+    }
+    currentUser = session.user;
+    supabaseReady = true;
+    updateUserDisplay();
+  } catch(e) {
+    console.error('Auth error:', e);
+  }
+
   state = loadLocalState();
   renderEverything();
   setupNavObserver();
