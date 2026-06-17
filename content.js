@@ -782,6 +782,201 @@ const CURRICULUM = [
       }
     ]
   }
+  ,{
+    id: 7,
+    number: '07',
+    meta: 'Praxis · Modul 7',
+    title: 'Contact Research & Outreach im M&A-Alltag',
+    desc: 'Praktische Claude-Workflows für Unternehmensrecherche, Target Profiling, Outreach-E-Mails und CRM-Notizen — die wichtigsten Daily Tasks eines Analysts und Interns.',
+    duration: '40 Min.',
+    videos: [],
+    images: [],
+    longContent: '',
+    content: `
+      <h3>1. Die drei Daily Tasks im M&A-Alltag</h3>
+      <p>Als Analyst oder Intern verbringst du täglich Zeit mit drei Kernaufgaben:
+      <strong>Unternehmen recherchieren</strong>, <strong>Kontakte identifizieren</strong>
+      und <strong>professionelle Kommunikation</strong> vorbereiten. Claude kann jeden dieser
+      Schritte beschleunigen — wenn man weiß, wie man fragt.</p>
+      <div class="callout">
+        <div class="callout-title">Wichtig: Datenschutz zuerst</div>
+        <p>Echte Namen, Deal-Details oder vertrauliche Kundendaten gehören nicht in Claude.
+        Nutze für diese Aufgaben den <strong>IEG Claude Account</strong> oder anonymisiere die Daten.</p>
+      </div>
+
+      <h3>2. Company Research & Target Profiling</h3>
+      <p>Ein Company Profile zu einem potenziellen M&A-Target ist oft die erste Aufgabe.
+      Claude erstellt in Minuten eine strukturierte Übersicht — wenn du den richtigen
+      Prompt verwendest.</p>
+      <h4>Musterprompt: Company Profile</h4>
+      <div class="callout callout-success">
+        <div class="callout-title">Copy-Paste Prompt</div>
+        <p><em>„Du bist ein erfahrener M&A-Analyst. Erstelle ein strukturiertes Company Profile
+        für [Unternehmensname] mit folgenden Abschnitten: (1) Geschäftsmodell &amp; Umsatzquellen,
+        (2) Marktposition &amp; Wettbewerber, (3) Finanzkennzahlen (falls öffentlich),
+        (4) Management-Team, (5) mögliche Akquisitionsgründe aus Käuferperspektive.
+        Format: strukturierte Tabelle + kurzer Fließtext pro Abschnitt.
+        Wenn Informationen nicht verfügbar sind, sag es explizit."</em></p>
+      </div>
+      <h4>Target Screening: Mehrere Unternehmen vergleichen</h4>
+      <p>Für Screenlisten eignet sich Prompt Chaining: Erstelle zuerst Einzelprofile,
+      dann einen Vergleichsprompt.</p>
+      <div class="callout callout-success">
+        <div class="callout-title">Schritt 2 — Vergleichstabelle</div>
+        <p><em>„Fasse die Profile von [Unternehmen A], [Unternehmen B] und [Unternehmen C]
+        in einer Vergleichstabelle zusammen. Spalten: Unternehmen, Umsatz, Mitarbeiter,
+        Marktposition, strategische Passung (1-5). Sortiere nach strategischer Passung."</em></p>
+      </div>
+
+      <h3>3. Kontaktrecherche &amp; Person Research</h3>
+      <p>Entscheider identifizieren und qualifizieren — ohne stundenlange LinkedIn-Recherche.</p>
+      <h4>Musterprompt: Entscheider-Profil</h4>
+      <div class="callout callout-success">
+        <div class="callout-title">Copy-Paste Prompt</div>
+        <p><em>„Du bist ein Research-Analyst. Ich gebe dir folgenden LinkedIn-Auszug zu
+        [Name/Rolle anonymisiert]. Fasse zusammen: (1) Karriereweg in 3 Sätzen,
+        (2) relevante Expertise für M&A-Kontext, (3) mögliche Gesprächseinstiege.
+        Halte die Zusammenfassung auf max. 150 Wörter."</em></p>
+      </div>
+      <div class="callout callout-warn">
+        <div class="callout-title">Regel: Anonymisieren</div>
+        <p>Kein echter Vor- und Nachname in Claude. Nutze Platzhalter wie [CFO, Unternehmen X] —
+        das reicht für eine nutzbare Zusammenfassung.</p>
+      </div>
+
+      <h3>4. Outreach-E-Mails &amp; Follow-ups</h3>
+      <p>Die Erstansprache ist oft das Schwierigste. Claude hilft, den richtigen Ton
+      zu treffen — du gibst Kontext, Claude schreibt den Entwurf.</p>
+      <h4>Musterprompt: Cold Outreach</h4>
+      <div class="callout callout-success">
+        <div class="callout-title">Copy-Paste Prompt</div>
+        <p><em>„Schreibe eine professionelle Erstansprache-E-Mail (max. 120 Wörter) von einer
+        M&A-Boutique an den [Rolle] eines mittelständischen Unternehmens im Bereich [Branche].
+        Ziel: ein erstes Kennenlern-Gespräch. Ton: professionell, direkt, keine Floskeln.
+        Betreffzeile: konkret und neugierig machend. Schreibe 2 Varianten."</em></p>
+      </div>
+      <h4>Musterprompt: Follow-up</h4>
+      <div class="callout callout-success">
+        <div class="callout-title">Copy-Paste Prompt</div>
+        <p><em>„Schreibe ein kurzes Follow-up (max. 60 Wörter) zu einer Erstansprache-E-Mail,
+        die vor 10 Tagen verschickt wurde und keine Antwort erhielt.
+        Ton: freundlich, nicht aufdringlich. Neuer Aufhänger: [aktuelles Marktereignis einfügen]."</em></p>
+      </div>
+
+      <h3>5. CRM-Notizen strukturieren</h3>
+      <p>Nach einem Gespräch schnell strukturierte CRM-Einträge erstellen —
+      statt roher Notizen direkt ein verwendbares Format.</p>
+      <div class="callout callout-success">
+        <div class="callout-title">Copy-Paste Prompt</div>
+        <p><em>„Ich gebe dir meine rohen Gesprächsnotizen vom heutigen Call. Erstelle daraus
+        einen strukturierten CRM-Eintrag mit: (1) Datum &amp; Teilnehmer (anonymisiert),
+        (2) Kerninhalte in 5 Bulletpoints, (3) vereinbarte nächste Schritte,
+        (4) Follow-up-Datum. Hier sind die Notizen: [Notizen einfügen]"</em></p>
+      </div>
+
+      <h3>6. Prompt-Cheatsheet: Die 5 wichtigsten Templates</h3>
+      <table>
+        <thead><tr><th>Aufgabe</th><th>Prompt-Starter</th></tr></thead>
+        <tbody>
+          <tr><td>Company Profile</td><td>„Du bist M&A-Analyst. Erstelle ein Company Profile für [X] mit..."</td></tr>
+          <tr><td>Vergleichstabelle</td><td>„Fasse die Profile von [A, B, C] in einer Tabelle zusammen. Spalten:..."</td></tr>
+          <tr><td>Kontakt-Summary</td><td>„Fasse diesen LinkedIn-Auszug zusammen: Karriere, Expertise, Gesprächseinstieg"</td></tr>
+          <tr><td>Cold Outreach</td><td>„Schreibe 2 Varianten einer Erstansprache-E-Mail (max. 120 Wörter)..."</td></tr>
+          <tr><td>CRM-Eintrag</td><td>„Erstelle aus diesen Notizen einen CRM-Eintrag mit Bullets + Next Steps"</td></tr>
+        </tbody>
+      </table>
+    `,
+    quiz: [
+      {
+        q: 'Warum sollte man echte Kundennamen nicht direkt in Claude eingeben?',
+        options: [
+          'Weil Claude keine Namen verarbeiten kann',
+          'Weil echte Namen die Antwortqualität verschlechtern',
+          'Weil vertrauliche Personendaten nicht in einen persönlichen KI-Account gehören',
+          'Weil Claude dann automatisch Mails versendet'
+        ],
+        correct: 2,
+        explanation: 'Datenschutz: Echte Namen und Kundendaten gehören in den IEG Claude Account oder müssen vorher anonymisiert werden.'
+      },
+      {
+        q: 'Was ist der erste Schritt beim Erstellen einer Target-Vergleichstabelle per Prompt Chaining?',
+        options: [
+          'Direkt alle Unternehmen in einem Prompt vergleichen',
+          'Zuerst Einzelprofile erstellen, dann in einem zweiten Schritt die Vergleichstabelle',
+          'Die Tabelle manuell in Excel erstellen',
+          'Claude bitten, selbst Unternehmen auszuwählen'
+        ],
+        correct: 1,
+        explanation: 'Prompt Chaining: Erst Einzelprofile, dann Zusammenfassung. So ist jedes Teilergebnis prüfbar.'
+      },
+      {
+        q: 'Welches Element ist in einem Company Profile Prompt besonders wichtig?',
+        options: [
+          'Eine Stoppklausel: "Wenn Informationen nicht verfügbar sind, sag es explizit"',
+          'Ein sehr langer, detaillierter Prompt ohne Abschnitte',
+          'Die Bitte, möglichst kreativ zu antworten',
+          'Die Angabe der Schriftgröße für den Output'
+        ],
+        correct: 0,
+        explanation: 'Stoppkriterien verhindern Halluzinationen. Ohne sie erfinde Claude fehlende Fakten.'
+      },
+      {
+        q: 'Wie sollte ein gutes Follow-up nach 10 Tagen ohne Antwort formuliert sein?',
+        options: [
+          'Lang und ausführlich, um zu zeigen, wie viel Arbeit man sich gemacht hat',
+          'Kurz, freundlich, nicht aufdringlich — idealerweise mit einem neuen Aufhänger',
+          'Identisch zur ersten E-Mail, damit die Person sich erinnert',
+          'Mit einem klaren Vorwurf, warum man nicht geantwortet hat'
+        ],
+        correct: 1,
+        explanation: 'Follow-ups: max. 60 Wörter, freundlicher Ton, neuer Aufhänger — z.B. ein aktuelles Marktereignis.'
+      },
+      {
+        q: 'Was enthält ein guter CRM-Eintrag aus Gesprächsnotizen?',
+        options: [
+          'Nur das Datum und den Namen des Gesprächspartners',
+          'Die wörtliche Transkription des gesamten Gesprächs',
+          'Datum, Kerninhalte als Bulletpoints, vereinbarte nächste Schritte und Follow-up-Datum',
+          'Nur die offenen Punkte, keine erledigten Punkte'
+        ],
+        correct: 2,
+        explanation: 'Gute CRM-Einträge: Datum, Kerninhalte (5 Bullets), Next Steps, Follow-up-Datum.'
+      },
+      {
+        q: 'Wie viele Varianten sollte man bei einer Erstansprache-E-Mail von Claude erstellen lassen?',
+        options: [
+          'Immer genau eine, damit der Fokus klar ist',
+          'Mindestens 10, um die beste auszuwählen',
+          'Zwei Varianten — so hat man eine Auswahl ohne zu viel Aufwand',
+          'Keine — E-Mails sollte man immer selbst schreiben'
+        ],
+        correct: 2,
+        explanation: '2 Varianten sind der Sweet Spot: genug Auswahl, um Ton und Stil anzupassen, ohne überwältigt zu werden.'
+      },
+      {
+        q: 'Für welche Kontaktrecherche-Aufgabe eignet sich Claude am besten?',
+        options: [
+          'Direkt LinkedIn-Profile abrufen ohne Zustimmung',
+          'Einen anonymisierten LinkedIn-Auszug zusammenfassen und Gesprächseinstiege ableiten',
+          'Automatisch E-Mails an Kontakte versenden',
+          'Persönliche Telefonnummern recherchieren'
+        ],
+        correct: 1,
+        explanation: 'Claude fasst anonymisierten Text zusammen und leitet Gesprächseinstiege ab — Recherche und Direktzugriff sind nicht Claudes Aufgabe.'
+      },
+      {
+        q: 'Welches Prompt-Element verbessert die Qualität eines Company Profile am meisten?',
+        options: [
+          'Die Anfrage in möglichst vielen Sprachen gleichzeitig stellen',
+          'Nur eine kurze Frage ohne Struktur stellen',
+          'Klare Abschnitte vorgeben (Geschäftsmodell, Marktposition, Finanzen, Management, Akquisitionsgründe)',
+          'Claude bitten, das Profil in 500 Wörtern zusammenzufassen'
+        ],
+        correct: 2,
+        explanation: 'Strukturierte Abschnitte = strukturierter Output. Claude folgt der vorgegebenen Gliederung.'
+      }
+    ]
+  }
 ];
 
 // Abschlussprüfung — 15 Fragen
@@ -801,6 +996,8 @@ const FINAL_EXAM = [
   { q: 'Was bewirkt Pre-filling mit dem Zeichen { ?', options: ['Neuen Chat starten', 'Prompt speichern', 'Valides JSON als Output erzwingen', 'Debug-Modus aktivieren'], correct: 2, explanation: 'Pre-fill mit { = Claude liefert valides JSON.' },
   { q: 'Welche Reihenfolge gilt bei "Analyze the Form before the Sketch"?', options: ['Beide gleichzeitig', 'Reihenfolge egal', 'Erst Sketch, dann Form', 'Erst klare Fakten (Form), dann interpretative Daten (Sketch)'], correct: 3, explanation: 'Klare Fakten zuerst — sie kalibrieren den Kontext.' },
   { q: 'Why should you never connect work Gmail to a personal AI?', options: ['It makes AI slower', 'Personal accounts have better security', 'Gmail doesn\'t support it', 'You\'d pipe company data into a tool with no contract'], correct: 3, explanation: 'Work accounts on personal AI = company data without contract or security guarantees.' }
+  ,{ q: 'Welches Datenschutzprinzip gilt bei der Kontaktrecherche mit Claude?', options: ['Echte Namen sind in Ordnung, wenn sie öffentlich sind', 'Nur Firmennamen anonymisieren, Personennamen sind erlaubt', 'Echte Kundennamen und vertrauliche Kontaktdaten gehören in den IEG Account oder müssen anonymisiert werden', 'Alles darf eingegeben werden, wenn der Inkognitomodus aktiv ist'], correct: 2, explanation: 'Datenschutz: Personenbezogene Daten → IEG Account oder Anonymisierung. Inkognitomodus reicht nicht.' }
+  ,{ q: 'Welche Prompt-Technik eignet sich für eine Target-Vergleichstabelle aus mehreren Unternehmens-Profilen?', options: ['Few-Shot Prompting mit Beispieltabellen', 'Prompt Chaining: erst Einzelprofile, dann Vergleichstabelle', 'Ein einziger sehr langer Prompt für alle Unternehmen', 'Pre-filling mit { für JSON-Output'], correct: 1, explanation: 'Prompt Chaining: Einzelprofile als Zwischenergebnis prüfen, dann Vergleich erstellen.' }
 ];
 
 const PASS_THRESHOLD = 70;
