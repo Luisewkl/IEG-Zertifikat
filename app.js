@@ -15,7 +15,7 @@ function loadLocalState() {
     var s = localStorage.getItem(STORAGE_KEY);
     if (s) return JSON.parse(s);
   } catch (e) {}
-  return { completed: [], finalPassed: false, userName: '', completionDate: '' };
+return { completed: [], finalPassed: false, userName: '', completionDate: '', certificateId: '' };
 }
 
 function saveState() {
@@ -30,7 +30,7 @@ function logout() {
 
 function resetProgress() {
   if (!confirm('Gesamten Lernfortschritt zurücksetzen?')) return;
-  state = { completed: [], finalPassed: false, userName: '', completionDate: '' };
+state = { completed: [], finalPassed: false, userName: '', completionDate: '', certificateId: '' };
   saveState();
   renderEverything();
   document.getElementById('curriculum').scrollIntoView({ behavior: 'smooth' });
@@ -227,19 +227,33 @@ function renderCertificate() {
     return;
   }
   lo.style.display = 'none'; un.style.display = 'block';
-  var d = new Date(state.completionDate || Date.now());
-  var ds = d.toLocaleDateString('de-DE', {year:'numeric',month:'long',day:'numeric'});
-  var cid = 'IEG-' + d.getFullYear() + String(d.getMonth()+1).padStart(2,'0') + String(d.getDate()).padStart(2,'0') + '-' + Math.random().toString(36).substr(2,4).toUpperCase();
+ var d = new Date(state.completionDate || Date.now());
+var ds = d.toLocaleDateString('de-DE', { year: 'numeric', month: 'long', day: 'numeric' });
+
+if (!state.certificateId) {
+  state.certificateId =
+    'IEG-' +
+    d.getFullYear() +
+    String(d.getMonth() + 1).padStart(2, '0') +
+    String(d.getDate()).padStart(2, '0') +
+    '-' +
+    String(state.userName || 'USER')
+      .trim()
+      .toUpperCase()
+      .replace(/[^A-Z0-9]/g, '')
+      .slice(0, 6);
+  saveState();
+}
+
+var cid = state.certificateId;
   un.innerHTML = '<div class="section-eyebrow">/ Certificate</div><h2 class="section-title">Ihr Zertifikat</h2><p class="section-lede" style="margin-bottom:48px">Glückwunsch!</p>' +
     '<div class="certificate"><div class="cert-corner cert-corner-tl"></div><div class="cert-corner cert-corner-tr"></div><div class="cert-corner cert-corner-bl"></div><div class="cert-corner cert-corner-br"></div>' +
     '<img src="assets/ieg-logo.png" alt="IEG" class="cert-logo-img"><div class="cert-issuing-line">IEG · Internal Training</div>' +
     '<div class="cert-this-certifies">Hiermit wird bestätigt, dass</div><div class="cert-name">' + esc(state.userName) + '</div>' +
     '<div class="cert-completed">erfolgreich abgeschlossen hat:</div><div class="cert-program">IEG Claude Academy</div>' +
     '<div class="cert-meta"><div class="cert-meta-item"><div class="cert-meta-label">Datum</div><div class="cert-meta-value">' + ds + '</div></div>' +
-    '<div class="cert-meta-item"><div class="cert-meta-label">ID</div><div class="cert-meta-value" style="font-family:var(--mono);font-size:13px">' + cid + '</div></div>' +
-    '<div class="cert-meta-item"><div class="cert-meta-label">Ausgestellt von</div><div class="cert-meta-value cert-signature">S. Heilmann</div><div style="font-family:var(--mono);font-size:10px;color:var(--text-muted);margin-top:4px">GROUP CEO, IEG</div></div></div></div>' +
-    '<div class="cert-actions"><button class="btn btn-primary" onclick="window.print()">Drucken</button></div>';
-}
+    '<div class="cert-meta-item"><div class="cert-meta-label">Credential ID</div><div class="cert-meta-value cert-id">' + cid + '</div></div>' +
+    '<div class="cert-meta-item"><div class="cert-meta-label">Ausgestellt von</div><div class="cert-meta-value cert-signature">Stefan Heilmann</div><div style="font-family:var(--mono);font-size:10px;color:var(--text-muted);margin-top:4px">GROUP CEO, IEG</div></div></div></div>' +
 
 function esc(s) { return String(s).replace(/[&<>"']/g, function(c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
 
