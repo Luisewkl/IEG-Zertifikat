@@ -787,25 +787,27 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .location-list span:nth-child(even) { color: var(--ieg-blue-bright); font-style: normal; }
 
 /* ==================== CERTIFICATE SECTION ==================== */
-.cert-section {
-  padding: 120px 32px;
-  background: var(--paper);
-  text-align: center;
+.certificate {
+  background: #ffffff;
+  padding: 72px 56px;
+  border: 1px solid rgba(10,26,51,0.16);
+  border-radius: 12px;
   position: relative;
-  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 12px 40px rgba(10,26,51,0.08);
+  max-width: 860px;
+  margin: 0 auto;
 }
 
-.cert-section::before {
+.certificate::before {
   content: '';
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 800px;
-  height: 800px;
-  background: radial-gradient(circle, rgba(7,93,228,0.06) 0%, transparent 70%);
+  inset: 14px;
+  border: 1px solid rgba(7,93,228,0.20);
+  border-radius: 8px;
   pointer-events: none;
-}
+} 
+
 
 .cert-locked-state, .cert-unlocked-state {
   position: relative;
@@ -1240,10 +1242,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 .cert-corner {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  border: 2px solid var(--ieg-blue);
+  display: none;
+}
+
 }
 .cert-corner-tl { top: 24px; left: 24px; border-right: none; border-bottom: none; }
 .cert-corner-tr { top: 24px; right: 24px; border-left: none; border-bottom: none; }
