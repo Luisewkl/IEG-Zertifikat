@@ -91,8 +91,33 @@
           <div class="exercise-note">
             <strong>Ziel:</strong> Die richtige Abstraktionsebene wählen — nicht alles braucht einen Skill, aber wiederkehrende Prozesse profitieren enorm.
           </div>
+          <button class="exercise-solution-toggle" onclick="toggleSolution(this)">
+            Musterlösung anzeigen
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="exercise-solution">
+            <div class="exercise-solution-eyebrow">Musterlösung</div>
+            <table>
+              <thead><tr><th>Aufgabe</th><th>Empfehlung</th><th>Begründung</th></tr></thead>
+              <tbody>
+                <tr><td>(a) Einmalige Zusammenfassung eines Artikels</td><td><strong>Standard-Prompt</strong></td><td>Niedrige Häufigkeit, kein Konsistenzbedarf — ein Prompt reicht vollständig</td></tr>
+                <tr><td>(b) Wöchentliche Meeting-Protokolle im gleichen Format</td><td><strong>Skill</strong></td><td>Hohe Häufigkeit + festes Format = klassischer Skill-Kandidat; einmal definieren, dauerhaft nutzen</td></tr>
+                <tr><td>(c) Gelegentliche Übersetzung einer E-Mail</td><td><strong>Standard-Prompt</strong></td><td>Geringe Häufigkeit, variabler Kontext — ein Skill würde kaum Zeit sparen</td></tr>
+              </tbody>
+            </table>
+            <p style="margin-top:12px"><strong>Faustregel:</strong> Ein Skill lohnt sich ab ca. 3–5 Wiederholungen pro Monat und wenn das gewünschte Format immer gleich ist.</p>
+          </div>
         </article>
       </div>
     </section>
 
-    <div class="quiz-section"><div class="quiz-eyebrow">Bereit?</div><h2>Quiz starten</h2><p class="quiz-lede">5 Fragen · 70%</p><button class="btn btn-primary" onclick="startQuiz()">Quiz starten</button></div></main><div class="module-navigation"><a href="modul-03.html" class="nav-card nav-card-prev"><div class="nav-card-label">← Vorheriges Modul</div><div class="nav-card-title">03 · Sicherer Umgang mit Daten und Tools</div></a><a href="modul-05.html" class="nav-card nav-card-next"><div class="nav-card-label">Nächstes Modul →</div><div class="nav-card-title">05 · Skills in Finance-Workflows</div></a></div><div class="modal-overlay" id="quizModal"><div class="modal-content"><button class="modal-close" onclick="closeQuiz()"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button><div id="quizModalBody"></div></div></div><footer class="module-footer"><img src="../assets/ieg-logo.png" alt="IEG" class="module-footer-logo"><div class="module-footer-text">© 2026 IEG Investment Banking Group</div></footer><script src="../content.js"></script><script>var MODULE_ID=4;var MODULE_TITLE="Skills und wiederverwendbare Arbeitsabläufe";var MODULE_QUIZ=CURRICULUM.find(function(m){return m.id===4;}).quiz;</script><script src="module.js"></script></body></html>
+    <div class="quiz-section"><div class="quiz-eyebrow">Bereit?</div><h2>Quiz starten</h2><p class="quiz-lede">5 Fragen · 70%</p><button class="btn btn-primary" onclick="startQuiz()">Quiz starten</button></div></main><div class="module-navigation"><a href="modul-03.html" class="nav-card nav-card-prev"><div class="nav-card-label">← Vorheriges Modul</div><div class="nav-card-title">03 · Sicherer Umgang mit Daten und Tools</div></a><a href="modul-05.html" class="nav-card nav-card-next"><div class="nav-card-label">Nächstes Modul →</div><div class="nav-card-title">05 · Skills in Finance-Workflows</div></a></div><div class="modal-overlay" id="quizModal"><div class="modal-content"><button class="modal-close" onclick="closeQuiz()"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button><div id="quizModalBody"></div></div></div><footer class="module-footer"><img src="../assets/ieg-logo.png" alt="IEG" class="module-footer-logo"><div class="module-footer-text">© 2026 IEG Investment Banking Group</div></footer><script src="../content.js"></script><script>var MODULE_ID=4;var MODULE_TITLE="Skills und wiederverwendbare Arbeitsabläufe";var MODULE_QUIZ=CURRICULUM.find(function(m){return m.id===4;}).quiz;</script><script src="module.js"></script>
+<script>
+function toggleSolution(btn) {
+  btn.classList.toggle('open');
+  var sol = btn.nextElementSibling;
+  sol.classList.toggle('visible');
+  btn.childNodes[0].textContent = sol.classList.contains('visible') ? 'Musterlösung ausblenden ' : 'Musterlösung anzeigen ';
+}
+</script>
+</body></html>

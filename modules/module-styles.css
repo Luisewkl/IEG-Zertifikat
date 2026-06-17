@@ -957,6 +957,99 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   font-weight: 600;
 }
 
+/* --- Solution toggle --- */
+.exercise-solution-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 9px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--sans);
+  color: var(--ieg-blue);
+  background: var(--ieg-blue-soft);
+  border: 1px solid rgba(7,93,228,0.20);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.exercise-solution-toggle:hover {
+  background: var(--ieg-blue);
+  color: var(--white);
+  border-color: var(--ieg-blue);
+}
+.exercise-solution-toggle svg {
+  transition: transform 0.25s ease;
+}
+.exercise-solution-toggle.open svg {
+  transform: rotate(180deg);
+}
+
+.exercise-solution {
+  display: none;
+  margin-top: 16px;
+  background: #ECF6F1;
+  border: 1px solid rgba(46,125,92,0.25);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+}
+.exercise-solution.visible {
+  display: block;
+}
+.exercise-solution-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sage);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.exercise-solution table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  margin-top: 8px;
+}
+.exercise-solution th {
+  text-align: left;
+  padding: 10px 14px;
+  background: var(--sage);
+  color: var(--white);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.exercise-solution td {
+  padding: 10px 14px;
+  border-bottom: 1px solid rgba(46,125,92,0.15);
+  vertical-align: top;
+  background: var(--white);
+  font-size: 14px;
+  line-height: 1.5;
+}
+.exercise-solution tr:last-child td { border-bottom: none; }
+.exercise-solution p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text);
+  margin: 0 0 8px;
+}
+.exercise-solution p:last-child { margin: 0; }
+.exercise-solution ul {
+  padding-left: 20px;
+  margin: 8px 0 0;
+}
+.exercise-solution li {
+  font-size: 14px;
+  line-height: 1.55;
+  margin-bottom: 6px;
+  color: var(--text);
+}
+
 /* ==================== RESPONSIVE ==================== */
 @media (max-width: 768px) {
   .nav-inner { padding: 14px 20px; gap: 12px; }

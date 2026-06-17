@@ -96,6 +96,23 @@
         <div class="exercise-note">
           <strong>Ziel:</strong> Verstehen, welches Claude-Feature für welchen Use Case am besten geeignet ist.
         </div>
+        <button class="exercise-solution-toggle" onclick="toggleSolution(this)">
+          Musterlösung anzeigen
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="exercise-solution">
+          <div class="exercise-solution-eyebrow">Musterlösung</div>
+          <table>
+            <thead><tr><th>Aufgabe</th><th>Claude-Funktion</th><th>Begründung</th></tr></thead>
+            <tbody>
+              <tr><td>Projektdokumentation strukturieren</td><td><strong>Projects</strong></td><td>Wiederkehrender Kontext, Dateien und Anweisungen dauerhaft hinterlegt</td></tr>
+              <tr><td>Marktdaten visualisieren</td><td><strong>Code / Visualisierung im Chat</strong></td><td>Claude erstellt Diagramme direkt ohne externe Tools</td></tr>
+              <tr><td>E-Mail-Entwurf vorbereiten</td><td><strong>Personalisierung / Stile</strong></td><td>Gespeicherter Schreibstil sorgt für konsistenten Ton in jedem Chat</td></tr>
+              <tr><td>Wiederkehrende Analyseschritte automatisieren</td><td><strong>Skills</strong></td><td>Einmal definierter Ablauf, in jedem Chat nutzbar</td></tr>
+              <tr><td>Externe Datenquelle anbinden</td><td><strong>Konnektoren</strong></td><td>Direkte Verbindung zu Gmail, Notion, Google Drive etc.</td></tr>
+            </tbody>
+          </table>
+        </div>
       </article>
       <article class="exercise-card">
         <div class="exercise-kicker">Übung 2</div>
@@ -113,6 +130,21 @@
         </div>
         <div class="exercise-note">
           <strong>Ziel:</strong> Claude nicht als Einzelfunktion, sondern als integrierte Arbeitsumgebung verstehen und nutzen.
+        </div>
+        <button class="exercise-solution-toggle" onclick="toggleSolution(this)">
+          Beispiel-Workflow anzeigen
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="exercise-solution">
+          <div class="exercise-solution-eyebrow">Beispiel-Workflow: Wöchentliche Research-Zusammenfassung</div>
+          <p><strong>Aufgabe:</strong> 3–5 Research-PDFs wöchentlich zu einer einseitigen Team-Zusammenfassung verdichten.</p>
+          <ul>
+            <li><strong>Schritt 1 — Input:</strong> PDFs per Dateiupload hochladen (Plus-Symbol im Chat)</li>
+            <li><strong>Schritt 2 — Funktion:</strong> Skill „Research Summary" mit fester Struktur (Kernaussagen, Implikationen, Quellen)</li>
+            <li><strong>Schritt 3 — Zwischenergebnis:</strong> Rohentwurf der Zusammenfassung prüfen und bei Bedarf nachbessern</li>
+            <li><strong>Schritt 4 — Output:</strong> Fertige Zusammenfassung im gewünschten Format (Bulletpoints oder Fließtext)</li>
+          </ul>
+          <p style="margin-top:12px"><strong>Wichtig:</strong> Keine echten Kundennamen oder vertraulichen Daten in einen persönlichen Account hochladen — anonymisieren oder den IEG Claude Account nutzen.</p>
         </div>
       </article>
     </div>
@@ -138,4 +170,12 @@
   const MODULE_QUIZ = CURRICULUM.find(m => m.id === 0).quiz;
 </script>
 <script src="module.js"></script>
+<script>
+function toggleSolution(btn) {
+  btn.classList.toggle('open');
+  var sol = btn.nextElementSibling;
+  sol.classList.toggle('visible');
+  btn.childNodes[0].textContent = sol.classList.contains('visible') ? 'Musterlösung ausblenden ' : 'Musterlösung anzeigen ';
+}
+</script>
 </body></html>

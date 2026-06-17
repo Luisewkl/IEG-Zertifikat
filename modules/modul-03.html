@@ -64,6 +64,24 @@
           <div class="exercise-note">
             <strong>Ziel:</strong> Praxisnahe Datensensibilität entwickeln — erkennen, was wo eingegeben werden darf.
           </div>
+          <button class="exercise-solution-toggle" onclick="toggleSolution(this)">
+            Musterlösung anzeigen
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="exercise-solution">
+            <div class="exercise-solution-eyebrow">Musterlösung</div>
+            <table>
+              <thead><tr><th>Input</th><th>Kategorie</th><th>Begründung</th></tr></thead>
+              <tbody>
+                <tr><td>(a) Allgemeine Branchenrecherche</td><td><strong>Unkritisch</strong></td><td>Öffentlich verfügbares Wissen, keine personenbezogenen oder vertraulichen Daten</td></tr>
+                <tr><td>(b) Gesprächsnotizen mit Kundennamen</td><td><strong>Nur anonymisiert</strong></td><td>Personenbezogene Daten — Namen durch Platzhalter wie [CFO, Industrieunternehmen] ersetzen</td></tr>
+                <tr><td>(c) Interner Deal-Memo mit Bewertungszahlen</td><td><strong>Nicht in persönlichen Account</strong></td><td>Nicht-öffentliche Finanzdaten, Deal-Details — nur über IEG Claude Account</td></tr>
+                <tr><td>(d) Öffentlich verfügbare Pressemitteilung</td><td><strong>Unkritisch</strong></td><td>Bereits veröffentlicht, kein Vertraulichkeitsproblem</td></tr>
+                <tr><td>(e) Excel mit Kundenumsätzen</td><td><strong>Nicht in persönlichen Account</strong></td><td>Nicht-öffentliche Finanzdaten von Kunden — immer über gesicherten Account</td></tr>
+                <tr><td>(f) Allgemeine E-Mail-Vorlage ohne Namen</td><td><strong>Unkritisch</strong></td><td>Kein personenbezogener Bezug, keine vertraulichen Inhalte</td></tr>
+              </tbody>
+            </table>
+          </div>
         </article>
         <article class="exercise-card">
           <div class="exercise-kicker">Übung 2</div>
@@ -86,4 +104,13 @@
       </div>
     </section>
 
-    <div class="quiz-section"><div class="quiz-eyebrow">Bereit?</div><h2>Quiz starten</h2><p class="quiz-lede">7 Fragen · 70%</p><button class="btn btn-primary" onclick="startQuiz()">Quiz starten</button></div></main><div class="module-navigation"><a href="modul-02.html" class="nav-card nav-card-prev"><div class="nav-card-label">← Vorheriges Modul</div><div class="nav-card-title">02 · Prompting und strukturierte Anweisungen</div></a><a href="modul-04.html" class="nav-card nav-card-next"><div class="nav-card-label">Nächstes Modul →</div><div class="nav-card-title">04 · Skills und wiederverwendbare Arbeitsabläufe</div></a></div><div class="modal-overlay" id="quizModal"><div class="modal-content"><button class="modal-close" onclick="closeQuiz()"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button><div id="quizModalBody"></div></div></div><footer class="module-footer"><img src="../assets/ieg-logo.png" alt="IEG" class="module-footer-logo"><div class="module-footer-text">© 2026 IEG Investment Banking Group</div></footer><script src="../content.js"></script><script>var MODULE_ID=3;var MODULE_TITLE="Sicherer Umgang mit Daten und Tools";var MODULE_QUIZ=CURRICULUM.find(function(m){return m.id===3;}).quiz;</script><script src="module.js"></script></body></html>
+    <div class="quiz-section"><div class="quiz-eyebrow">Bereit?</div><h2>Quiz starten</h2><p class="quiz-lede">7 Fragen · 70%</p><button class="btn btn-primary" onclick="startQuiz()">Quiz starten</button></div></main><div class="module-navigation"><a href="modul-02.html" class="nav-card nav-card-prev"><div class="nav-card-label">← Vorheriges Modul</div><div class="nav-card-title">02 · Prompting und strukturierte Anweisungen</div></a><a href="modul-04.html" class="nav-card nav-card-next"><div class="nav-card-label">Nächstes Modul →</div><div class="nav-card-title">04 · Skills und wiederverwendbare Arbeitsabläufe</div></a></div><div class="modal-overlay" id="quizModal"><div class="modal-content"><button class="modal-close" onclick="closeQuiz()"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button><div id="quizModalBody"></div></div></div><footer class="module-footer"><img src="../assets/ieg-logo.png" alt="IEG" class="module-footer-logo"><div class="module-footer-text">© 2026 IEG Investment Banking Group</div></footer><script src="../content.js"></script><script>var MODULE_ID=3;var MODULE_TITLE="Sicherer Umgang mit Daten und Tools";var MODULE_QUIZ=CURRICULUM.find(function(m){return m.id===3;}).quiz;</script><script src="module.js"></script>
+<script>
+function toggleSolution(btn) {
+  btn.classList.toggle('open');
+  var sol = btn.nextElementSibling;
+  sol.classList.toggle('visible');
+  btn.childNodes[0].textContent = sol.classList.contains('visible') ? 'Musterlösung ausblenden ' : 'Musterlösung anzeigen ';
+}
+</script>
+</body></html>
