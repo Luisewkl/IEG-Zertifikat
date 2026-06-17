@@ -787,27 +787,25 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .location-list span:nth-child(even) { color: var(--ieg-blue-bright); font-style: normal; }
 
 /* ==================== CERTIFICATE SECTION ==================== */
-.certificate {
-  background: #ffffff;
-  padding: 72px 56px;
-  border: 1px solid rgba(10,26,51,0.16);
-  border-radius: 12px;
-  position: relative;
+.cert-section {
+  padding: 120px 32px;
+  background: var(--paper);
   text-align: center;
-  box-shadow: 0 12px 40px rgba(10,26,51,0.08);
-  max-width: 860px;
-  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
 }
 
-.certificate::before {
+.cert-section::before {
   content: '';
   position: absolute;
-  inset: 14px;
-  border: 1px solid rgba(7,93,228,0.20);
-  border-radius: 8px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(7,93,228,0.06) 0%, transparent 70%);
   pointer-events: none;
-} 
-
+}
 
 .cert-locked-state, .cert-unlocked-state {
   position: relative;
@@ -1242,9 +1240,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 .cert-corner {
-  display: none;
-}
-
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--ieg-blue);
 }
 .cert-corner-tl { top: 24px; left: 24px; border-right: none; border-bottom: none; }
 .cert-corner-tr { top: 24px; right: 24px; border-left: none; border-bottom: none; }
@@ -1331,24 +1330,41 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   color: var(--navy);
 }
 
-.cert-id {
-  font-family: var(--mono);
-  font-size: 13px;
-  letter-spacing: 0.04em;
-}
-
 .cert-signature {
-  font-family: var(--serif);
-  font-style: normal;
-  font-weight: 500;
-  font-size: 20px;
+  font-family: 'Fraunces', cursive;
+  font-style: italic;
+  font-size: 24px;
   color: var(--navy);
   border-bottom: 1px solid var(--navy);
   padding-bottom: 4px;
   display: inline-block;
 }
 
-.cert-actions { display: flex; justify-content: center; gap: 12px; margin-top: 32px; }
+.cert-meta-mono {
+  font-family: var(--mono) !important;
+  font-size: 13px !important;
+  letter-spacing: 0.04em;
+}
+
+.cert-meta-role {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-muted);
+  margin-top: 4px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.cert-verify {
+  margin-top: 28px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-faint);
+  letter-spacing: 0.03em;
+}
+.cert-verify span { color: var(--ieg-blue); }
+
+.cert-actions { display: flex; justify-content: center; gap: 12px; margin-top: 40px; flex-wrap: wrap; }
 
 /* ==================== FOOTER ==================== */
 .footer { background: var(--navy); color: var(--white); padding: 64px 32px 32px; }
@@ -1408,17 +1424,32 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 /* ==================== PRINT ==================== */
 @media print {
+  @page { size: A4 landscape; margin: 0; }
   body * { visibility: hidden; }
   #certUnlockedState, #certUnlockedState * { visibility: visible; }
   #certUnlockedState {
-    position: absolute;
+    position: fixed;
     left: 0; top: 0;
-    width: 100%;
-    padding: 40px;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background: white;
   }
-  .cert-actions, #certUnlockedState .section-eyebrow,
-  #certUnlockedState .section-title, #certUnlockedState .section-lede {
+  .cert-actions,
+  #certUnlockedState .section-eyebrow,
+  #certUnlockedState .section-title,
+  #certUnlockedState .section-lede {
     display: none !important;
+  }
+  .certificate {
+    box-shadow: none !important;
+    border: 2px solid #0A1A33;
+    page-break-inside: avoid;
+    max-width: 900px;
+    width: 90%;
   }
 }
 
