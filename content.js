@@ -369,96 +369,96 @@ const CURRICULUM = [
     images: [],
     longContent: '',
     content: `
-      <h3>Never paste these into a personal account</h3>
-      <p>Some data should never touch your personal AI account. If you've pasted a few of these, you're not alone. Just stop now.</p>
+      <h3>1. Das gehört nicht in den persönlichen Account</h3>
+      <p>Manche Daten sollten niemals in einen persönlichen KI-Account eingegeben werden. Falls das bereits passiert ist: einfach ab sofort aufhören.</p>
       <div class="callout callout-warn">
-        <div class="callout-title">Never paste</div>
+        <div class="callout-title">Niemals einfügen</div>
         <ul>
-          <li>Source code, or anything from your company's codebase</li>
-          <li>Customer or client data: names, emails, phone numbers, addresses, order history, health info</li>
-          <li>Unreleased plans, roadmaps, designs, prototypes</li>
-          <li>Non-public financials: revenue, margins, budgets, forecasts, deal terms</li>
-          <li>Anything marked confidential, internal-only, or under NDA</li>
-          <li>Logins, passwords, access keys, security settings</li>
-          <li>Full contracts or legal docs with real names and terms</li>
-          <li>Recordings or transcripts of internal meetings</li>
+          <li>Quellcode oder Inhalte aus dem firmeneigenen Codebase</li>
+          <li>Kunden- oder Mandantendaten: Namen, E-Mails, Telefonnummern, Adressen, Gesundheitsinfos</li>
+          <li>Unveröffentlichte Pläne, Roadmaps, Designs oder Prototypen</li>
+          <li>Nicht-öffentliche Finanzdaten: Umsätze, Margen, Budgets, Forecasts, Deal-Konditionen</li>
+          <li>Alles mit dem Vermerk „vertraulich", „intern" oder unter NDA</li>
+          <li>Zugangsdaten, Passwörter, API-Keys, Sicherheitseinstellungen</li>
+          <li>Vollständige Verträge oder juristische Dokumente mit echten Namen und Konditionen</li>
+          <li>Aufzeichnungen oder Protokolle interner Meetings</li>
         </ul>
       </div>
-      <p>If you need AI help with any of these, <strong>anonymize them first</strong> or use your IEG Claude account.</p>
+      <p>Wer KI-Unterstützung für diese Inhalte benötigt: erst <strong>anonymisieren</strong> oder den <strong>IEG Claude Account</strong> verwenden.</p>
 
-      <h3>The vibecoding trap</h3>
-      <p>What if you use your company's AI to vibecode a side project? Bad news: <strong>your company now owns your project.</strong></p>
-      <p>What if you vibecode your side project with your personal AI, but on the company's computer? You're still at risk. Just don't do it.</p>
+      <h3>2. Die Nebenprojekt-Falle</h3>
+      <p>Was passiert, wenn man den KI-Account des Arbeitgebers nutzt, um ein privates Nebenprojekt zu entwickeln? Im schlimmsten Fall gehört das Projekt dem Arbeitgeber.</p>
+      <p>Und wenn das Nebenprojekt mit dem privaten KI-Account entwickelt wird, aber auf dem Firmenrechner? Das Risiko bleibt. Die einfache Regel: <strong>Privates auf privaten Geräten, mit dem privaten Account.</strong></p>
 
-      <h3>The most dangerous thing</h3>
-      <p>A <strong>connector</strong> links your AI to another service: Gmail, Google Drive, Calendar, Slack, Teams, Outlook. Once connected, the AI can read that data and act on it.</p>
-      <p>Useful. Also, <strong>the most dangerous thing you can do</strong> with a personal AI account.</p>
-      <p><strong>The access is enormous.</strong> Connect Gmail and the AI can read your whole mailbox. Connect Drive and it can search every file you can open.</p>
-      <p>A connected AI can be <strong>hijacked by the content it reads</strong>. Researchers proved it twice in 2025: the <strong>"lethal trifecta."</strong></p>
+      <h3>3. Konnektoren: nützlich und riskant</h3>
+      <p>Ein <strong>Konnektor</strong> verbindet die KI mit einem anderen Dienst: Gmail, Google Drive, Calendar, Slack, Teams, Outlook. Ist die Verbindung hergestellt, kann die KI diese Daten lesen und darauf reagieren.</p>
+      <p>Das ist nützlich — aber gleichzeitig die <strong>heikelste Funktion im persönlichen KI-Account</strong>.</p>
+      <p><strong>Der Zugriff ist enorm:</strong> Gmail verbinden bedeutet, dass die KI das gesamte Postfach lesen kann. Drive verbinden bedeutet Zugriff auf alle Dateien, die auch der Nutzer öffnen kann.</p>
+      <p>Eine verbundene KI kann durch <strong>manipulierte Inhalte in E-Mails oder Dokumenten gesteuert werden</strong>. Forscher haben 2025 zweimal gezeigt, wie das funktioniert — als sogenannte <strong>„Lethal Trifecta"</strong>.</p>
       <div class="callout callout-warn">
-        <div class="callout-title">The Lethal Trifecta</div>
-        <p>AI can reach your private data + read external content you don't control + send information out = attacker can steal your data.</p>
+        <div class="callout-title">Die Lethal Trifecta</div>
+        <p>KI hat Zugriff auf private Daten + liest externe Inhalte, die man nicht kontrolliert + kann Informationen nach außen senden = Angreifer können Daten stehlen.</p>
       </div>
 
-      <h3>How to use connectors safely</h3>
+      <h3>4. Konnektoren sicher einsetzen</h3>
       <ul>
-        <li><strong>Never connect work accounts to your personal AI.</strong></li>
-        <li><strong>Connect the least, with the narrowest access.</strong> Pick read-only or a single folder.</li>
-        <li><strong>Only connect official connectors.</strong> A random third-party connector can quietly change behavior after approval.</li>
-        <li><strong>Review and disconnect monthly.</strong></li>
+        <li><strong>Keine Arbeitsaccounts mit dem persönlichen KI-Account verbinden.</strong></li>
+        <li><strong>So wenig verbinden wie möglich, mit minimalem Zugriff.</strong> Nur-Lesen oder ein einzelner Ordner reichen meist.</li>
+        <li><strong>Nur offizielle Konnektoren nutzen.</strong> Drittanbieter können nach der Genehmigung ihr Verhalten unbemerkt ändern.</li>
+        <li><strong>Monatlich prüfen und nicht benötigte Verbindungen trennen.</strong></li>
       </ul>
       <div class="callout callout-success">
-        <div class="callout-title">Bottom line</div>
-        <p>Save the connected setup for the <strong>IEG Claude account</strong>, where someone is paid to secure it.</p>
+        <div class="callout-title">Fazit</div>
+        <p>Konnektoren gehören in den <strong>IEG Claude Account</strong> — dort ist die Sicherheit professionell gewährleistet.</p>
       </div>
     `,
     quiz: [
       {
-        q: 'You need to analyze a contract with real client names and deal terms. What should you do?',
+        q: 'Ein M&A-Vertrag mit echten Mandantennamen und Deal-Konditionen soll analysiert werden. Was ist richtig?',
         options: [
-          'Paste it into your personal Claude and enable incognito mode',
-          'Ask a colleague to paste it instead',
-          'Anonymize the data first or use the IEG enterprise Claude account',
-          'Paste it quickly before anyone notices'
+          'In den persönlichen Claude Account einfügen und den Inkognito-Modus aktivieren',
+          'Eine Kollegin bitten, den Text einzufügen',
+          'Daten zuerst anonymisieren oder den IEG Enterprise Account verwenden',
+          'Schnell einfügen, bevor jemand es bemerkt'
         ],
         correct: 2,
-        explanation: 'Contracts with real names and deal terms are never-paste material. Anonymize first or use the IEG enterprise account.'
+        explanation: 'Verträge mit echten Namen und Deal-Konditionen gehören zur "Niemals einfügen"-Kategorie. Erst anonymisieren oder den IEG Enterprise Account nutzen.'
       },
       {
-        q: 'You vibecoded a side project using your company\'s AI subscription. Who likely owns it?',
-        options: ['You, because you wrote the prompts', 'Nobody — AI-generated code has no owner', 'The AI company (Anthropic)', 'Your employer, because you used their AI tool'],
+        q: 'Ein Nebenprojekt wird mit dem KI-Abonnement des Arbeitgebers entwickelt. Wem gehört das Ergebnis?',
+        options: ['Mir, weil ich die Prompts geschrieben habe', 'Niemandem — KI-generierter Code ist nicht urheberrechtlich geschützt', 'Dem KI-Anbieter (Anthropic)', 'Dem Arbeitgeber, weil dessen Tool genutzt wurde'],
         correct: 3,
-        explanation: 'Using company AI for a side project = IP may legally belong to your employer.'
+        explanation: 'Nutzung des firmeneigenen KI-Tools für Nebenprojekte = das geistige Eigentum kann rechtlich dem Arbeitgeber gehören.'
       },
       {
-        q: 'What happens when you connect Gmail to your personal AI account?',
-        options: ['The AI can only see emails you manually select', 'The AI gains read access to your entire mailbox', 'Nothing changes — connectors are cosmetic only', 'The AI deletes old emails automatically'],
+        q: 'Was passiert, wenn Gmail mit dem persönlichen KI-Account verbunden wird?',
+        options: ['Die KI sieht nur manuell ausgewählte E-Mails', 'Die KI erhält Lesezugriff auf das gesamte Postfach', 'Es ändert sich nichts — Konnektoren sind rein kosmetisch', 'Die KI löscht automatisch alte E-Mails'],
         correct: 1,
-        explanation: 'Enormous access: once connected, the AI can read your whole mailbox.'
+        explanation: 'Enormer Zugriff: Nach der Verbindung kann die KI das gesamte Postfach lesen.'
       },
       {
-        q: 'What three conditions make the "lethal trifecta" possible?',
-        options: ['Three AI models running at once', 'AI can reach private data, read external content you don\'t control, and send information out', 'Using three different browsers simultaneously', 'Having three connectors from the same provider'],
+        q: 'Welche drei Bedingungen machen die "Lethal Trifecta" möglich?',
+        options: ['Drei KI-Modelle gleichzeitig nutzen', 'KI hat Zugriff auf private Daten, liest externe Inhalte und kann Informationen nach außen senden', 'Drei verschiedene Browser gleichzeitig verwenden', 'Drei Konnektoren vom selben Anbieter'],
         correct: 1,
-        explanation: 'Private data + external content + outbound = attacker can hijack the AI.'
+        explanation: 'Private Daten + externe Inhalte + ausgehende Verbindung = Angreifer können die KI kapern.'
       },
       {
-        q: 'Why should you never connect your work Slack to a personal AI account?',
-        options: ['Because Slack doesn\'t support AI connectors', 'Because it makes the AI slower', 'Because you\'d pipe your company\'s data into a tool with no enterprise contract', 'Because personal accounts have better security'],
+        q: 'Warum sollte der Firmen-Slack niemals mit einem persönlichen KI-Account verbunden werden?',
+        options: ['Weil Slack keine KI-Konnektoren unterstützt', 'Weil das die KI verlangsamt', 'Weil damit Firmendaten in ein Tool ohne Enterprise-Vertrag fließen', 'Weil persönliche Accounts sicherer sind'],
         correct: 2,
-        explanation: 'Work accounts on personal AI = company data with no contract, no audit trail.'
+        explanation: 'Arbeitsaccounts im persönlichen KI-Tool = Firmendaten ohne Vertrag und ohne Audit-Trail.'
       },
       {
-        q: 'A third-party connector you approved last month could be dangerous because...',
-        options: ['It might slow down your computer', 'It could quietly change its behavior after approval', 'Third-party connectors always steal passwords', 'It uses too much battery'],
+        q: 'Warum kann ein bereits genehmigter Drittanbieter-Konnektor gefährlich werden?',
+        options: ['Er verlangsamt den Computer', 'Er kann sein Verhalten nach der Genehmigung unbemerkt ändern', 'Drittanbieter-Konnektoren stehlen grundsätzlich Passwörter', 'Er verbraucht zu viel Akku'],
         correct: 1,
-        explanation: 'Remote third-party connectors can silently change what they do after approval.'
+        explanation: 'Remote-Konnektoren von Drittanbietern können nach der Genehmigung still und heimlich ihr Verhalten ändern.'
       },
       {
-        q: 'How often should you review and disconnect unused connectors?',
-        options: ['Once a year during the annual review', 'Never — once connected, leave them', 'Only when something goes wrong', 'Monthly — check your AI settings and cut what you\'re not using'],
+        q: 'Wie oft sollten aktive Konnektoren überprüft und nicht genutzte getrennt werden?',
+        options: ['Einmal jährlich beim Jahresgespräch', 'Niemals — einmal verbunden, immer verbunden', 'Nur wenn etwas schiefläuft', 'Monatlich — KI-Einstellungen prüfen und Unnötiges trennen'],
         correct: 3,
-        explanation: 'Monthly review: disconnect anything not actively in use.'
+        explanation: 'Monatliche Überprüfung: Alles trennen, was nicht aktiv genutzt wird.'
       }
     ]
   },
@@ -470,7 +470,7 @@ const CURRICULUM = [
     desc: 'Einführung in Skills als strukturierte, wiederverwendbare Arbeitsanweisungen — von der inhaltlichen Vorbereitung bis zur praktischen Anwendung im Arbeitsalltag.',
     duration: '30 Min.',
     videos: [
-      { url: 'https://www.youtube.com/watch?v=XHVgq4zodpE', title: 'Claude Skills', caption: 'Video 3.1 · Claude Skills erstellen und anwenden' },
+      { url: 'https://www.youtube.com/embed/XHVgq4zodpE', title: 'Claude Skills', caption: 'Video 3.1 · Claude Skills erstellen und anwenden' },
     ],
     images: [],
     longContent: '',
@@ -988,14 +988,14 @@ const FINAL_EXAM = [
   { q: 'Welche sechs Elemente umfasst die ideale Prompt-Struktur?', options: ['Ausschließlich Code-Beispiele', 'Nur eine kurze Frage', 'Aufgabe, Kontext, Hintergrunddaten, Anweisungen, Beispiele, Erinnerungen', 'Überschrift und ein Satz'], correct: 2, explanation: 'Sechs Elemente: Aufgabe, Kontext, Hintergrunddaten, Anweisungen, Beispiele, Erinnerungen.' },
   { q: 'Wozu dienen XML-Tags in einem Prompt?', options: ['Sie verschlüsseln den Prompt', 'Sie sind Dekoration', 'Sie strukturieren den Prompt für gezielte Abschnitt-Zugriffe', 'Sie aktivieren den Code-Modus'], correct: 2, explanation: 'XML-Tags geben dem Prompt eine klare Hierarchie.' },
   { q: 'Was unterscheidet einen Skill von einer Projektanweisung?', options: ['Projekte sind flexibler', 'Skills funktionieren nur offline', 'Skills sind übertragbar und in jedem Chat nutzbar', 'Kein Unterschied'], correct: 2, explanation: 'Skills sind chatübergreifend wiederverwendbar.' },
-  { q: 'You vibecoded a side project on your company\'s AI. Who owns it?', options: ['You', 'The AI company', 'Nobody', 'Your employer'], correct: 3, explanation: 'Using company AI = IP likely belongs to employer.' },
-  { q: 'What is the "lethal trifecta"?', options: ['Three AI models at once', 'Three browsers simultaneously', 'AI accesses private data, reads external content, and can send data out', 'Three connectors from one provider'], correct: 2, explanation: 'Private data + external content + outbound = attackers can hijack.' },
-  { q: 'How often should you review and disconnect unused connectors?', options: ['Never', 'Only when something breaks', 'Once a year', 'Monthly'], correct: 3, explanation: 'Monthly: check settings, cut anything not in use.' },
+  { q: 'Ein Nebenprojekt wird mit dem KI-Abonnement des Arbeitgebers entwickelt. Wem gehört es?', options: ['Mir, ich habe die Prompts geschrieben', 'Dem KI-Anbieter', 'Niemandem', 'Dem Arbeitgeber'], correct: 3, explanation: 'Nutzung des firmeneigenen KI-Tools = geistiges Eigentum gehört rechtlich dem Arbeitgeber.' },
+  { q: 'Was beschreibt die „Lethal Trifecta"?', options: ['Drei KI-Modelle gleichzeitig', 'Drei Browser gleichzeitig', 'KI greift auf private Daten zu, liest externe Inhalte und kann Daten nach außen senden', 'Drei Konnektoren eines Anbieters'], correct: 2, explanation: 'Private Daten + externe Inhalte + ausgehende Verbindung = Angreifer können die KI kapern.' },
+  { q: 'Wie oft sollten aktive Konnektoren überprüft und nicht genutzte getrennt werden?', options: ['Nie', 'Nur wenn etwas schiefläuft', 'Einmal jährlich', 'Monatlich'], correct: 3, explanation: 'Monatlich: Einstellungen prüfen und alles trennen, was nicht aktiv genutzt wird.' },
   { q: 'Was macht der "Super Skill" bei der Finanzautomatisierung?', options: ['Er erstellt nur eine Excel-Datei', 'Er verkettet Data Cleaning, Excel, Dashboard und PowerPoint in einem Durchlauf', 'Er sendet Rechnungen per E-Mail', 'Er bucht Transaktionen automatisch'], correct: 1, explanation: 'Super Skill: Cleaning → Excel → Dashboard → PowerPoint — alles mit einem Prompt.' },
   { q: 'Was ist "Prompt Chaining"?', options: ['Prompts in Emojis verpacken', 'Prompts übersetzen', 'Eine große Aufgabe in kleine aufeinanderfolgende Prompts zerlegen', 'Mehrere KI-Modelle gleichzeitig nutzen'], correct: 2, explanation: 'Prompt Chaining = große Aufgabe → kleine Schritte → Teilergebnisse prüfen.' },
   { q: 'Was bewirkt Pre-filling mit dem Zeichen { ?', options: ['Neuen Chat starten', 'Prompt speichern', 'Valides JSON als Output erzwingen', 'Debug-Modus aktivieren'], correct: 2, explanation: 'Pre-fill mit { = Claude liefert valides JSON.' },
   { q: 'Welche Reihenfolge gilt bei "Analyze the Form before the Sketch"?', options: ['Beide gleichzeitig', 'Reihenfolge egal', 'Erst Sketch, dann Form', 'Erst klare Fakten (Form), dann interpretative Daten (Sketch)'], correct: 3, explanation: 'Klare Fakten zuerst — sie kalibrieren den Kontext.' },
-  { q: 'Why should you never connect work Gmail to a personal AI?', options: ['It makes AI slower', 'Personal accounts have better security', 'Gmail doesn\'t support it', 'You\'d pipe company data into a tool with no contract'], correct: 3, explanation: 'Work accounts on personal AI = company data without contract or security guarantees.' }
+  { q: 'Warum sollte Firmen-Gmail niemals mit einem persönlichen KI-Account verbunden werden?', options: ['Das macht die KI langsamer', 'Persönliche Accounts sind sicherer', 'Gmail unterstützt das nicht', 'Firmendaten landen in einem Tool ohne Vertrag und Sicherheitsgarantien'], correct: 3, explanation: 'Arbeitsaccounts im persönlichen KI-Tool = Firmendaten ohne Enterprise-Vertrag oder Sicherheitsgarantien.' }
   ,{ q: 'Welches Datenschutzprinzip gilt bei der Kontaktrecherche mit Claude?', options: ['Echte Namen sind in Ordnung, wenn sie öffentlich sind', 'Nur Firmennamen anonymisieren, Personennamen sind erlaubt', 'Echte Kundennamen und vertrauliche Kontaktdaten gehören in den IEG Account oder müssen anonymisiert werden', 'Alles darf eingegeben werden, wenn der Inkognitomodus aktiv ist'], correct: 2, explanation: 'Datenschutz: Personenbezogene Daten → IEG Account oder Anonymisierung. Inkognitomodus reicht nicht.' }
   ,{ q: 'Welche Prompt-Technik eignet sich für eine Target-Vergleichstabelle aus mehreren Unternehmens-Profilen?', options: ['Few-Shot Prompting mit Beispieltabellen', 'Prompt Chaining: erst Einzelprofile, dann Vergleichstabelle', 'Ein einziger sehr langer Prompt für alle Unternehmen', 'Pre-filling mit { für JSON-Output'], correct: 1, explanation: 'Prompt Chaining: Einzelprofile als Zwischenergebnis prüfen, dann Vergleich erstellen.' }
 ];
