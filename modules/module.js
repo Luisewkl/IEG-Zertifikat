@@ -43,14 +43,29 @@ function renderDynamicContent() {
   // 1. VIDEOS
   if (mod.videos && mod.videos.length > 0) {
     mod.videos.forEach(video => {
-      html += `
-        <div class="video-embed">
-          <iframe
-            src="${video.url}"
-            title="${video.title || ''}"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe>
-        </div>`;
+      // Extract YouTube video ID from embed or watch URL
+      const ytMatch = (video.url || '').match(/(?:embed\/|v=|youtu\.be\/)([A-Za-z0-9_-]{11})/);
+      const watchUrl = video.watchUrl || (ytMatch ? `https://www.youtube.com/watch?v=${ytMatch[1]}` : null);
+      const thumbUrl = ytMatch ? `https://img.youtube.com/vi/${ytMatch[1]}/hqdefault.jpg` : null;
+
+      if (thumbUrl && watchUrl) {
+        html += `
+          <div class="video-embed video-link-wrapper">
+            <a href="${watchUrl}" target="_blank" rel="noopener" class="video-thumb-link" aria-label="${video.title || 'Video ansehen'}">
+              <img src="${thumbUrl}" alt="${video.title || ''}" class="video-thumb">
+              <div class="video-play-btn"><svg viewBox="0 0 24 24" width="48" height="48" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div>
+            </a>
+          </div>`;
+      } else {
+        html += `
+          <div class="video-embed">
+            <iframe
+              src="${video.url}"
+              title="${video.title || ''}"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+          </div>`;
+      }
       if (video.caption) {
         html += `<div class="video-caption">${video.caption}</div>`;
       }
@@ -235,3 +250,14 @@ document.addEventListener('keydown', (e) => {
     closeQuiz();
   }
 });
+
+// ---------- EXERCISE SOLUTION TOGGLE ----------
+function toggleSolution(btn) {
+  btn.classList.toggle('open');
+  var sol = btn.nextElementSibling;
+  sol.classList.toggle('visible');
+  var isOpen = sol.classList.contains('visible');
+  var label = btn.getAttribute('data-label-open') || 'Musterlösung ausblenden';
+  var labelClosed = btn.getAttribute('data-label-closed') || 'Musterlösung anzeigen';
+  btn.firstChild.textContent = isOpen ? label + ' ' : labelClosed + ' ';
+}
