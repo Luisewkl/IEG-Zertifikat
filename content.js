@@ -199,7 +199,7 @@ const CURRICULUM = [
     number: '01',
     meta: 'Einführung · Grundlagen',
     title: 'Claude — Der komplette Grundkurs (2026)',
-    desc: 'Chat-Disziplin, die drei Modelle, Websuche, Dateianalyse, Personalisierung und Datenschutz — alles was du für einen professionellen Einstieg in Claude brauchst.',
+    desc: 'Chat-Disziplin, Websuche, Dateianalyse, technischer Support, Personalisierung und Datenschutz — alles was du für einen professionellen Einstieg in Claude brauchst. Die Modellfamilie hast du bereits in Modul 0 kennengelernt.',
     duration: '30 Min.',
     videos: [
       { url: 'https://www.youtube.com/embed/51vysjHcJ5A', title: 'Claude — Der komplette Grundkurs 2026', caption: 'Video 1.1 · Claude — Der komplette Grundkurs (2026)' },
@@ -209,31 +209,23 @@ const CURRICULUM = [
     content: `
       <h3>1. Grundlagen und Chat-Disziplin</h3>
       <p>Claude ist ein KI-Tool von Anthropic, das über eine einfache Textbox bedient wird. Ein entscheidender Erfolgsfaktor ist die <strong>Chat-Disziplin</strong>: Erstelle für <strong>jedes neue Thema einen neuen Chat</strong>. Das Vermischen von Themen in einem einzigen Chat verwirrt die KI und verschlechtert die Qualität der Ergebnisse erheblich.</p>
+      <p>Der Grund liegt im sogenannten <strong>Kontextfenster</strong>: Claude liest bei jeder Antwort den <em>gesamten</em> bisherigen Chatverlauf erneut mit. Je länger und thematisch unübersichtlicher ein Chat wird, desto mehr irrelevante Informationen muss das Modell berücksichtigen — die Antworten werden ungenauer und langsamer. Ein frischer Chat pro Thema hält den Kontext sauber und fokussiert.</p>
       <div class="callout">
         <div class="callout-title">Goldene Regel</div>
         <p>Ein Thema — ein Chat. Wer Urlaubsplanung und Quartalsberichte im selben Chat mischt, bekommt schlechtere Ergebnisse für beides.</p>
       </div>
+      <p>Zwei weitere Gewohnheiten zahlen sich vom ersten Tag an aus: <strong>Kontext mitgeben</strong> (wer Sie sind, für wen die Ausgabe gedacht ist, in welchem Format) und <strong>iterativ arbeiten</strong> — eine erste Antwort im selben Chat mit Folgeanweisungen wie „kürzer", „förmlicher" oder „mit Quellenangaben" verfeinern.</p>
 
-      <h3>2. Die Modellfamilie</h3>
-      <p>Claude bietet drei spezialisierte Modelle für unterschiedliche Anforderungen:</p>
-      <table>
-        <thead><tr><th>Modell</th><th>Stärke</th><th>Typischer Einsatz</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Opus</strong></td><td>Das leistungsstärkste Modell</td><td>Tiefgehende Recherche, komplexe Analysen — baut Studien und Quellen ein. Verfügbar in der Pro-Version.</td></tr>
-          <tr><td><strong>Sonnet</strong></td><td>Effizienter Allrounder</td><td>Tägliche Arbeit, Standard in der Gratisversion. Gute Balance aus Geschwindigkeit und Qualität.</td></tr>
-          <tr><td><strong>Haiku</strong></td><td>Das schnellste Modell</td><td>Schnelle Formulierungen und einfache Aufgaben. Weniger tiefgründig.</td></tr>
-        </tbody>
-      </table>
-
-      <h3>3. Zentrale Arbeitsfunktionen</h3>
+      <h3>2. Zentrale Arbeitsfunktionen</h3>
+      <p>Über das <strong>Plus-Symbol</strong> unter der Texteingabe lassen sich die wichtigsten Werkzeuge aktivieren.</p>
       <h4>Websuche</h4>
-      <p>Über das <strong>Plus-Symbol</strong> aktivierbar. Claude kann hunderte Quellen in Sekunden durchsuchen, um aktuelle Daten (z.&thinsp;B. DAX-Umsätze) in Tabellen zusammenzufassen.</p>
+      <p>Claude kann hunderte Quellen in Sekunden durchsuchen, um aktuelle Daten (z.&thinsp;B. DAX-Umsätze oder tagesaktuelle Branchennews) in Tabellen zusammenzufassen — die Ergebnisse sind <strong>mit Quellenlinks belegt</strong>. Bei kritischen Zahlen immer gegenprüfen und die Anfrage präzise mit Zeitraum und Ausgabeformat formulieren.</p>
       <h4>Dateianalyse</h4>
-      <p>PDFs, Excel- oder Word-Dokumente lassen sich direkt hochladen. <strong>Pro-Tipp:</strong> Nutze das Stoppuhr-Symbol (<em>erweiterter Nachdenkenmodus</em>), damit Claude sich mehr Zeit nimmt, die Datei gründlich einzulesen und präzisere Antworten zu geben.</p>
+      <p>PDFs, Excel- oder Word-Dokumente lassen sich direkt hochladen. <strong>Pro-Tipp:</strong> Nutze das Stoppuhr-Symbol (<em>erweiterter Nachdenkenmodus</em>), damit Claude sich mehr Zeit nimmt, die Datei gründlich einzulesen. Stelle konkrete Fragen <em>zu</em> dem Dokument statt einer Pauschal-Zusammenfassung; mehrere Dateien kann Claude auch <strong>vergleichen</strong>.</p>
       <h4>Technischer Support</h4>
-      <p>Claude hilft bei PC-Problemen. Der effizienteste Workflow: Erst das Problem allgemein beschreiben, dann einen <strong>Screenshot der Benutzeroberfläche</strong> (z.&thinsp;B. Aktivitätsanzeige) hochladen — Claude diagnostiziert die Ursache direkt.</p>
+      <p>Claude hilft bei PC- und Software-Problemen. Erst das Problem allgemein beschreiben, dann einen <strong>Screenshot der Benutzeroberfläche</strong> (z.&thinsp;B. Aktivitätsanzeige oder Fehlermeldung) hochladen — Claude liest die Bildschirminhalte aus und diagnostiziert die Ursache direkt. Anschließend um eine Schritt-für-Schritt-Anleitung bitten.</p>
 
-      <h3>4. Personalisierung und Produktivität</h3>
+      <h3>3. Personalisierung und Produktivität</h3>
       <ul>
         <li><strong>Präferenzen:</strong> Globale Einstellungen (z.&thinsp;B. „Antworte immer in einem Satz"), die für jeden neuen Chat automatisch übernommen werden.</li>
         <li><strong>Stile:</strong> Claude den eigenen <strong>Schreibstil beibringen</strong> — Beispieltexte (z.&thinsp;B. als PDF) hochladen, die Claude automatisch analysiert.</li>
@@ -241,13 +233,13 @@ const CURRICULUM = [
         <li><strong>Projekte:</strong> Ein abgeschirmter Bereich für spezifische Aufgaben (z.&thinsp;B. „LinkedIn Post Generator"). Hier hochgeladene Dateien und Anweisungen gelten für <strong>alle Chats innerhalb dieses Projekts</strong>.</li>
       </ul>
 
-      <h3>5. Profi-Funktionen: Programmierung und Excel</h3>
+      <h3>4. Profi-Funktionen: Programmierung und Excel</h3>
       <h4>Dashboard- &amp; Website-Bau</h4>
       <p>Claude kann interaktive Dashboards oder einfache HTML-Websites erstellen — inklusive Schritt-für-Schritt-Anleitungen zur Veröffentlichung. Kein Programmier-Vorwissen nötig.</p>
       <h4>Claude in Excel</h4>
       <p>Eine <strong>Pro-Funktion</strong>, die direkt in Excel Tabellen füllt, Webdaten abruft, dynamische Charts erstellt und Fehler wie <strong>Zirkelbezüge selbstständig korrigiert</strong> — per natürlichsprachlicher Anweisung.</p>
 
-      <h3>6. Sicherheit und Datenschutz</h3>
+      <h3>5. Sicherheit und Datenschutz</h3>
       <div class="callout callout-warn">
         <div class="callout-title">Pflicht bei IEG</div>
         <p>Deaktiviere in den Einstellungen unter „Datenschutz" die Option <strong>„hilft dabei Claude zu verbessern"</strong>, damit deine Daten nicht zum Training neuer Modelle genutzt werden.</p>
