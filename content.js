@@ -8,12 +8,201 @@ const CURRICULUM = [
   {
     id: 0,
     number: '00',
+    meta: 'Einführung · Ökosystem',
+    title: 'Das Claude-Ökosystem im Überblick',
+    desc: 'Modellfamilie, Projects, interaktive Visualisierungen, Claude Cowork, Claude Code und Erweiterungen — ein strukturierter Überblick über das gesamte Claude-Ökosystem.',
+    duration: '25 Min.',
+    videos: [
+      { url: 'https://www.youtube.com/embed/EE9qr6Bfwj8', title: 'Das Claude-Ökosystem im Überblick', caption: 'Video 0.1 · Das Claude-Ökosystem im Überblick (2026)' },
+    ],
+    images: [],
+    longContent: '',
+    content: `
+      <h3>1. Die Modellfamilie: Für jede Aufgabe das richtige Werkzeug</h3>
+      <p>Claude ist weit mehr als ein einfacher Chatbot — es ist ein vielseitiges Ökosystem mit spezialisierten Werkzeugen für Produktivität und Entwicklung. Den Einstieg bildet die Modellfamilie:</p>
+      <table>
+        <thead><tr><th>Modell</th><th>Stärke</th><th>Typischer Einsatz</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Haiku</strong></td><td>Das schnellste und kostengünstigste Modell</td><td>Einfache Aufgaben, schnelle Formatierungen, kurze Zusammenfassungen</td></tr>
+          <tr><td><strong>Sonnet</strong></td><td>Der „Allrounder"</td><td>Ausgewogenes Verhältnis aus Geschwindigkeit und Intelligenz — tägliche Arbeit</td></tr>
+          <tr><td><strong>Opus</strong></td><td>Das Flaggschiff-Modell</td><td>Maximale Leistungsfähigkeit für extrem komplexe Analysen und Entscheidungen</td></tr>
+        </tbody>
+      </table>
+      <div class="callout">
+        <div class="callout-title">Ausblick: Was kommt als Nächstes?</div>
+        <p>Anthropic arbeitet kontinuierlich an neuen Modellen. Der aktuelle Entwicklungsstand zeigt, wohin die Reise geht — Geschwindigkeit, Tiefe und Integration werden weiter zunehmen.</p>
+      </div>
+
+      <h3>2. Organisation durch „Projects" — Der Briefing-Ordner</h3>
+      <p>Ein Project ist ein <strong>ausgelagertes Gehirn</strong> mit Dokumenten, Anweisungen und Kontext. Claude greift bei jedem Gespräch innerhalb des Projekts darauf zu — ideal für wiederkehrende Aufgaben:</p>
+      <ul>
+        <li>Projekt anlegen → Hintergrunddokumente hochladen (z.&thinsp;B. Unternehmensprofile, Styleguides)</li>
+        <li>Systemprompt definieren: Welche Rolle soll Claude im Projekt einnehmen?</li>
+        <li>Ab sofort startet jeder neue Chat im Projekt mit diesem Kontext — kein erneutes Briefing nötig</li>
+      </ul>
+
+      <h3>3. Interaktive Visualisierung im Chat</h3>
+      <p>Claude kann direkt im Chat interaktive Inhalte erzeugen — ohne Plugins, ohne Programmierkenntnisse:</p>
+      <ul>
+        <li><strong>Diagramme und Dashboards:</strong> Interaktive Grafiken, Flowcharts und Kennzahlen-Dashboards</li>
+        <li><strong>Bewertungsrechner:</strong> Funktionale Mini-Apps mit Eingabefeldern und Berechnungen</li>
+        <li><strong>Einfacher Befehl:</strong> „Zeig mir das als interaktives Diagramm" — Claude generiert die Visualisierung sofort</li>
+      </ul>
+      <div class="callout">
+        <div class="callout-title">Praxis-Tipp</div>
+        <p>Für Kundenpräsentationen: Claude-Visualisierungen können direkt im Browser gezeigt oder als Screenshot für PowerPoint verwendet werden.</p>
+      </div>
+
+      <h3>4. Claude Cowork — Desktop-Assistent</h3>
+      <p>Claude Cowork lebt in der <strong>Desktop-App</strong> und arbeitet Aufgaben selbstständig auf dem Computer ab:</p>
+      <ul>
+        <li>Zugriff auf lokale Ordner und Dateien — ohne manuelles Hochladen</li>
+        <li>Arbeitet auch im Hintergrund, während andere Tätigkeiten erledigt werden</li>
+        <li><strong>Fernsteuerung über die Smartphone-App:</strong> Aufgaben delegieren, auch wenn man nicht am Rechner sitzt</li>
+      </ul>
+
+      <h3>5. Claude Code — Entwicklung ohne Programmierkenntnisse</h3>
+      <p>Claude Code macht technische Realisierung für jeden zugänglich:</p>
+      <ul>
+        <li>Einfache Beschreibung reicht — Claude erstellt vollständige Webseiten, Tools oder Apps</li>
+        <li>Kein Programmier-Vorwissen notwendig: Anforderungen auf Deutsch formulieren, Code wird automatisch generiert</li>
+        <li>Iterative Verbesserung: Feedback geben, Claude passt den Code an</li>
+      </ul>
+
+      <h3>6. Erweiterungen: Skills, Plugins und Konnektoren</h3>
+      <p>Das Claude-Ökosystem lässt sich durch drei Typen von Erweiterungen ausbauen:</p>
+      <ul>
+        <li><strong>Skills:</strong> Einzelne Fähigkeiten dauerhaft speichern — z.&thinsp;B. „Erstelle immer eine Excel-Datei als Ausgabe"</li>
+        <li><strong>Plugins:</strong> Sammlungen von Skills gebündelt als Paket (z.&thinsp;B. ein Productivity-Plugin mit Schreib- und Analysefunktionen)</li>
+        <li><strong>Konnektoren:</strong> Direkte Schnittstellen zu externen Diensten — Gmail, Google Calendar, Notion und weitere</li>
+      </ul>
+      <div class="callout callout-warn">
+        <div class="callout-title">Sicherheitshinweis</div>
+        <p>Konnektoren geben Claude Zugriff auf echte Daten externer Dienste. Niemals persönliche Firmen-Accounts ohne Freigabe verbinden — Datenschutzrichtlinien von IEG beachten.</p>
+      </div>
+    `,
+    quiz: [
+      {
+        q: 'Welches Claude-Modell ist am besten geeignet für eine tiefgehende, mehrstufige Risikoanalyse mit vielen Variablen?',
+        options: [
+          'Haiku — für maximale Geschwindigkeit',
+          'Sonnet — der Allrounder für den Alltag',
+          'Opus — das Flaggschiff für komplexe Analysen',
+          'Alle Modelle liefern identische Qualität'
+        ],
+        correct: 2,
+        explanation: 'Opus ist das leistungsstärkste Modell und ist für extrem komplexe Analysen und Entscheidungen vorgesehen.'
+      },
+      {
+        q: 'Was ist der Hauptvorteil eines Claude-Projects gegenüber einem normalen Chat?',
+        options: [
+          'Projects sind schneller als normale Chats',
+          'Dokumente und Anweisungen im Project gelten automatisch für jeden neuen Chat — kein erneutes Briefing nötig',
+          'Nur in Projects kann man Websuche aktivieren',
+          'Projects ermöglichen gleichzeitige Zusammenarbeit mehrerer Nutzer'
+        ],
+        correct: 1,
+        explanation: 'Ein Project ist ein dauerhafter Kontext — einmal eingerichtet, startet jeder neue Chat mit den hinterlegten Dokumenten und Anweisungen.'
+      },
+      {
+        q: 'Du möchtest Claude bitten, dir ein interaktives Balkendiagramm deiner Verkaufszahlen zu erstellen. Was tust du?',
+        options: [
+          'Einen Programmierkurs buchen und danach den Code hochladen',
+          'Die Zahlen einfügen und „Zeig mir das als interaktives Diagramm" sagen — Claude generiert es sofort',
+          'Einen separaten Konnektor für Visualisierungen aktivieren',
+          'Interaktive Visualisierungen sind in Claude nicht möglich'
+        ],
+        correct: 1,
+        explanation: 'Claude kann direkt im Chat interaktive Visualisierungen erzeugen — kein Plugin, kein Code-Vorwissen nötig.'
+      },
+      {
+        q: 'Was unterscheidet Claude Cowork von normalem Claude im Browser?',
+        options: [
+          'Cowork ist nur für Programmierer gedacht',
+          'Cowork lebt in der Desktop-App, hat Zugriff auf lokale Dateien und kann Aufgaben auch im Hintergrund erledigen',
+          'Cowork ist langsamer aber günstiger',
+          'Cowork kann nur Text verarbeiten, keine Dateien'
+        ],
+        correct: 1,
+        explanation: 'Claude Cowork arbeitet in der Desktop-App autonom — mit lokalem Dateizugriff und Hintergrundverarbeitung, steuerbar auch per Smartphone.'
+      },
+      {
+        q: 'Was ist der Unterschied zwischen einem Skill und einem Plugin im Claude-Ökosystem?',
+        options: [
+          'Es gibt keinen Unterschied — beide Begriffe beschreiben dasselbe',
+          'Ein Skill ist eine einzelne gespeicherte Fähigkeit; ein Plugin ist eine Sammlung von Skills als Paket',
+          'Skills sind kostenlos, Plugins kosten extra',
+          'Plugins funktionieren nur mit Opus, Skills mit allen Modellen'
+        ],
+        correct: 1,
+        explanation: 'Skills = einzelne Fähigkeiten, Plugins = gebündelte Sammlungen von Skills — beide erweitern dauerhaft Claudes Werkzeugkasten.'
+      },
+      {
+        q: 'Du willst mit Claude Code eine einfache Webseite für ein Kundenprojekt bauen. Was ist der erste Schritt?',
+        options: [
+          'HTML und CSS lernen, bevor man Claude nutzen kann',
+          'Die gewünschten Funktionen und das Aussehen auf Deutsch beschreiben — Claude erstellt den Code',
+          'Einen Entwickler engagieren, der den Prompt formuliert',
+          'Claude Code ist nur für bestehende Programmierer gedacht'
+        ],
+        correct: 1,
+        explanation: 'Claude Code benötigt keine Programmierkenntnisse — eine klare Beschreibung auf Deutsch reicht, um vollständige Webseiten oder Apps zu generieren.'
+      },
+      {
+        q: 'Welche drei Typen von Erweiterungen gibt es im Claude-Ökosystem?',
+        options: [
+          'Add-ons, Webhooks und Skripte',
+          'Skills, Plugins und Konnektoren',
+          'Makros, Templates und Agenten',
+          'Bots, Widgets und APIs'
+        ],
+        correct: 1,
+        explanation: 'Skills (einzelne Fähigkeiten), Plugins (Sammlungen) und Konnektoren (Schnittstellen zu Diensten wie Gmail, Notion) bilden das Erweiterungsökosystem.'
+      },
+      {
+        q: 'Welches Modell aus der Claude-Familie bietet das beste Preis-Leistungs-Verhältnis für den täglichen Einsatz bei Standardaufgaben?',
+        options: [
+          'Haiku — weil es das günstigste ist',
+          'Opus — weil es das Beste ist',
+          'Sonnet — der Allrounder mit ausgewogenem Verhältnis aus Geschwindigkeit und Intelligenz',
+          'Keines — alle Modelle sind für den täglichen Einsatz ungeeignet'
+        ],
+        correct: 2,
+        explanation: 'Sonnet ist der „Allrounder" — ausgewogenes Verhältnis aus Geschwindigkeit und Intelligenz, ideal für den täglichen Arbeitseinsatz.'
+      },
+      {
+        q: 'Was ist der Zweck von Konnektoren im Claude-Ökosystem?',
+        options: [
+          'Sie verbinden verschiedene Claude-Modelle miteinander',
+          'Sie stellen direkte Schnittstellen zu externen Diensten wie Gmail, Google Calendar oder Notion her',
+          'Sie verknüpfen mehrere Projects zu einem Mega-Project',
+          'Konnektoren dienen ausschließlich der Datensicherung'
+        ],
+        correct: 1,
+        explanation: 'Konnektoren sind Schnittstellen zu externen Diensten — Claude kann damit E-Mails lesen, Kalender verwalten oder in Notion schreiben.'
+      },
+      {
+        q: 'Warum kann Claude Cowork Aufgaben im Hintergrund erledigen?',
+        options: [
+          'Weil es ein separater Cloud-Dienst ist, der unabhängig läuft',
+          'Weil es in der Desktop-App lebt und direkten Zugriff auf das Betriebssystem und lokale Dateien hat',
+          'Weil Claude Cowork eine versteckte Browser-Extension nutzt',
+          'Hintergrundverarbeitung ist in Claude Cowork nicht möglich'
+        ],
+        correct: 1,
+        explanation: 'Claude Cowork ist in der Desktop-App integriert und hat daher nativen Zugriff auf lokale Dateien und Prozesse — was autonome Hintergrundarbeit ermöglicht.'
+      }
+    ]
+  },
+  {
+    id: 1,
+    number: '01',
     meta: 'Einführung · Grundlagen',
     title: 'Claude — Der komplette Grundkurs (2026)',
     desc: 'Chat-Disziplin, die drei Modelle, Websuche, Dateianalyse, Personalisierung und Datenschutz — alles was du für einen professionellen Einstieg in Claude brauchst.',
     duration: '30 Min.',
     videos: [
-      { url: 'https://www.youtube.com/embed/51vysjHcJ5A', title: 'Claude — Der komplette Grundkurs 2026', caption: 'Video 0.1 · Claude — Der komplette Grundkurs (2026)' },
+      { url: 'https://www.youtube.com/embed/51vysjHcJ5A', title: 'Claude — Der komplette Grundkurs 2026', caption: 'Video 1.1 · Claude — Der komplette Grundkurs (2026)' },
     ],
     images: [],
     longContent: '',
@@ -175,196 +364,6 @@ const CURRICULUM = [
         ],
         correct: 1,
         explanation: '„Bitte erstelle eine Erinnerung" ist der Trigger — Claude speichert den Fakt dann dauerhaft und berücksichtigt ihn in zukünftigen Chats.'
-      }
-    ]
-  },
-  {
-    id: 1,
-    number: '01',
-    meta: 'Einführung · Modul 1',
-    title: 'Claude im Überblick: Vom Einsteiger zum Profi',
-    desc: 'Alle zentralen Claude-Funktionen kompakt: Modellfamilie, Prompting-Techniken, Dokumentenanalyse, Deep Research, Personalisierung und Automatisierung — der perfekte Einstieg.',
-    duration: '30 Min.',
-    videos: [
-      { url: 'https://www.youtube.com/embed/JEXCaG95iBs', title: 'Claude im Überblick 2026', caption: 'Video 1.1 · Claude — Vom Einsteiger zum Profi (2026)' },
-    ],
-    images: [],
-    longContent: '',
-    content: `
-      <h3>1. Was ist Claude?</h3>
-      <p>Claude ist ein KI-Assistent von <strong>Anthropic</strong> — einem Unternehmen, das von ehemaligen OpenAI-Mitarbeitern gegründet wurde. Er gilt als leistungsstarke Alternative zu ChatGPT und Gemini und zeichnet sich durch hohe Präzision, Zuverlässigkeit und Vielseitigkeit aus.</p>
-      <div class="callout">
-        <div class="callout-title">Warum Claude für M&amp;A?</div>
-        <p>Claude ist besonders stark bei der Analyse langer Dokumente, strukturiertem Schreiben und komplexen Denkaufgaben — genau das, was im Investment Banking täglich gebraucht wird.</p>
-      </div>
-
-      <h3>2. Die Modellfamilie und Abonnements</h3>
-      <p>Je nach Aufgabe wählt man das passende Modell:</p>
-      <table>
-        <thead><tr><th>Modell</th><th>Stärke</th><th>Typischer Einsatz im M&amp;A</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Opus</strong></td><td>Tiefste Analyse, komplexes Denken</td><td>Business-Analysen, Bewertungsmodelle, Risikobewertung</td></tr>
-          <tr><td><strong>Sonnet</strong></td><td>Allrounder für den Alltag</td><td>E-Mails, Zusammenfassungen, Research-Überblicke</td></tr>
-          <tr><td><strong>Haiku</strong></td><td>Schnell und effizient</td><td>Schnelle Formatierungen, einfache Umstrukturierungen</td></tr>
-        </tbody>
-      </table>
-      <p>Neben der <strong>Gratis-Version</strong> bieten die <strong>Pro-</strong> und <strong>Max-Version</strong> höhere Nutzungslimits und Zugriff auf alle Modelle.</p>
-
-      <h3>3. Effektives Prompting</h3>
-      <p>Die Qualität von Claudes Antworten hängt direkt von der Qualität des Prompts ab. Ein guter Prompt hat vier Elemente:</p>
-      <ul>
-        <li><strong>Kontext:</strong> Gib Hintergrundinformationen. Statt „Schreib eine E-Mail" lieber: „Ich bin Analyst bei einer M&amp;A-Boutique und schreibe an den CFO eines mittelständischen Unternehmens."</li>
-        <li><strong>Rollenprompting:</strong> Weise Claude eine Identität zu — z.&thinsp;B. „Du bist ein erfahrener M&amp;A-Anwalt" — um Fachperspektive und Vokabular zu steuern.</li>
-        <li><strong>Formatvorgaben:</strong> Verlange gezielt Tabellen, Listen, Bullet Points oder strukturierte Berichte.</li>
-        <li><strong>Iteration:</strong> Gib Feedback und verfeinere das Ergebnis — „Mach den Abschnitt zu Risiken konkreter, füge zwei Beispiele hinzu."</li>
-      </ul>
-
-      <h3>4. Analyse und Generierung von Dokumenten</h3>
-      <ul>
-        <li><strong>Dokumenten-Upload:</strong> PDFs, Jahresberichte, Term Sheets oder Due-Diligence-Unterlagen hochladen und analysieren lassen.</li>
-        <li><strong>Bildanalyse:</strong> Claude kann Informationen aus Grafiken, Charts und Screenshots extrahieren und textlich aufbereiten.</li>
-        <li><strong>Dateierstellung:</strong> Mit spezifischen Skills kann Claude echte <strong>Word-, Excel- und PowerPoint-Dateien</strong> generieren, die direkt heruntergeladen und weiterbearbeitet werden können.</li>
-      </ul>
-      <div class="callout">
-        <div class="callout-title">Praxis-Tipp</div>
-        <p>Für umfangreiche Dokumente vor der Analyse den <strong>Extended Thinking Modus</strong> (Stoppuhr-Symbol) aktivieren — Claude denkt dann gründlicher, bevor es antwortet.</p>
-      </div>
-
-      <h3>5. Recherche und Erweitertes Denken</h3>
-      <ul>
-        <li><strong>Websuche:</strong> Über das Plus-Symbol aktivierbar — Claude durchsucht aktuelle Quellen und belegt Fakten mit Fußnoten.</li>
-        <li><strong>Deep Research:</strong> Für umfassende Analysen durchsucht Claude systematisch hunderte Quellen und erstellt einen strukturierten Bericht als PDF — in wenigen Minuten.</li>
-        <li><strong>Extended Thinking:</strong> Bei komplexen Logikaufgaben (z.&thinsp;B. Unternehmensbewertungen, Risikoanalysen) plant Claude zuerst im Hintergrund und antwortet dann präziser.</li>
-      </ul>
-
-      <h3>6. Personalisierung und Organisation</h3>
-      <ul>
-        <li><strong>Custom Styles:</strong> Claude deinen persönlichen Schreibstil beibringen — einfach Beispieltexte hochladen oder den Stil beschreiben.</li>
-        <li><strong>Skills:</strong> Erfolgreiche Arbeitsabläufe als dauerhafte Fähigkeit speichern (z.&thinsp;B. einen CRM-Eintrag-Generator oder News-Kurator).</li>
-        <li><strong>Projects:</strong> Abgeschirmte Arbeitsbereiche für spezifische Themen — Claude behält alle hinterlegten Dokumente und Anweisungen dauerhaft im Kontext jedes neuen Chats.</li>
-        <li><strong>Artifacts:</strong> Interaktive Mini-Apps direkt im Browser erstellen — z.&thinsp;B. Bewertungsrechner, Trinkgeldrechner oder Dashboards — ohne Programmierkenntnisse.</li>
-      </ul>
-
-      <h3>7. Konnektoren und Desktop-Automatisierung</h3>
-      <ul>
-        <li><strong>Konnektoren:</strong> Claude mit Gmail, Google Drive, Slack oder Outlook verbinden — E-Mails zusammenfassen, Entwürfe direkt schreiben oder Kalender verwalten.</li>
-        <li><strong>Claude Cowork:</strong> KI-Assistent in der Desktop-App, der auf lokale Ordner zugreift und Dateien autonom verarbeitet — auch im Hintergrund, während du andere Dinge tust.</li>
-      </ul>
-      <div class="callout callout-warn">
-        <div class="callout-title">Sicherheitshinweis</div>
-        <p>Konnektoren geben der KI Zugriff auf echte Daten. Niemals Firmen-Accounts mit dem persönlichen Claude-Account verbinden — mehr dazu in Modul 03.</p>
-      </div>
-    `,
-    quiz: [
-      {
-        q: 'Ein M&A-Analyst möchte, dass Claude für alle LinkedIn-Posts denselben Schreibstil trifft. Was ist die effizienteste Methode?',
-        options: [
-          'Zu Beginn jedes Chats: „Schreibe wie ein Analyst"',
-          'Ein neues Project anlegen und alte Posts in die Anweisungen kopieren',
-          'Custom Styles nutzen: Beispieltexte hochladen und eigenen Stil festlegen',
-          'Den Slash-Command /StyleXLS in der Excel-Integration nutzen'
-        ],
-        correct: 2,
-        explanation: 'Custom Styles speichern den Schreibstil systemweit — gilt für alle zukünftigen Chats ohne erneute Eingabe.'
-      },
-      {
-        q: 'Was ist der entscheidende Unterschied zwischen normaler Websuche und Deep Research?',
-        options: [
-          'Websuche liest nur Texte, Deep Research analysiert auch YouTube-Videos',
-          'Websuche liefert schnelle Antworten; Deep Research durchsucht systematisch hunderte Quellen und erstellt einen strukturierten Bericht',
-          'Deep Research ist nur für Programmiercode gedacht',
-          'Websuche ist kostenlos, Deep Research kostet pro Seite eine Gebühr'
-        ],
-        correct: 1,
-        explanation: 'Deep Research = systematische Analyse hunderte Quellen über mehrere Minuten, Ergebnis als strukturierter PDF-Bericht.'
-      },
-      {
-        q: 'Du analysierst komplexe Finanzdaten mit mehreren Risikofaktoren. Welches Setup bietet die höchste Präzision?',
-        options: [
-          'Modell „Haiku" mit dem Prompt: „Analysiere: Ja oder nein?"',
-          'Modell „Opus" mit aktiviertem Extended Thinking für tiefgreifende Analyse',
-          'Modell „Sonnet" mit Word-Skill, um direkt ein Dokument zu schreiben',
-          'Ein Artifact erstellen, das nur Zahlen visualisiert'
-        ],
-        correct: 1,
-        explanation: 'Opus + Extended Thinking = maximale Analysentiefe für komplexe Entscheidungen mit vielen Variablen.'
-      },
-      {
-        q: 'Du hast eine CSV mit 500 Datensätzen und willst eine Excel-Tabelle daraus. Wie gehst du vor?',
-        options: [
-          'Artifacts-Generator nutzen, um ein interaktives Dashboard zu erstellen',
-          'Datei hochladen und Claude mit einem Excel-Skill eine editierbare Excel-Datei generieren lassen',
-          'Alle 500 Zeilen manuell in den Prompt kopieren',
-          'Claude Cowork nutzen, um Daten manuell einzutragen'
-        ],
-        correct: 1,
-        explanation: 'Datei hochladen + Excel-Skill = Claude analysiert die CSV und generiert direkt eine herunterladbare Excel-Datei.'
-      },
-      {
-        q: 'Was ist das Besondere an Projects im Vergleich zu normalen Chats?',
-        options: [
-          'In Projekten antwortet Claude schneller',
-          'Projekte sind nur für Code gedacht',
-          'Anweisungen und hochgeladene Dateien gelten automatisch für jeden Chat innerhalb des Projekts',
-          'Projekte ermöglichen Echtzeit-Zusammenarbeit mit ChatGPT-Nutzern'
-        ],
-        correct: 2,
-        explanation: 'Projects = dauerhafter Kontext. Jeder neue Chat im Projekt startet mit allen hinterlegten Dokumenten und Anweisungen.'
-      },
-      {
-        q: 'Du willst einen interaktiven Bewertungsrechner für Kunden bauen, hast aber keine Programmierkenntnisse. Was tust du?',
-        options: [
-          'Claude nach einem Programmierkurs suchen lassen',
-          'Ein Artifact erstellen lassen: Funktion beschreiben, Claude generiert Frontend und Code zum direkten Testen',
-          'Claude bitten, eine PowerPoint über den Rechner zu erstellen',
-          'Custom Style „Prägnant" wählen und auf Code hoffen'
-        ],
-        correct: 1,
-        explanation: 'Artifacts = Claude generiert direkt lauffähige Mini-Apps ohne Programmierkenntnisse.'
-      },
-      {
-        q: 'Was passiert, wenn Claude über einen Word-Skill ein Dokument erstellt?',
-        options: [
-          'Claude schickt eine E-Mail an Microsoft zur Autorisierung',
-          'Ein Word-Skill führt im Hintergrund Code aus, der die Datei im richtigen Format generiert',
-          'Claude macht einen Screenshot und speichert ihn als .doc',
-          'Das Dokument wird per Spracherkennung diktiert und in der Cloud gespeichert'
-        ],
-        correct: 1,
-        explanation: 'Skills führen im Hintergrund Code aus — das Ergebnis ist eine echte, editierbare Office-Datei.'
-      },
-      {
-        q: 'Warum ist Rollenprompting (z. B. „Du bist ein erfahrener M&A-Anwalt") so effektiv?',
-        options: [
-          'Es umgeht die Sicherheitsfilter der KI',
-          'Es zwingt Claude, aus einer spezifischen Fachperspektive mit dem passenden Vokabular zu antworten',
-          'Es reduziert die Kosten pro Prompt',
-          'Es schaltet automatisch das Opus-Modell frei'
-        ],
-        correct: 1,
-        explanation: 'Rollenprompting steuert die Perspektive und das Fachvokabular — die Antwort wird präziser und zielgerichteter.'
-      },
-      {
-        q: 'Was muss beachtet werden, wenn Claude mit Firmen-Slack oder Gmail verbunden werden soll?',
-        options: [
-          'Die Verbindung ist dauerhaft und kann nie getrennt werden',
-          'Man gibt einer KI Zugriff auf echte Firmendaten — nur über den gesicherten IEG Claude Account',
-          'Slack-Integrationen funktionieren nur mit Extended Thinking',
-          'Claude kann in Slack nur lesen, keine Entwürfe verfassen'
-        ],
-        correct: 1,
-        explanation: 'Konnektoren = enorme Datenzugriffe. Firmen-Accounts nie mit persönlichem Claude-Account verbinden.'
-      },
-      {
-        q: 'Wie erstellt man am effektivsten einen eigenen Skill in Claude?',
-        options: [
-          'Python lernen und Code hochladen',
-          'Workflow im Chat durchgehen bis das Ergebnis perfekt ist, dann Claude anweisen: „Speichere diesen Workflow als Skill"',
-          'Einen Brief an Anthropic schreiben und um Freischaltung bitten',
-          'Drittanbieter-App aus dem Chrome Store herunterladen'
-        ],
-        correct: 1,
-        explanation: 'Skills entstehen durch iterative Verfeinerung im Chat — einmal perfektioniert, als wiederverwendbaren Skill speichern.'
       }
     ]
   },

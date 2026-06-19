@@ -236,7 +236,7 @@ function renderCertificate() {
     saveState(state);
   }
   var cid = state.credentialId;
-  var verifyUrl = 'https://ieg-banking.com/academy/verify?id=' + cid;
+  // verifyUrl intentionally removed — no public verification endpoint exists
 
   un.innerHTML =
     '<div class="section-eyebrow">/ Certificate</div>' +
@@ -257,7 +257,7 @@ function renderCertificate() {
         '<div class="cert-meta-item"><div class="cert-meta-label">Credential ID</div><div class="cert-meta-value cert-meta-mono">' + cid + '</div></div>' +
         '<div class="cert-meta-item"><div class="cert-meta-label">Ausgestellt von</div><div class="cert-meta-value cert-signature">S. Heilmann</div><div class="cert-meta-role">Group CEO, IEG</div></div>' +
       '</div>' +
-      '<div class="cert-verify">Verify at: <span>' + verifyUrl + '</span></div>' +
+      '<div class="cert-verify">Credential ID: <span class="cert-meta-mono">' + cid + '</span></div>' +
     '</div>' +
     '<div class="cert-actions">' +
       '<button class="btn btn-primary" onclick="printCertificate()">' +
