@@ -821,6 +821,28 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 .nav-card-empty:hover { transform: none; border-color: var(--bone-soft) !important; box-shadow: none; }
 
+/* Gesperrte "Nächstes Modul"-Karte (Quiz noch nicht bestanden) */
+.nav-card-locked {
+  cursor: not-allowed;
+  opacity: 0.6;
+  background: var(--bone);
+}
+.nav-card-locked:hover { transform: none; border-color: var(--bone-soft) !important; box-shadow: none; }
+.nav-card-locked .nav-card-label { color: var(--text-faint); }
+.nav-card-locked .nav-card-title { color: var(--text-muted); }
+.nav-card-lock-hint {
+  margin-top: 10px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  color: var(--rust);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: inherit;
+}
+.nav-card-next .nav-card-lock-hint { justify-content: flex-end; }
+
 /* ==================== FOOTER ==================== */
 .module-footer {
   background: var(--navy);
