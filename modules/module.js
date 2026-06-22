@@ -11,6 +11,10 @@
 const STORAGE_KEY = 'ieg-academy-progress-v1';
 // PASS_THRESHOLD wird aus content.js geladen (Wert: 70)
 
+// Supabase-Verbindungsdaten (identisch mit login.html / supabase-config.js)
+const _SB_URL = 'https://hojkbskyhwocsknucvos.supabase.co';
+const _SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imhvamtic2t5aHdvY3NrbnVjdm9zIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE1MzI4NzYsImV4cCI6MjA5NzEwODg3Nn0.A2jd2EPn9bSBHiUh-CQDbx-zUnGart4iU688gXypT3c';
+
 function loadState() {
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
@@ -23,6 +27,39 @@ function saveState(state) {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
   } catch (e) {}
+}
+
+// Save progress to Supabase via REST API (kein Library-Import nötig)
+async function saveProgressToSupabase(state) {
+  try {
+    // Supabase speichert die Session unter diesem key im localStorage
+    const raw = localStorage.getItem('sb-hojkbskyhwocsknucvos-auth-token');
+    if (!raw) return;
+    const session = JSON.parse(raw);
+    const token = session.access_token;
+    const userId = session.user && session.user.id;
+    if (!token || !userId) return;
+
+    // Upsert: anlegen oder vorhandene Zeile per user_id aktualisieren
+    await fetch(_SB_URL + '/rest/v1/user_progress', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': _SB_KEY,
+        'Authorization': 'Bearer ' + token,
+        'Prefer': 'resolution=merge-duplicates,return=minimal'
+      },
+      body: JSON.stringify({
+        user_id:           userId,
+        completed_modules: state.completed || [],
+        final_passed:      state.finalPassed || false,
+        final_score:       state.finalScore  || 0,
+        completion_date:   state.completionDate || null
+      })
+    });
+  } catch (e) {
+    console.warn('Supabase save error (module):', e.message);
+  }
 }
 
 // ---------- DYNAMIC CONTENT FROM content.js ----------
@@ -251,6 +288,7 @@ function finishQuiz() {
     const state = loadState();
     if (!state.completed.includes(MODULE_ID)) state.completed.push(MODULE_ID);
     saveState(state);
+    saveProgressToSupabase(state); // Save progress to Supabase after module quiz passed
   }
 
   const title = passed ? 'Modul abgeschlossen' : 'Knapp daneben';
