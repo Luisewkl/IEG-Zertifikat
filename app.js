@@ -279,9 +279,9 @@ function tickExamTimer() {
 }
 function updateTimerDisplay(sec) {
   var el = document.getElementById('examTimer');
-  if (!el) return;
-  el.textContent = formatExamTime(sec);
-  el.classList.toggle('warn', sec <= 300);   // letzte 5 Minuten hervorheben
+  if (el) el.textContent = formatExamTime(sec);
+  var pill = document.getElementById('examTimerPill');
+  if (pill) pill.classList.toggle('warn', sec <= 300);   // letzte 5 Minuten hervorheben
 }
 function formatExamTime(sec) {
   var m = Math.floor(sec / 60), s = sec % 60;
@@ -462,6 +462,26 @@ function renderExamQuestion() {
   var i = currentQuiz.currentIndex, n = currentQuiz.questions.length, q = currentQuiz.questions[i];
   var answeredCount = currentQuiz.answers.filter(function(a) { return a !== null; }).length;
   var remaining = examRemainingSec();
+  var pctDone = Math.round(answeredCount / n * 100);
+  var open = !!currentQuiz.paletteOpen;
+
+  var head =
+    '<div class="exam-head">' +
+      '<div class="exam-head-row">' +
+        '<div class="exam-head-left">' +
+          '<div class="exam-eyebrow">Abschlussprüfung</div>' +
+          '<div class="exam-qnum">Frage <strong>' + (i + 1) + '</strong> von ' + n + '</div>' +
+        '</div>' +
+        '<div class="exam-head-right">' +
+          '<div class="exam-answered"><span>Beantwortet</span><strong>' + answeredCount + ' / ' + n + '</strong></div>' +
+          '<div class="exam-timer-pill' + (remaining <= 300 ? ' warn' : '') + '" id="examTimerPill">' +
+            '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>' +
+            '<span id="examTimer">' + formatExamTime(remaining) + '</span>' +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+      '<div class="exam-progress-line"><div class="exam-progress-line-fill" style="width:' + pctDone + '%"></div></div>' +
+    '</div>';
 
   var banner = currentQuiz.restored
     ? '<div class="exam-restored-banner">' +
@@ -469,20 +489,6 @@ function renderExamQuestion() {
         '<span>Dein Prüfungsfortschritt wurde automatisch gespeichert und wiederhergestellt.</span>' +
       '</div>'
     : '';
-
-  var topbar =
-    '<div class="exam-topbar">' +
-      '<div class="exam-topbar-left">' +
-        '<div class="exam-topbar-title">Abschlussprüfung</div>' +
-        '<div class="exam-topbar-q">Frage ' + (i + 1) + ' von ' + n + '</div>' +
-      '</div>' +
-      '<div class="exam-stats">' +
-        '<span class="exam-answered">' + answeredCount + '/' + n + ' beantwortet</span>' +
-        '<span class="exam-timer' + (remaining <= 300 ? ' warn' : '') + '" id="examTimer">' + formatExamTime(remaining) + '</span>' +
-      '</div>' +
-    '</div>';
-
-  var progress = '<div class="exam-progress-line"><div class="exam-progress-line-fill" style="width:' + Math.round(answeredCount / n * 100) + '%"></div></div>';
 
   var legend =
     '<div class="exam-legend">' +
@@ -498,6 +504,15 @@ function renderExamQuestion() {
     if (j === i) cls += ' current';
     return '<button class="' + cls + '" onclick="examGoto(' + j + ')" title="Frage ' + (j + 1) + '">' + (j + 1) + '</button>';
   }).join('') + '</div>';
+
+  var navPanel =
+    '<div class="exam-nav-panel">' +
+      '<button class="exam-nav-toggle' + (open ? ' open' : '') + '" onclick="toggleExamPalette()">' +
+        '<span>Fragenübersicht · ' + answeredCount + '/' + n + ' beantwortet</span>' +
+        '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>' +
+      '</button>' +
+      (open ? '<div class="exam-nav-body">' + legend + palette + '</div>' : '') +
+    '</div>';
 
   var ua = currentQuiz.answers[i];
   var opts = q.options.map(function(o, j) {
@@ -521,7 +536,7 @@ function renderExamQuestion() {
     '</div>';
 
   renderExamHtml(
-    banner + topbar + progress + legend + palette +
+    head + banner + navPanel +
     '<div class="quiz-question">' + q.q + '</div>' +
     '<div class="quiz-options">' + opts + '</div>' +
     '<div class="exam-flag-row">' + flagBtn + '</div>' +
@@ -529,6 +544,13 @@ function renderExamQuestion() {
   );
 
   currentQuiz.restored = false;   // Banner nur einmalig zeigen
+}
+
+// Fragenübersicht ein-/ausklappen (reiner UI-Zustand, nicht persistiert)
+function toggleExamPalette() {
+  if (!currentQuiz) return;
+  currentQuiz.paletteOpen = !currentQuiz.paletteOpen;
+  renderExamQuestion();
 }
 
 function renderExamConfirm() {
