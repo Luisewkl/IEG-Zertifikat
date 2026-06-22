@@ -855,194 +855,185 @@ const CURRICULUM = [
     id: 6,
     number: '06',
     meta: 'Praxis · Modul 6',
-    title: 'Contact Research & Outreach im M&A-Alltag',
-    desc: 'Praktische Claude-Workflows für Unternehmensrecherche, Target Profiling, Outreach-E-Mails und CRM-Notizen — die wichtigsten Daily Tasks eines Analysts und Interns.',
-    duration: '40 Min.',
-    videos: [],
+    title: 'Claude Cowork — Der autonome Desktop-Agent',
+    desc: 'Während ein Chatbot nur antwortet, handelt Claude Cowork selbstständig auf deinem Rechner: Dateien sortieren, Dokumente erstellen, im Web recherchieren und Aufgaben planen — inklusive Setup, Sicherheit und Personal Instructions.',
+    duration: '30 Min.',
+    videos: [
+      { url: 'https://www.youtube.com/embed/ZeWfksNXlbU', title: 'Claude Cowork — Einführung', caption: 'Video 6.1 · Claude Cowork — Der autonome Desktop-Agent im Überblick' },
+      { url: 'https://www.youtube.com/embed/bEO0gDF5zqs', title: 'Claude Cowork — Praxis & Automatisierung', caption: 'Video 6.2 · Cowork in der Praxis — Workflows, Konnektoren und Automatisierung' },
+    ],
     images: [],
     longContent: '',
     content: `
-      <h3>1. Die drei Daily Tasks im M&A-Alltag</h3>
-      <p>Als Analyst oder Intern verbringst du täglich Zeit mit drei Kernaufgaben:
-      <strong>Unternehmen recherchieren</strong>, <strong>Kontakte identifizieren</strong>
-      und <strong>professionelle Kommunikation</strong> vorbereiten. Claude kann jeden dieser
-      Schritte beschleunigen — wenn man weiß, wie man fragt.</p>
-      <div class="callout">
-        <div class="callout-title">Wichtig: Datenschutz zuerst</div>
-        <p>Echte Namen, Deal-Details oder vertrauliche Kundendaten gehören nicht in Claude.
-        Nutze für diese Aufgaben den <strong>IEG Claude Account</strong> oder anonymisiere die Daten.</p>
-      </div>
+      <h3>1. Was ist Claude Cowork?</h3>
+      <p>Während ein normaler Chatbot nur antwortet, ist Claude Cowork ein
+      <strong>KI-Agent, der selbstständig auf deinem Computer handelt</strong>.
+      Man kann es sich so vorstellen: Das normale Claude-Modell ist das
+      <strong>Gehirn</strong>, während Cowork die <strong>Hände</strong> ist —
+      es kann Dateien öffnen, verschieben, umbenennen und Programme steuern.</p>
 
-      <h3>2. Company Research & Target Profiling</h3>
-      <p>Ein Company Profile zu einem potenziellen M&A-Target ist oft die erste Aufgabe.
-      Claude erstellt in Minuten eine strukturierte Übersicht — wenn du den richtigen
-      Prompt verwendest.</p>
-      <h4>Musterprompt: Company Profile</h4>
-      <div class="callout callout-success">
-        <div class="callout-title">Copy-Paste Prompt</div>
-        <p><em>„Du bist ein erfahrener M&A-Analyst. Erstelle ein strukturiertes Company Profile
-        für [Unternehmensname] mit folgenden Abschnitten: (1) Geschäftsmodell &amp; Umsatzquellen,
-        (2) Marktposition &amp; Wettbewerber, (3) Finanzkennzahlen (falls öffentlich),
-        (4) Management-Team, (5) mögliche Akquisitionsgründe aus Käuferperspektive.
-        Format: strukturierte Tabelle + kurzer Fließtext pro Abschnitt.
-        Wenn Informationen nicht verfügbar sind, sag es explizit."</em></p>
-      </div>
-      <h4>Target Screening: Mehrere Unternehmen vergleichen</h4>
-      <p>Für Screenlisten eignet sich Prompt Chaining: Erstelle zuerst Einzelprofile,
-      dann einen Vergleichsprompt.</p>
-      <div class="callout callout-success">
-        <div class="callout-title">Schritt 2 — Vergleichstabelle</div>
-        <p><em>„Fasse die Profile von [Unternehmen A], [Unternehmen B] und [Unternehmen C]
-        in einer Vergleichstabelle zusammen. Spalten: Unternehmen, Umsatz, Mitarbeiter,
-        Marktposition, strategische Passung (1-5). Sortiere nach strategischer Passung."</em></p>
-      </div>
+      <h3>2. Einrichtung und Sicherheit (Lokale Kontrolle)</h3>
+      <ul>
+        <li><strong>Desktop-App:</strong> Cowork funktioniert ausschließlich über die
+        Claude Desktop-App (für Mac und Windows) und setzt ein <strong>Pro-Abo</strong> voraus.</li>
+        <li><strong>Sicherheits-Sandboxing:</strong> Du musst Cowork explizit lokale Ordner zuweisen.
+        Die KI kann nur in den Bereichen arbeiten, die du freigegeben hast — das schützt deine
+        restlichen privaten Daten vor ungewollten Zugriffen oder Löschungen.</li>
+        <li><strong>Arbeitsumgebung:</strong> Für jedes Projekt solltest du einen eigenen Ordner
+        anlegen. Cowork speichert dort alle Fortschritte und Daten lokal ab.</li>
+      </ul>
 
-      <h3>3. Kontaktrecherche &amp; Person Research</h3>
-      <p>Entscheider identifizieren und qualifizieren — ohne stundenlange LinkedIn-Recherche.</p>
-      <h4>Musterprompt: Entscheider-Profil</h4>
-      <div class="callout callout-success">
-        <div class="callout-title">Copy-Paste Prompt</div>
-        <p><em>„Du bist ein Research-Analyst. Ich gebe dir folgenden LinkedIn-Auszug zu
-        [Name/Rolle anonymisiert]. Fasse zusammen: (1) Karriereweg in 3 Sätzen,
-        (2) relevante Expertise für M&A-Kontext, (3) mögliche Gesprächseinstiege.
-        Halte die Zusammenfassung auf max. 150 Wörter."</em></p>
-      </div>
+      <h3>3. Kernfunktionen im Überblick</h3>
+      <ul>
+        <li><strong>Dateimanagement:</strong> Cowork kann hunderte Dateien (z.&thinsp;B. Screenshots
+        oder Protokolle) analysieren, nach Inhalt sinnvoll umbenennen und in eine logische
+        Ordnerstruktur sortieren.</li>
+        <li><strong>Dokumentenerstellung:</strong> Aus Rohdaten (z.&thinsp;B. ungeordneten Rechnungen)
+        erstellt es neue Dateien wie Excel-Tabellen, CSV-Tracker oder PowerPoint-Präsentationen.</li>
+        <li><strong>Web-Browsing:</strong> Über die „Claude in Chrome"-Erweiterung kann Cowork aktiv
+        im Internet recherchieren, Webseiten zusammenfassen oder Daten aus Dashboards
+        (z.&thinsp;B. YouTube Studio) extrahieren.</li>
+        <li><strong>Konnektoren:</strong> Du kannst Claude mit Drittanbieter-Apps wie Gmail, Notion,
+        Google Drive oder Slack verknüpfen — so kann Claude z.&thinsp;B. offene Punkte aus einem
+        Protokoll lesen und direkt eine E-Mail über dein Gmail-Konto an die Teilnehmer senden.</li>
+      </ul>
+
+      <h3>4. Fortgeschrittene Automatisierung</h3>
+      <ul>
+        <li><strong>Zeitsteuerung (Scheduling):</strong> Aufgaben planen, z.&thinsp;B. „Prüfe jeden
+        Morgen um 8 Uhr den Ordner auf neue Protokolle und versende sie". Diese Aufgaben findest du
+        im Reiter „Geplante Aufgaben".</li>
+        <li><strong>Markdown-Gedächtnis:</strong> Da Cowork kein eingebautes Sitzungsgedächtnis wie
+        der normale Chat hat, nutzt es Markdown-Dateien im Projektordner, um Informationen
+        (z.&thinsp;B. E-Mail-Adressen) für die Zukunft zu speichern.</li>
+        <li><strong>Skills &amp; Plugins:</strong> Du kannst Claude spezifische Fachkenntnisse
+        (z.&thinsp;B. Marketing- oder Sales-Skills) beibringen oder dein eigenes Corporate Design
+        für PDFs als Skill hinterlegen.</li>
+      </ul>
+
+      <h3>5. Wichtige Regeln für den Betrieb</h3>
       <div class="callout callout-warn">
-        <div class="callout-title">Regel: Anonymisieren</div>
-        <p>Kein echter Vor- und Nachname in Claude. Nutze Platzhalter wie [CFO, Unternehmen X] —
-        das reicht für eine nutzbare Zusammenfassung.</p>
+        <div class="callout-title">Session Persistence</div>
+        <p>Die Desktop-App muss <strong>offen bleiben</strong>, während ein Task läuft. Wenn du die
+        App schließt, stoppt der Agent seine Arbeit.</p>
       </div>
-
-      <h3>4. Outreach-E-Mails &amp; Follow-ups</h3>
-      <p>Die Erstansprache ist oft das Schwierigste. Claude hilft, den richtigen Ton
-      zu treffen — du gibst Kontext, Claude schreibt den Entwurf.</p>
-      <h4>Musterprompt: Cold Outreach</h4>
-      <div class="callout callout-success">
-        <div class="callout-title">Copy-Paste Prompt</div>
-        <p><em>„Schreibe eine professionelle Erstansprache-E-Mail (max. 120 Wörter) von einer
-        M&A-Boutique an den [Rolle] eines mittelständischen Unternehmens im Bereich [Branche].
-        Ziel: ein erstes Kennenlern-Gespräch. Ton: professionell, direkt, keine Floskeln.
-        Betreffzeile: konkret und neugierig machend. Schreibe 2 Varianten."</em></p>
+      <div class="callout">
+        <div class="callout-title">Modellwahl</div>
+        <p>Für einfache Sortieraufgaben reicht das sparsame <strong>Sonnet</strong>-Modell; für
+        komplexe Analysen oder Finanzmodelle solltest du <strong>Opus</strong> wählen, was jedoch
+        mehr Credits verbraucht.</p>
       </div>
-      <h4>Musterprompt: Follow-up</h4>
-      <div class="callout callout-success">
-        <div class="callout-title">Copy-Paste Prompt</div>
-        <p><em>„Schreibe ein kurzes Follow-up (max. 60 Wörter) zu einer Erstansprache-E-Mail,
-        die vor 10 Tagen verschickt wurde und keine Antwort erhielt.
-        Ton: freundlich, nicht aufdringlich. Neuer Aufhänger: [aktuelles Marktereignis einfügen]."</em></p>
-      </div>
-
-      <h3>5. CRM-Notizen strukturieren</h3>
-      <p>Nach einem Gespräch schnell strukturierte CRM-Einträge erstellen —
-      statt roher Notizen direkt ein verwendbares Format.</p>
-      <div class="callout callout-success">
-        <div class="callout-title">Copy-Paste Prompt</div>
-        <p><em>„Ich gebe dir meine rohen Gesprächsnotizen vom heutigen Call. Erstelle daraus
-        einen strukturierten CRM-Eintrag mit: (1) Datum &amp; Teilnehmer (anonymisiert),
-        (2) Kerninhalte in 5 Bulletpoints, (3) vereinbarte nächste Schritte,
-        (4) Follow-up-Datum. Hier sind die Notizen: [Notizen einfügen]"</em></p>
-      </div>
-
-      <h3>6. Prompt-Cheatsheet: Die 5 wichtigsten Templates</h3>
-      <table>
-        <thead><tr><th>Aufgabe</th><th>Prompt-Starter</th></tr></thead>
-        <tbody>
-          <tr><td>Company Profile</td><td>„Du bist M&A-Analyst. Erstelle ein Company Profile für [X] mit..."</td></tr>
-          <tr><td>Vergleichstabelle</td><td>„Fasse die Profile von [A, B, C] in einer Tabelle zusammen. Spalten:..."</td></tr>
-          <tr><td>Kontakt-Summary</td><td>„Fasse diesen LinkedIn-Auszug zusammen: Karriere, Expertise, Gesprächseinstieg"</td></tr>
-          <tr><td>Cold Outreach</td><td>„Schreibe 2 Varianten einer Erstansprache-E-Mail (max. 120 Wörter)..."</td></tr>
-          <tr><td>CRM-Eintrag</td><td>„Erstelle aus diesen Notizen einen CRM-Eintrag mit Bullets + Next Steps"</td></tr>
-        </tbody>
-      </table>
     `,
     quiz: [
       {
-        q: 'Warum sollte man echte Kundennamen nicht direkt in Claude eingeben?',
+        q: 'Wie lässt sich das Verhältnis von Claude-Modell und Cowork am treffendsten beschreiben?',
         options: [
-          'Weil Claude keine Namen verarbeiten kann',
-          'Weil echte Namen die Antwortqualität verschlechtern',
-          'Weil vertrauliche Personendaten nicht in einen persönlichen KI-Account gehören',
-          'Weil Claude dann automatisch Mails versendet'
-        ],
-        correct: 2,
-        explanation: 'Datenschutz: Echte Namen und Kundendaten gehören in den IEG Claude Account oder müssen vorher anonymisiert werden.'
-      },
-      {
-        q: 'Was ist der erste Schritt beim Erstellen einer Target-Vergleichstabelle per Prompt Chaining?',
-        options: [
-          'Direkt alle Unternehmen in einem Prompt vergleichen',
-          'Zuerst Einzelprofile erstellen, dann in einem zweiten Schritt die Vergleichstabelle',
-          'Die Tabelle manuell in Excel erstellen',
-          'Claude bitten, selbst Unternehmen auszuwählen'
+          'Cowork ersetzt das Sprachmodell durch eine eigene, schnellere Spezial-Engine',
+          'Das Modell ist das Gehirn, Cowork sind die Hände, die Dateien und Programme steuern',
+          'Cowork ist ein reiner Chatbot ohne jeden Zugriff auf das lokale Dateisystem',
+          'Cowork und das Modell laufen in zwei vollständig voneinander getrennten Konten'
         ],
         correct: 1,
-        explanation: 'Prompt Chaining: Erst Einzelprofile, dann Zusammenfassung. So ist jedes Teilergebnis prüfbar.'
+        explanation: 'Das Modell ist das Gehirn, Cowork die Hände — es öffnet, verschiebt und benennt Dateien und steuert Programme.'
       },
       {
-        q: 'Welches Element ist in einem Company Profile Prompt besonders wichtig?',
+        q: 'Über welchen Zugang läuft Cowork und welche Voraussetzung gilt dafür?',
         options: [
-          'Eine Stoppklausel: "Wenn Informationen nicht verfügbar sind, sag es explizit"',
-          'Ein sehr langer, detaillierter Prompt ohne Abschnitte',
-          'Die Bitte, möglichst kreativ zu antworten',
-          'Die Angabe der Schriftgröße für den Output'
+          'Über jeden Browser ohne weitere Voraussetzung oder kostenpflichtiges Abo',
+          'Allein über die mobile App, ein kostenloses Konto genügt vollständig',
+          'Ausschließlich über die Web-Oberfläche mit einem reinen Team-Vertrag',
+          'Ausschließlich über die Desktop-App (Mac/Windows) und mit einem Pro-Abo'
+        ],
+        correct: 3,
+        explanation: 'Cowork funktioniert nur über die Claude Desktop-App für Mac und Windows und setzt ein Pro-Abo voraus.'
+      },
+      {
+        q: 'Welchen Zweck erfüllt das Sicherheits-Sandboxing in Claude Cowork?',
+        options: [
+          'Cowork arbeitet nur in den Ordnern, die man ihm zuvor explizit freigegeben hat',
+          'Es verschlüsselt sämtliche Festplatten des Rechners automatisch im Hintergrund',
+          'Es begrenzt die maximale Laufzeit eines einzelnen Tasks fest auf zehn Minuten',
+          'Es verbietet während eines laufenden Tasks jeden Zugriff auf das Internet'
         ],
         correct: 0,
-        explanation: 'Stoppkriterien verhindern Halluzinationen. Ohne sie erfinde Claude fehlende Fakten.'
+        explanation: 'Sandboxing: Cowork darf nur in explizit freigegebenen Ordnern arbeiten — das schützt alle übrigen privaten Daten.'
       },
       {
-        q: 'Wie sollte ein gutes Follow-up nach 10 Tagen ohne Antwort formuliert sein?',
+        q: 'Warum nutzt Cowork Markdown-Dateien im Projektordner?',
         options: [
-          'Lang und ausführlich, um zu zeigen, wie viel Arbeit man sich gemacht hat',
-          'Kurz, freundlich, nicht aufdringlich — idealerweise mit einem neuen Aufhänger',
-          'Identisch zur ersten E-Mail, damit die Person sich erinnert',
-          'Mit einem klaren Vorwurf, warum man nicht geantwortet hat'
+          'Weil Markdown die einzige Sprache ist, die Cowork überhaupt lesen kann',
+          'Um die erzeugten Ausgaben optisch ansprechender als ein PDF zu gestalten',
+          'Weil ihm ein Sitzungsgedächtnis fehlt und es Infos so dauerhaft ablegt',
+          'Um laufende Tasks automatisch an einen menschlichen Kollegen zu übergeben'
+        ],
+        correct: 2,
+        explanation: 'Cowork hat kein eingebautes Sitzungsgedächtnis und speichert Informationen daher in Markdown-Dateien im Projektordner.'
+      },
+      {
+        q: 'Was geschieht mit einem laufenden Task, wenn man die Desktop-App schließt?',
+        options: [
+          'Der Task läuft unverändert in der Cloud von Anthropic einfach weiter',
+          'Der Task wird automatisch an die Smartphone-App zur Fortsetzung übergeben',
+          'Der Task pausiert und startet beim nächsten Login vollständig von vorne',
+          'Der Agent stoppt seine Arbeit, denn die App muss dafür geöffnet bleiben'
+        ],
+        correct: 3,
+        explanation: 'Session Persistence: Die App muss offen bleiben — schließt man sie, stoppt der Agent seine Arbeit.'
+      },
+      {
+        q: 'Welche Aufgabe lässt sich mit der „Geplante Aufgaben"-Funktion (Scheduling) umsetzen?',
+        options: [
+          '„Prüfe jeden Morgen um 8 Uhr den Ordner auf neue Protokolle und versende sie"',
+          '„Verdopple dauerhaft die Rechenleistung des verwendeten Sprachmodells"',
+          '„Lösche eigenständig alle privaten Dateien außerhalb des Projektordners"',
+          '„Wechsle das Abo automatisch auf einen günstigeren Tarif als das Pro-Abo"'
+        ],
+        correct: 0,
+        explanation: 'Scheduling erlaubt wiederkehrende Aufgaben wie das tägliche Prüfen und Versenden von Protokollen — zu finden im Reiter „Geplante Aufgaben".'
+      },
+      {
+        q: 'Wie wählt man das Modell für Cowork-Aufgaben sinnvoll aus?',
+        options: [
+          'Immer Opus, da Sonnet für Cowork-Aufgaben technisch nicht unterstützt wird',
+          'Für einfaches Sortieren reicht Sonnet, komplexe Analysen sprechen für Opus',
+          'Immer Haiku, weil ausschließlich dieses Modell auf lokale Dateien zugreifen darf',
+          'Die Modellwahl hat in Cowork keinen Einfluss auf Credits oder Ergebnisqualität'
         ],
         correct: 1,
-        explanation: 'Follow-ups: max. 60 Wörter, freundlicher Ton, neuer Aufhänger — z.B. ein aktuelles Marktereignis.'
+        explanation: 'Sonnet ist sparsam und reicht für einfache Sortieraufgaben; für komplexe Analysen lohnt Opus, das aber mehr Credits verbraucht.'
       },
       {
-        q: 'Was enthält ein guter CRM-Eintrag aus Gesprächsnotizen?',
+        q: 'Wozu dient die „Claude in Chrome"-Erweiterung im Cowork-Kontext?',
         options: [
-          'Nur das Datum und den Namen des Gesprächspartners',
-          'Die wörtliche Transkription des gesamten Gesprächs',
-          'Datum, Kerninhalte als Bulletpoints, vereinbarte nächste Schritte und Follow-up-Datum',
-          'Nur die offenen Punkte, keine erledigten Punkte'
+          'Sie ersetzt die Desktop-App vollständig durch eine reine Browser-Lösung',
+          'Sie verschlüsselt den gesamten Browserverlauf des Nutzers automatisch',
+          'Sie sperrt aus Sicherheitsgründen jeden Zugriff auf externe Dashboards',
+          'Cowork kann damit aktiv recherchieren und Daten aus Dashboards extrahieren'
+        ],
+        correct: 3,
+        explanation: 'Über „Claude in Chrome" recherchiert Cowork aktiv im Web, fasst Seiten zusammen und extrahiert Daten aus Dashboards wie YouTube Studio.'
+      },
+      {
+        q: 'Was ermöglichen Konnektoren wie Gmail oder Notion in Cowork?',
+        options: [
+          'Claude liest z.B. offene Punkte aus einem Protokoll und versendet direkt eine E-Mail',
+          'Sie beschleunigen ausschließlich die reine Dateianalyse auf der Festplatte',
+          'Sie ersetzen das lokale Sandboxing vollständig durch einen Cloud-Speicher',
+          'Sie sind ausschließlich in der kostenlosen Gratis-Version von Claude verfügbar'
+        ],
+        correct: 0,
+        explanation: 'Konnektoren verbinden Claude mit Diensten wie Gmail oder Notion — so kann Claude Protokoll-Punkte lesen und direkt eine E-Mail an die Teilnehmer senden.'
+      },
+      {
+        q: 'Was kann Cowork aus ungeordneten Rohdaten (z. B. losen Rechnungen) erstellen?',
+        options: [
+          'Nur reine Textdateien ohne jede Formatierung oder weitere Struktur',
+          'Ausschließlich einfache Screenshots der jeweiligen Originaldateien',
+          'Neue Dateien wie Excel-Tabellen, CSV-Tracker oder PowerPoint-Präsentationen',
+          'Lediglich eine reine Liste der Dateinamen ganz ohne deren Inhalte'
         ],
         correct: 2,
-        explanation: 'Gute CRM-Einträge: Datum, Kerninhalte (5 Bullets), Next Steps, Follow-up-Datum.'
-      },
-      {
-        q: 'Wie viele Varianten sollte man bei einer Erstansprache-E-Mail von Claude erstellen lassen?',
-        options: [
-          'Immer genau eine, damit der Fokus klar ist',
-          'Mindestens 10, um die beste auszuwählen',
-          'Zwei Varianten — so hat man eine Auswahl ohne zu viel Aufwand',
-          'Keine — E-Mails sollte man immer selbst schreiben'
-        ],
-        correct: 2,
-        explanation: '2 Varianten sind der Sweet Spot: genug Auswahl, um Ton und Stil anzupassen, ohne überwältigt zu werden.'
-      },
-      {
-        q: 'Für welche Kontaktrecherche-Aufgabe eignet sich Claude am besten?',
-        options: [
-          'Direkt LinkedIn-Profile abrufen ohne Zustimmung',
-          'Einen anonymisierten LinkedIn-Auszug zusammenfassen und Gesprächseinstiege ableiten',
-          'Automatisch E-Mails an Kontakte versenden',
-          'Persönliche Telefonnummern recherchieren'
-        ],
-        correct: 1,
-        explanation: 'Claude fasst anonymisierten Text zusammen und leitet Gesprächseinstiege ab — Recherche und Direktzugriff sind nicht Claudes Aufgabe.'
-      },
-      {
-        q: 'Welches Prompt-Element verbessert die Qualität eines Company Profile am meisten?',
-        options: [
-          'Die Anfrage in möglichst vielen Sprachen gleichzeitig stellen',
-          'Nur eine kurze Frage ohne Struktur stellen',
-          'Klare Abschnitte vorgeben (Geschäftsmodell, Marktposition, Finanzen, Management, Akquisitionsgründe)',
-          'Claude bitten, das Profil in 500 Wörtern zusammenzufassen'
-        ],
-        correct: 2,
-        explanation: 'Strukturierte Abschnitte = strukturierter Output. Claude folgt der vorgegebenen Gliederung.'
+        explanation: 'Cowork verwandelt Rohdaten in fertige Dokumente — z.B. Excel-Tabellen, CSV-Tracker oder PowerPoint-Präsentationen.'
       }
     ]
   }
@@ -1128,17 +1119,17 @@ const FINAL_EXAM = [
   // Q33 correct: A — modular skills
   { q: 'Welchen Vorteil bietet der modulare Skill-Ansatz (mehrere Einzelskills statt ein großer)?', options: ['Modulare Skills können unabhängig aktualisiert, kombiniert und in verschiedenen Workflows wiederverwendet werden', 'Ein einzelner großer Skill ist immer zuverlässiger, weil weniger Übergabepunkte entstehen', 'Modulare Skills laufen ausschließlich auf dem Opus-Modell für maximale Prozessstabilität', 'Es gibt keinen qualitativen Unterschied — Modularität ist nur ein Stilmerkmal ohne Funktionsvorteil'], correct: 0, explanation: 'Modularität: Jeden Skill einzeln verbessern, frei kombinieren, in verschiedenen Kontexten einsetzen.' },
 
-  // Modul 06 — Contact Research & Outreach
+  // Modul 06 — Claude Cowork
   // Q34 correct: B
-  { q: 'Warum dürfen echte Kundennamen nicht in einen persönlichen Claude-Account eingegeben werden?', options: ['Echte Namen verringern die Antwortqualität, weil Claude dann nicht mehr neutral analysiert', 'Personendaten ohne Enterprise-Vertrag landen ohne Sicherheitsgarantien beim KI-Anbieter', 'Claude kann personenbezogene Namen technisch nicht korrekt verarbeiten und gibt fehlerhafte Ergebnisse', 'Claude sendet bei Erkennung von Personennamen automatisch Benachrichtigungen an Anthropic'], correct: 1, explanation: 'Datenschutz: Personendaten gehören in den IEG Enterprise Account oder müssen vorher anonymisiert werden.' },
-  // Q35 correct: C
-  { q: 'Was ist "Prompt Chaining" bei der Erstellung einer Target-Vergleichstabelle?', options: ['Einen einzigen langen Prompt für alle Unternehmen gleichzeitig verwenden, um Zeit zu sparen', 'Denselben Prompt in mehreren Sprachen formulieren, um kulturell diversere Ergebnisse zu erhalten', 'Erst Einzelprofile erstellen und prüfen, dann in einem zweiten Schritt die Vergleichstabelle generieren', 'Einen Prompt mit automatischen Verknüpfungen zu externen Quellen wie LinkedIn oder Crunchbase'], correct: 2, explanation: 'Prompt Chaining: Einzelprofile als prüfbare Zwischenergebnisse, dann Zusammenfassung — so entstehen keine unkontrollierten Halluzinationen.' },
+  { q: 'Wie unterscheidet sich Claude Cowork grundlegend von einem normalen Chatbot?', options: ['Cowork beantwortet dieselben Fragen lediglich schneller, handelt dabei aber nicht eigenständig', 'Cowork ist ein Agent, der selbstständig Dateien öffnet, umbenennt, verschiebt und Programme steuert', 'Cowork ist eine reine Cloud-Funktion und hat bewusst keinen Zugriff auf lokale Dateien', 'Cowork ist ein eigenes Sprachmodell ohne jede Verbindung zum eigentlichen Claude-Modell'], correct: 1, explanation: 'Cowork ist ein KI-Agent: Das Modell ist das Gehirn, Cowork die Hände, die Dateien und Programme aktiv steuern.' },
+  // Q35 correct: A
+  { q: 'Welche Voraussetzung gilt für die Nutzung von Claude Cowork?', options: ['Die Claude Desktop-App für Mac oder Windows in Kombination mit einem aktiven Pro-Abo', 'Ein kostenloses Konto genügt, sofern man es im mobilen Browser des Smartphones öffnet', 'Ein reiner Team-Vertrag, der ausschließlich über die Web-Oberfläche freigeschaltet wird', 'Eine zusätzliche Server-Installation, die zentral im Unternehmensnetzwerk betrieben wird'], correct: 0, explanation: 'Cowork läuft ausschließlich über die Desktop-App (Mac/Windows) und setzt ein Pro-Abo voraus.' },
   // Q36 correct: D
-  { q: 'Welches Prompt-Element verhindert, dass Claude bei Company Profiles fehlende Fakten erfindet?', options: ['Eine präzise Formatvorgabe (Tabelle, Stichpunkte), die Claude keine Freiräume für Eigenerfindungen lässt', 'Die Zuweisung einer Expertenrolle ("Du bist M&A-Analyst"), die Claude zu Belegen verpflichtet', 'Eine Längenbegrenzung auf max. 200 Wörter, die zu kompakten verifizierten Kernaussagen zwingt', 'Eine Stoppklausel: "Wenn Informationen nicht verfügbar sind, sag es explizit statt zu spekulieren"'], correct: 3, explanation: 'Stoppklauseln verhindern Halluzinationen: Claude gibt zu, wenn Daten fehlen, statt sie zu erfinden.' },
-  // Q37 correct: A
-  { q: 'Was ist das zentrale Element eines guten CRM-Eintrags aus Claude-generierten Gesprächsnotizen?', options: ['Datum, Kerninhalte als Bulletpoints, vereinbarte Next Steps mit Verantwortlichen und Follow-up-Datum', 'Eine wörtliche Transkription des Gesprächs als vollständiges Protokoll zur juristischen Absicherung', 'Ausschließlich Name und Datum des Gesprächs — minimalistische Einträge sind wartungsfreundlicher', 'Eine ausführliche Zusammenfassung im Fließtext, damit der Gesamtkontext vollständig erhalten bleibt'], correct: 0, explanation: 'Strukturierter CRM-Eintrag: Datum, 5 Kernbullets, Next Steps mit Verantwortlichen, Follow-up-Datum.' },
-  // Q38 correct: B
-  { q: 'Wie lang sollte ein Follow-up nach 10 Tagen ohne Antwort maximal sein?', options: ['Mindestens 500 Wörter, um Engagement und inhaltliche Tiefe zu demonstrieren', 'Maximal 60 Wörter — kurz, freundlich, mit neuem Aufhänger und ohne impliziten Vorwurf', 'Identisch zur Erstmail in Länge und Ton — Konsistenz stärkt die Wiedererkennung beim Empfänger', 'Exakt 120 Wörter, weil dieser Umfang statistisch die besten Rücklaufquoten im B2B erzielt'], correct: 1, explanation: 'Follow-ups: max. 60 Wörter, freundlicher Ton, kein Vorwurf, neuer Aufhänger (z.B. aktuelles Marktereignis).' },
+  { q: 'Warum muss man Cowork explizit einzelne lokale Ordner zuweisen?', options: ['Damit die Verarbeitungsgeschwindigkeit auf besonders großen Festplatten spürbar zunimmt', 'Weil Cowork andernfalls sämtliche Daten automatisch in eine externe Cloud auslagert', 'Um das Limit an verfügbaren Credits des Pro-Abos korrekt abrechnen zu können', 'Sandboxing: Cowork arbeitet nur in freigegebenen Bereichen und schützt so alle übrigen Daten'], correct: 3, explanation: 'Sicherheits-Sandboxing: Cowork darf nur in explizit freigegebenen Ordnern arbeiten — der Rest der privaten Daten bleibt geschützt.' },
+  // Q37 correct: C
+  { q: 'Wie speichert Cowork Informationen über eine einzelne Sitzung hinaus?', options: ['Gar nicht — sämtliche Informationen gehen nach jedem abgeschlossenen Task verloren', 'In einer zentral verschlüsselten Cloud-Datenbank, die Anthropic dauerhaft bereitstellt', 'In Markdown-Dateien im Projektordner, weil ihm ein eingebautes Sitzungsgedächtnis fehlt', 'Ausschließlich im Arbeitsspeicher, solange der Rechner durchgehend eingeschaltet bleibt'], correct: 2, explanation: 'Cowork hat kein eingebautes Sitzungsgedächtnis und nutzt daher Markdown-Dateien im Projektordner zum dauerhaften Speichern.' },
+  // Q38 correct: A
+  { q: 'Was gilt für einen laufenden Cowork-Task und die passende Modellwahl?', options: ['Die App muss offen bleiben; für komplexe Analysen eignet sich Opus, fürs Sortieren Sonnet', 'Die App darf geschlossen werden, der Task läuft in der Cloud weiter, das Modell ist dabei egal', 'Der Task läuft ausschließlich mit Haiku, und das Schließen der App hat keinerlei Auswirkung', 'Opus ist für jede noch so einfache Aufgabe zwingend, sonst startet Cowork erst gar nicht'], correct: 0, explanation: 'Session Persistence: Die App muss offen bleiben. Modellwahl: Sonnet fürs Sortieren, Opus für komplexe Analysen (mehr Credits).' },
 
   // Übergreifende Vertiefungsfragen
   // Q39 correct: C
