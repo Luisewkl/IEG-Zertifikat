@@ -205,6 +205,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .hero-stats {
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-start;
   gap: 48px;
   padding: 28px 0;
   border-top: 1px solid rgba(255,255,255,0.12);
@@ -212,13 +213,26 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   margin-bottom: 40px;
 }
 
+.stat { display: flex; flex-direction: column; }
+
 .stat-num {
   font-family: var(--serif);
   font-weight: 400;
   font-size: 34px;
   line-height: 1;
+  height: 34px;
+  display: flex;
+  align-items: baseline;
   color: var(--white);
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: 'tnum', 'lnum';
+}
+.stat-unit {
+  font-size: 17px;
+  font-weight: 400;
+  margin-left: 4px;
+  color: rgba(255,255,255,0.7);
 }
 .stat-label {
   font-family: var(--mono);
@@ -1227,12 +1241,15 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 .cert-signature {
-  font-family: 'Fraunces', cursive;
+  font-family: var(--serif);
   font-style: italic;
-  font-size: 24px;
+  font-weight: 500;
+  font-size: 21px;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
   color: var(--navy);
-  border-bottom: 1px solid var(--navy);
-  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(7,93,228,0.45);
+  padding-bottom: 8px;
   display: inline-block;
 }
 

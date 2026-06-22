@@ -83,114 +83,114 @@ const CURRICULUM = [
     `,
     quiz: [
       {
-        q: 'Welches Claude-Modell ist am besten geeignet für eine tiefgehende, mehrstufige Risikoanalyse mit vielen Variablen?',
+        q: 'Für eine mehrstufige Risikoanalyse mit vielen voneinander abhängigen Variablen soll das treffsicherste Modell gewählt werden. Welche Begründung ist korrekt?',
         options: [
-          'Haiku — für maximale Geschwindigkeit',
-          'Sonnet — der Allrounder für den Alltag',
-          'Opus — das Flaggschiff für komplexe Analysen',
-          'Alle Modelle liefern identische Qualität'
+          'Haiku, weil es Anfragen mit der höchsten Geschwindigkeit beantwortet',
+          'Sonnet, weil es den besten Kompromiss aus Tempo und Tiefe bietet',
+          'Opus, weil es gezielt für besonders komplexe Analysen ausgelegt ist',
+          'Die Modellwahl ist hier egal, da alle Modelle gleich gut abschneiden'
         ],
         correct: 2,
-        explanation: 'Opus ist das leistungsstärkste Modell und ist für extrem komplexe Analysen und Entscheidungen vorgesehen.'
+        explanation: 'Opus ist das leistungsstärkste Modell und für besonders komplexe, mehrstufige Analysen und Entscheidungen vorgesehen.'
       },
       {
-        q: 'Was ist der Hauptvorteil eines Claude-Projects gegenüber einem normalen Chat?',
+        q: 'Ein Project soll gegenüber einem einzelnen Chat einen echten Mehrwert liefern. Worin besteht der entscheidende Vorteil?',
         options: [
-          'Projects sind schneller als normale Chats',
-          'Dokumente und Anweisungen im Project gelten automatisch für jeden neuen Chat — kein erneutes Briefing nötig',
-          'Nur in Projects kann man Websuche aktivieren',
-          'Projects ermöglichen gleichzeitige Zusammenarbeit mehrerer Nutzer'
+          'Hinterlegte Dokumente und Anweisungen gelten automatisch in jedem neuen Chat',
+          'Anfragen werden innerhalb eines Projects spürbar schneller beantwortet',
+          'Erst innerhalb eines Projects lässt sich die Websuche überhaupt aktivieren',
+          'Mehrere Personen können denselben Chat zeitgleich gemeinsam bearbeiten'
+        ],
+        correct: 0,
+        explanation: 'Ein Project ist ein dauerhafter Kontext — jeder neue Chat startet automatisch mit den hinterlegten Dokumenten und Anweisungen, ohne erneutes Briefing.'
+      },
+      {
+        q: 'Du hast eine Tabelle mit Verkaufszahlen und möchtest daraus ein interaktives Balkendiagramm. Welches Vorgehen führt am direktesten zum Ziel?',
+        options: [
+          'Zuerst einen Programmierkurs belegen und danach den fertigen Code einfügen',
+          'Einen gesonderten Konnektor für Visualisierungen im Account freischalten',
+          'Den Wunsch verwerfen, da Claude keinerlei interaktive Grafiken erzeugt',
+          'Die Zahlen einfügen und ein interaktives Diagramm anfordern, mehr nicht'
+        ],
+        correct: 3,
+        explanation: 'Claude erzeugt interaktive Visualisierungen direkt im Chat — kein Plugin, kein Konnektor und kein Code-Vorwissen nötig.'
+      },
+      {
+        q: 'Eine Kollegin fragt, was Claude Cowork von Claude im Browser unterscheidet. Welche Aussage trifft den Kern?',
+        options: [
+          'Cowork ist ausschließlich für erfahrene Programmiererinnen konzipiert',
+          'Cowork läuft in der Desktop-App und greift dort auf lokale Dateien zu',
+          'Cowork arbeitet zwar langsamer, ist dafür aber deutlich günstiger',
+          'Cowork verarbeitet nur reinen Text und akzeptiert gar keine Dateien'
         ],
         correct: 1,
-        explanation: 'Ein Project ist ein dauerhafter Kontext — einmal eingerichtet, startet jeder neue Chat mit den hinterlegten Dokumenten und Anweisungen.'
+        explanation: 'Claude Cowork lebt in der Desktop-App, hat Zugriff auf lokale Dateien und kann Aufgaben sogar im Hintergrund erledigen — steuerbar auch per Smartphone.'
       },
       {
-        q: 'Du möchtest Claude bitten, dir ein interaktives Balkendiagramm deiner Verkaufszahlen zu erstellen. Was tust du?',
+        q: 'Im Claude-Ökosystem werden die Begriffe Skill und Plugin oft verwechselt. Wie lässt sich der Unterschied präzise fassen?',
         options: [
-          'Einen Programmierkurs buchen und danach den Code hochladen',
-          'Die Zahlen einfügen und „Zeig mir das als interaktives Diagramm" sagen — Claude generiert es sofort',
-          'Einen separaten Konnektor für Visualisierungen aktivieren',
-          'Interaktive Visualisierungen sind in Claude nicht möglich'
+          'Ein Skill ist eine einzelne Fähigkeit, ein Plugin bündelt mehrere davon',
+          'Beide Begriffe meinen exakt dasselbe und sind frei gegeneinander tauschbar',
+          'Skills sind grundsätzlich kostenlos, während Plugins stets Geld kosten',
+          'Plugins laufen ausschließlich unter Opus, Skills dagegen unter jedem Modell'
         ],
-        correct: 1,
-        explanation: 'Claude kann direkt im Chat interaktive Visualisierungen erzeugen — kein Plugin, kein Code-Vorwissen nötig.'
+        correct: 0,
+        explanation: 'Ein Skill ist eine einzelne gespeicherte Fähigkeit; ein Plugin bündelt mehrere Skills zu einem Paket — beide erweitern Claudes Werkzeugkasten dauerhaft.'
       },
       {
-        q: 'Was unterscheidet Claude Cowork von normalem Claude im Browser?',
+        q: 'Du möchtest mit Claude Code ohne Vorkenntnisse eine kleine Kundenwebseite bauen. Womit beginnst du sinnvollerweise?',
         options: [
-          'Cowork ist nur für Programmierer gedacht',
-          'Cowork lebt in der Desktop-App, hat Zugriff auf lokale Dateien und kann Aufgaben auch im Hintergrund erledigen',
-          'Cowork ist langsamer aber günstiger',
-          'Cowork kann nur Text verarbeiten, keine Dateien'
+          'Zunächst HTML und CSS erlernen, bevor man Claude überhaupt einsetzt',
+          'Eine Entwicklerin beauftragen, die den passenden Prompt für dich formuliert',
+          'Den Plan verwerfen, da Claude Code nur für bestehende Programmierer ist',
+          'Gewünschte Funktion und Aussehen beschreiben, Claude liefert dann den Code'
         ],
-        correct: 1,
-        explanation: 'Claude Cowork arbeitet in der Desktop-App autonom — mit lokalem Dateizugriff und Hintergrundverarbeitung, steuerbar auch per Smartphone.'
+        correct: 3,
+        explanation: 'Claude Code braucht keine Programmierkenntnisse — eine klare Beschreibung auf Deutsch genügt, um vollständige Webseiten oder Apps generieren zu lassen.'
       },
       {
-        q: 'Was ist der Unterschied zwischen einem Skill und einem Plugin im Claude-Ökosystem?',
+        q: 'Das Erweiterungssystem von Claude besteht aus genau drei Bausteinen. Welche Aufzählung benennt sie korrekt?',
         options: [
-          'Es gibt keinen Unterschied — beide Begriffe beschreiben dasselbe',
-          'Ein Skill ist eine einzelne gespeicherte Fähigkeit; ein Plugin ist eine Sammlung von Skills als Paket',
-          'Skills sind kostenlos, Plugins kosten extra',
-          'Plugins funktionieren nur mit Opus, Skills mit allen Modellen'
-        ],
-        correct: 1,
-        explanation: 'Skills = einzelne Fähigkeiten, Plugins = gebündelte Sammlungen von Skills — beide erweitern dauerhaft Claudes Werkzeugkasten.'
-      },
-      {
-        q: 'Du willst mit Claude Code eine einfache Webseite für ein Kundenprojekt bauen. Was ist der erste Schritt?',
-        options: [
-          'HTML und CSS lernen, bevor man Claude nutzen kann',
-          'Die gewünschten Funktionen und das Aussehen auf Deutsch beschreiben — Claude erstellt den Code',
-          'Einen Entwickler engagieren, der den Prompt formuliert',
-          'Claude Code ist nur für bestehende Programmierer gedacht'
-        ],
-        correct: 1,
-        explanation: 'Claude Code benötigt keine Programmierkenntnisse — eine klare Beschreibung auf Deutsch reicht, um vollständige Webseiten oder Apps zu generieren.'
-      },
-      {
-        q: 'Welche drei Typen von Erweiterungen gibt es im Claude-Ökosystem?',
-        options: [
-          'Add-ons, Webhooks und Skripte',
-          'Skills, Plugins und Konnektoren',
-          'Makros, Templates und Agenten',
-          'Bots, Widgets und APIs'
-        ],
-        correct: 1,
-        explanation: 'Skills (einzelne Fähigkeiten), Plugins (Sammlungen) und Konnektoren (Schnittstellen zu Diensten wie Gmail, Notion) bilden das Erweiterungsökosystem.'
-      },
-      {
-        q: 'Welches Modell aus der Claude-Familie bietet das beste Preis-Leistungs-Verhältnis für den täglichen Einsatz bei Standardaufgaben?',
-        options: [
-          'Haiku — weil es das günstigste ist',
-          'Opus — weil es das Beste ist',
-          'Sonnet — der Allrounder mit ausgewogenem Verhältnis aus Geschwindigkeit und Intelligenz',
-          'Keines — alle Modelle sind für den täglichen Einsatz ungeeignet'
+          'Add-ons, Webhooks und kleine wiederverwendbare Hilfsskripte',
+          'Makros, vorgefertigte Templates und eigenständig laufende Agenten',
+          'Skills, Plugins und Konnektoren zu externen Diensten',
+          'Bots, einbettbare Widgets und offene Programmierschnittstellen'
         ],
         correct: 2,
-        explanation: 'Sonnet ist der „Allrounder" — ausgewogenes Verhältnis aus Geschwindigkeit und Intelligenz, ideal für den täglichen Arbeitseinsatz.'
+        explanation: 'Skills (einzelne Fähigkeiten), Plugins (gebündelte Sammlungen) und Konnektoren (Schnittstellen zu Diensten wie Gmail oder Notion) bilden das Erweiterungssystem.'
       },
       {
-        q: 'Was ist der Zweck von Konnektoren im Claude-Ökosystem?',
+        q: 'Für wiederkehrende Standardaufgaben im Arbeitsalltag soll das Modell mit dem besten Preis-Leistungs-Verhältnis gewählt werden. Welche Begründung passt?',
         options: [
-          'Sie verbinden verschiedene Claude-Modelle miteinander',
-          'Sie stellen direkte Schnittstellen zu externen Diensten wie Gmail, Google Calendar oder Notion her',
-          'Sie verknüpfen mehrere Projects zu einem Mega-Project',
-          'Konnektoren dienen ausschließlich der Datensicherung'
+          'Haiku, weil es von allen Modellen mit Abstand am wenigsten kostet',
+          'Sonnet, weil es Geschwindigkeit und Intelligenz ausgewogen verbindet',
+          'Opus, weil seine Antwortqualität jede andere Option deutlich übertrifft',
+          'Keines, da sich kein Modell für den täglichen Einsatz wirklich eignet'
         ],
         correct: 1,
+        explanation: 'Sonnet ist der Allrounder mit ausgewogenem Verhältnis aus Geschwindigkeit und Intelligenz — ideal für den täglichen Arbeitseinsatz.'
+      },
+      {
+        q: 'Ein Kollege fragt, wofür Konnektoren im Claude-Ökosystem eigentlich gut sind. Welche Beschreibung trifft zu?',
+        options: [
+          'Sie koppeln verschiedene Claude-Modelle unmittelbar aneinander',
+          'Sie führen mehrere Projects zu einem einzigen großen Project zusammen',
+          'Sie dienen einzig der regelmäßigen Sicherung bestehender Chatverläufe',
+          'Sie schaffen Schnittstellen zu Diensten wie Gmail, Kalender oder Notion'
+        ],
+        correct: 3,
         explanation: 'Konnektoren sind Schnittstellen zu externen Diensten — Claude kann damit E-Mails lesen, Kalender verwalten oder in Notion schreiben.'
       },
       {
-        q: 'Warum kann Claude Cowork Aufgaben im Hintergrund erledigen?',
+        q: 'Warum kann ausgerechnet Claude Cowork Aufgaben auch dann fortführen, wenn man nicht aktiv zusieht?',
         options: [
-          'Weil es ein separater Cloud-Dienst ist, der unabhängig läuft',
-          'Weil es in der Desktop-App lebt und direkten Zugriff auf das Betriebssystem und lokale Dateien hat',
-          'Weil Claude Cowork eine versteckte Browser-Extension nutzt',
-          'Hintergrundverarbeitung ist in Claude Cowork nicht möglich'
+          'Weil es in der Desktop-App sitzt und direkt auf das Betriebssystem zugreift',
+          'Weil es als eigenständiger Cloud-Dienst völlig unabhängig im Netz arbeitet',
+          'Weil es im Hintergrund heimlich eine versteckte Browser-Extension nutzt',
+          'Gar nicht, denn eine echte Hintergrundverarbeitung gibt es bei Cowork nicht'
         ],
-        correct: 1,
-        explanation: 'Claude Cowork ist in der Desktop-App integriert und hat daher nativen Zugriff auf lokale Dateien und Prozesse — was autonome Hintergrundarbeit ermöglicht.'
+        correct: 0,
+        explanation: 'Cowork ist in der Desktop-App integriert und hat damit nativen Zugriff auf lokale Dateien und Prozesse — die Grundlage für autonome Hintergrundarbeit.'
       }
     ]
   },
@@ -433,54 +433,54 @@ const CURRICULUM = [
     `,
     quiz: [
       {
-        q: 'Was bedeutet es, dass Prompt Engineering eine "iterative Wissenschaft" ist?',
-        options: ['Man kopiert Prompts aus dem Internet', 'Man startet mit einer Basis, analysiert Fehler und verbessert schrittweise', 'Man schreibt einmal einen perfekten Prompt', 'Man lässt die KI den Prompt selbst schreiben'],
-        correct: 1, explanation: 'Iterativ = schrittweise verbessern. Basis → Fehler analysieren → ausbauen → wiederholen.'
+        q: 'Prompt Engineering wird als "iterative Wissenschaft" beschrieben. Welches Vorgehen entspricht dieser Idee am genauesten?',
+        options: ['Man kopiert bewährte Prompts aus dem Internet und nutzt sie unverändert', 'Man startet mit einer Basis, analysiert Schwächen und verbessert schrittweise', 'Man formuliert von Anfang an einen einzigen, fertigen und perfekten Prompt', 'Man überlässt der KI das eigenständige Schreiben des kompletten Prompts'],
+        correct: 1, explanation: 'Iterativ heißt schrittweise verbessern: mit einer Basis starten, Fehler analysieren, ausbauen und wiederholen.'
       },
       {
-        q: 'Welcher der 6 Bausteine wird als "Herzstück" eines Prompts bezeichnet?',
-        options: ['Der Kontext', 'Das Output-Format', 'Die Rolle', 'Die Aufgabe — sie startet immer mit einem Verb'],
-        correct: 3, explanation: 'Die Aufgabe ist das Herzstück. Sie muss konkret sein und mit einem Verb starten.'
+        q: 'Von den sechs Bausteinen eines Prompts gilt einer als das "Herzstück". Welcher ist gemeint und warum?',
+        options: ['Der Kontext, da er alle nötigen Hintergrundinformationen für die Antwort liefert', 'Das Output-Format, weil es die Form des Ergebnisses verbindlich vorab festlegt', 'Die Rolle, weil sie Claude die passende Perspektive und Fachexpertise zuweist', 'Die Aufgabe, denn sie ist konkret und beginnt stets mit einem klaren Verb'],
+        correct: 3, explanation: 'Die Aufgabe ist das Herzstück: Sie muss konkret formuliert sein und startet immer mit einem Verb.'
       },
       {
-        q: 'Wozu dienen "Stoppkriterien" in einem Prompt?',
-        options: ['Sie beenden den Chat nach einer bestimmten Zeit', 'Sie verhindern, dass Claude Fragen stellt', 'Sie setzen Grenzen gegen Halluzinationen', 'Sie begrenzen die Wortanzahl auf 100 Wörter'],
-        correct: 2, explanation: 'Stoppkriterien verhindern, dass Claude ratet statt Unsicherheit zuzugeben.'
+        q: 'In einem Prompt werden bewusst "Stoppkriterien" gesetzt. Welche Funktion erfüllen sie?',
+        options: ['Sie beenden den laufenden Chat nach einer fest definierten Zeitspanne automatisch', 'Sie verhindern grundsätzlich, dass Claude überhaupt jemals Rückfragen an dich stellt', 'Sie setzen klare Grenzen und beugen erfundenen, halluzinierten Antworten gezielt vor', 'Sie begrenzen jede einzelne Antwort fest auf höchstens einhundert Wörter Länge'],
+        correct: 2, explanation: 'Stoppkriterien verhindern, dass Claude rät statt Unsicherheit offen zuzugeben — sie wirken gegen Halluzinationen.'
       },
       {
-        q: 'Warum empfiehlt Anthropic XML-Tags im Prompt?',
-        options: ['Weil sie den Prompt verschlüsseln', 'Weil Claude darauf trainiert wurde und sich gezielt auf Abschnitte beziehen kann', 'Weil sie für die Websuche nötig sind', 'Weil sie den Prompt optisch schöner machen'],
-        correct: 1, explanation: 'Claude wurde auf XML-Struktur trainiert. Tags ermöglichen gezielte Referenzierung.'
+        q: 'Anthropic empfiehlt, Prompts mit XML-Tags zu strukturieren. Worin liegt der eigentliche Nutzen?',
+        options: ['Claude wurde darauf trainiert und kann sich gezielt auf einzelne Abschnitte beziehen', 'Die Tags verschlüsseln den Prompt, sodass Außenstehende ihn nicht mehr mitlesen können', 'Ohne solche Tags lässt sich die integrierte Websuche von Claude gar nicht erst aktivieren', 'Die Tags lassen den Prompt für den menschlichen Betrachter lediglich aufgeräumter wirken'],
+        correct: 0, explanation: 'Claude wurde auf XML-Struktur trainiert; Tags ermöglichen die gezielte Referenzierung einzelner Abschnitte.'
       },
       {
-        q: 'Was ist "Prompt Chaining"?',
-        options: ['Den Prompt in eine Kette aus Emojis verpacken', 'Prompts automatisch übersetzen', 'Eine große Aufgabe in kleine, aufeinanderfolgende Prompts zerlegen', 'Mehrere KI-Modelle gleichzeitig nutzen'],
-        correct: 2, explanation: 'Prompt Chaining: Große Aufgabe → kleine Schritte → Teilergebnisse prüfen → weiter.'
+        q: 'Eine umfangreiche Aufgabe soll über "Prompt Chaining" gelöst werden. Was beschreibt diese Technik korrekt?',
+        options: ['Man verpackt einen Prompt in eine möglichst lange, dekorative Kette aus Emojis', 'Man zerlegt eine große Aufgabe in kleine, sinnvoll aufeinanderfolgende Prompts', 'Man lässt jeden eingegebenen Prompt automatisch in mehrere andere Sprachen übersetzen', 'Man setzt mehrere KI-Modelle exakt gleichzeitig für ein und dieselbe Aufgabe ein'],
+        correct: 1, explanation: 'Prompt Chaining zerlegt eine große Aufgabe in kleine Schritte, deren Teilergebnisse geprüft und weiterverwendet werden.'
       },
       {
-        q: 'Was bewirkt "Self-Reflection" als Prompt-Technik?',
-        options: ['Claude erstellt automatisch ein Tagebuch', 'Der User reflektiert über seine Frage', 'Claude meditiert vor jeder Antwort', 'Claude prüft seine Antwort selbst auf Fehler und überarbeitet sie'],
-        correct: 3, explanation: 'Self-Reflection: Claude wird gebeten, seine Antwort kritisch zu prüfen und zu verbessern.'
+        q: 'Die Technik "Self-Reflection" wird in einem Prompt eingesetzt. Was bewirkt sie konkret?',
+        options: ['Claude legt im Hintergrund automatisch ein fortlaufendes Tagebuch seiner Antworten an', 'Der Nutzer reflektiert zunächst gründlich und in Ruhe über die eigene Fragestellung', 'Claude legt vor jeder Antwort eine kurze gedankliche Pause zum Sortieren der Inhalte ein', 'Claude prüft die eigene Antwort kritisch auf Fehler und überarbeitet sie anschließend'],
+        correct: 3, explanation: 'Bei Self-Reflection wird Claude gebeten, die eigene Antwort kritisch zu prüfen und gezielt zu verbessern.'
       },
       {
-        q: 'Wie funktioniert Pre-filling?',
-        options: ['Man speichert häufig genutzte Prompts', 'Man gibt Claude den Anfang seiner Antwort vor (z.B. { für JSON)', 'Man lässt Claude den Chat zusammenfassen', 'Man füllt ein Online-Formular aus'],
-        correct: 1, explanation: 'Pre-filling: Antwort mit { beginnen = JSON erzwingen.'
+        q: 'Du nutzt die Technik "Pre-filling". Welche Beschreibung trifft genau zu?',
+        options: ['Man gibt Claude den Anfang der Antwort vor, etwa { als Start für ein JSON-Objekt', 'Man legt häufig genutzte Prompts in einer Bibliothek zur späteren Wiederverwendung ab', 'Man bittet Claude darum, den gesamten bisherigen Chatverlauf knapp zusammenzufassen', 'Man füllt vorab ein klassisches Online-Formular mit den eigenen Angaben vollständig aus'],
+        correct: 0, explanation: 'Pre-filling gibt den Antwortanfang vor — beginnt die Antwort mit {, erzwingt das zuverlässig ein JSON-Format.'
       },
       {
-        q: 'Warum sollten statische Informationen in den System-Prompt?',
-        options: ['Weil der System-Prompt unbegrenzt lang sein kann', 'Weil normale Prompts keine Dokumente akzeptieren', 'Weil statische Infos durch Caching nicht jedes Mal neu eingelesen werden', 'Weil der System-Prompt schneller tippt'],
-        correct: 2, explanation: 'Caching: Statische Infos werden gecacht = weniger Verarbeitungszeit.'
+        q: 'Statische, gleichbleibende Informationen gehören in den System-Prompt statt in jede Anfrage. Warum?',
+        options: ['Weil der System-Prompt im Gegensatz zu normalen Eingaben unbegrenzt lang sein darf', 'Weil gewöhnliche Prompts grundsätzlich keine angehängten Dokumente akzeptieren können', 'Weil statische Inhalte dank Caching nicht bei jeder einzelnen Anfrage neu gelesen werden', 'Weil der System-Prompt die eingegebenen Inhalte spürbar und messbar schneller verarbeitet'],
+        correct: 2, explanation: 'Statische Inhalte im System-Prompt werden gecacht und müssen nicht bei jeder Anfrage neu eingelesen werden.'
       },
       {
-        q: 'Welche Reihenfolge gilt bei kombinierter Bild-Text-Analyse?',
-        options: ['Die Reihenfolge spielt keine Rolle', 'Erst klare Fakten (Formular), dann interpretative Daten (Skizze)', 'Beides gleichzeitig für Effizienz', 'Erst die Skizze, dann das Formular'],
-        correct: 1, explanation: 'Form vor Sketch: Strukturierte Daten liefern den Kontext für die Interpretation.'
+        q: 'Du analysierst gemeinsam ein ausgefülltes Formular und eine grobe Handskizze. Welche Reihenfolge ist sinnvoll?',
+        options: ['Die Reihenfolge ist unerheblich, da Claude beide Quellen ohnehin völlig gleich gewichtet', 'Zuerst die klaren Fakten des Formulars, danach die deutungsbedürftige Handskizze', 'Beide Quellen gleichzeitig einreichen, weil das die Verarbeitung am stärksten beschleunigt', 'Zuerst die Handskizze interpretieren und erst danach das strukturierte Formular auswerten'],
+        correct: 1, explanation: 'Form vor Sketch: Die strukturierten Fakten liefern den Kontext, vor dem sich die Skizze richtig deuten lässt.'
       },
       {
-        q: 'Was ist der Vorteil von Few-Shot Prompting?',
-        options: ['Es funktioniert nur mit Claude Opus', 'Es ist billiger weil weniger Tokens verbraucht werden', '1–3 konkrete Beispiele zeigen Claude das Ergebnis besser als lange Beschreibungen', 'Few-Shot funktioniert nur für Code'],
-        correct: 2, explanation: 'Konkrete Beispiele sind oft mächtiger als lange Erklärungen — Claude lernt am Muster.'
+        q: 'Few-Shot Prompting wird gegenüber einer langen Beschreibung bevorzugt. Worin liegt sein zentraler Vorteil?',
+        options: ['Es funktioniert technisch bedingt ausschließlich mit dem leistungsstärksten Modell Opus', 'Es senkt die Kosten spürbar, weil dabei insgesamt deutlich weniger Tokens verbraucht werden', 'Es eignet sich nur für das Erzeugen und Korrigieren von strukturiertem Programmcode', 'Wenige konkrete Beispiele zeigen das gewünschte Ergebnis klarer als lange Beschreibungen'],
+        correct: 3, explanation: 'Ein bis drei konkrete Beispiele machen das Ziel oft greifbarer als lange Erklärungen — Claude lernt am Muster.'
       }
     ]
   },

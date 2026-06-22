@@ -241,7 +241,7 @@ function renderCertificate() {
   un.innerHTML =
     '<div class="section-eyebrow">/ Certificate</div>' +
     '<h2 class="section-title">Ihr Zertifikat</h2>' +
-    '<p class="section-lede" style="margin-bottom:48px">Herzlichen Glückwunsch — laden Sie Ihr Zertifikat herunter und teilen Sie es auf LinkedIn.</p>' +
+    '<p class="section-lede" style="margin-bottom:48px">Herzlichen Glückwunsch — laden Sie Ihr persönliches Zertifikat als PDF herunter.</p>' +
     '<div class="certificate" id="certDoc">' +
       '<div class="cert-corner cert-corner-tl"></div><div class="cert-corner cert-corner-tr"></div>' +
       '<div class="cert-corner cert-corner-bl"></div><div class="cert-corner cert-corner-br"></div>' +
@@ -255,7 +255,7 @@ function renderCertificate() {
       '<div class="cert-meta">' +
         '<div class="cert-meta-item"><div class="cert-meta-label">Abschlussdatum</div><div class="cert-meta-value">' + ds + '</div></div>' +
         '<div class="cert-meta-item"><div class="cert-meta-label">Credential ID</div><div class="cert-meta-value cert-meta-mono">' + cid + '</div></div>' +
-        '<div class="cert-meta-item"><div class="cert-meta-label">Ausgestellt von</div><div class="cert-meta-value cert-signature">S. Heilmann</div><div class="cert-meta-role">Group CEO, IEG</div></div>' +
+        '<div class="cert-meta-item"><div class="cert-meta-label">Ausgestellt von</div><div class="cert-meta-value cert-signature">Stefan Heilmann</div><div class="cert-meta-role">Group CEO, IEG</div></div>' +
       '</div>' +
       '<div class="cert-verify">Credential ID: <span class="cert-meta-mono">' + cid + '</span></div>' +
     '</div>' +
@@ -263,10 +263,6 @@ function renderCertificate() {
       '<button class="btn btn-primary" onclick="printCertificate()">' +
         '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>' +
         'Als PDF speichern' +
-      '</button>' +
-      '<button class="btn btn-ghost" onclick="copyLinkedIn(\'' + esc(cid) + '\', \'' + esc(ds) + '\')">' +
-        '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>' +
-        'Für LinkedIn kopieren' +
       '</button>' +
     '</div>';
 }
@@ -285,16 +281,6 @@ function printCertificate() {
   win.document.write('</head><body>' + html + '</body></html>');
   win.document.close();
   win.onload = function() { win.focus(); win.print(); };
-}
-
-function copyLinkedIn(cid, dateStr) {
-  var text = 'Ich habe die IEG Claude Academy abgeschlossen — ein internes Training zu KI-Workflows im Investment Banking.\n\nCredential ID: ' + cid + '\nAusgestellt: ' + dateStr + '\nAusgestellt von: IEG Investment Banking Group\n\n#IEG #InvestmentBanking #AI #Claude #Weiterbildung';
-  navigator.clipboard.writeText(text).then(function() {
-    var btn = event.target.closest('button');
-    var orig = btn.innerHTML;
-    btn.textContent = 'Kopiert!';
-    setTimeout(function() { btn.innerHTML = orig; }, 2000);
-  });
 }
 
 function esc(s) { return String(s).replace(/[&<>"']/g, function(c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
