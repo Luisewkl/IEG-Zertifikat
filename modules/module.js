@@ -301,6 +301,9 @@ function finishQuiz() {
     saveProgressToSupabase(state); // Save progress to Supabase after module quiz passed
   }
 
+  // Nächstes-Modul-Karte sofort entsperren, falls jetzt bestanden (ohne Reload)
+  updateNextModuleLock();
+
   const title = passed ? 'Modul abgeschlossen' : 'Knapp daneben';
   const msg = passed
     ? `Sie haben Modul ${String(MODULE_ID).padStart(2, '0')} erfolgreich abgeschlossen. Das nächste Kapitel ist nun freigeschaltet.`
@@ -342,6 +345,43 @@ document.addEventListener('keydown', (e) => {
     closeQuiz();
   }
 });
+
+// ---------- NÄCHSTES MODUL ERST NACH BESTANDENEM QUIZ FREISCHALTEN ----------
+function isCurrentModuleCompleted() {
+  const s = loadState();
+  return Array.isArray(s.completed) && s.completed.indexOf(MODULE_ID) !== -1;
+}
+
+// Sperrt die "Nächstes Modul"-Karte, solange das aktuelle Modul-Quiz
+// nicht mit mindestens PASS_THRESHOLD % bestanden wurde.
+function updateNextModuleLock() {
+  const card = document.querySelector('.nav-card-next');
+  if (!card) return;
+  const threshold = (typeof PASS_THRESHOLD !== 'undefined') ? PASS_THRESHOLD : 70;
+
+  if (isCurrentModuleCompleted()) {
+    // freischalten
+    card.classList.remove('nav-card-locked');
+    if (card.dataset.lockedHref) { card.setAttribute('href', card.dataset.lockedHref); delete card.dataset.lockedHref; }
+    card.removeAttribute('aria-disabled');
+    const hint = card.querySelector('.nav-card-lock-hint');
+    if (hint) hint.remove();
+  } else {
+    // sperren: Link deaktivieren + Hinweis anzeigen
+    card.classList.add('nav-card-locked');
+    card.setAttribute('aria-disabled', 'true');
+    const href = card.getAttribute('href');
+    if (href) { card.dataset.lockedHref = href; card.removeAttribute('href'); }
+    if (!card.querySelector('.nav-card-lock-hint')) {
+      const hint = document.createElement('div');
+      hint.className = 'nav-card-lock-hint';
+      hint.textContent = '🔒 Erst nach bestandenem Quiz (≥ ' + threshold + ' %)';
+      card.appendChild(hint);
+    }
+  }
+}
+
+document.addEventListener('DOMContentLoaded', updateNextModuleLock);
 
 // ---------- EXERCISE SOLUTION TOGGLE ----------
 function toggleSolution(btn) {
