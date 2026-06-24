@@ -1036,6 +1036,196 @@ const CURRICULUM = [
         explanation: 'Cowork verwandelt Rohdaten in fertige Dokumente — z.B. Excel-Tabellen, CSV-Tracker oder PowerPoint-Präsentationen.'
       }
     ]
+  },
+  {
+    id: 7,
+    number: '07',
+    meta: 'Praxis · Modul 7',
+    title: 'Claude in Microsoft Office (Excel & PowerPoint)',
+    desc: 'Das Claude Add-in direkt in Excel und PowerPoint: Formeln per Sprache generieren, VBA-Makros schreiben, Zirkelbezüge korrigieren und vollständige Präsentationen aus Datentabellen erzeugen — inklusive Setup, Sicherheit und Grenzen der Integration.',
+    duration: '25 Min.',
+    videos: [
+      { url: 'https://www.youtube.com/embed/uLJp_4XCNIg', title: 'Claude im Excel Add-in', caption: 'Video 7.1 · Claude im Excel Add-in — Formeln, Makros und Datenanalyse direkt im Sheet' },
+      { url: 'https://www.youtube.com/embed/oqN-_j6HdV4', title: 'Claude im PowerPoint Add-in', caption: 'Video 7.2 · Claude im PowerPoint Add-in — Folien und Sprechernotizen automatisieren' },
+    ],
+    images: [],
+    longContent: '',
+    content: `
+      <h3>1. Zwei Betriebsmodi: Add-in vs. Direktintegration</h3>
+      <p>Claude lässt sich auf zwei grundlegend verschiedene Arten mit Microsoft Office kombinieren:</p>
+      <table>
+        <thead><tr><th>Modus</th><th>Zugang</th><th>Kernvorteil</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Eigenständiger Chat</strong></td><td>Browser oder Desktop-App</td><td>Flexible Allzwecklösung — ideal für Text, Recherche und Analyse ohne Dateikontext</td></tr>
+          <tr><td><strong>Office Add-in</strong></td><td>Direkt in Excel / PowerPoint</td><td>Claude sieht die geöffnete Datei und kann Zellen, Formeln und Folien <em>direkt bearbeiten</em></td></tr>
+        </tbody>
+      </table>
+      <div class="callout">
+        <div class="callout-title">Der entscheidende Unterschied</div>
+        <p>Im eigenständigen Chat muss man Daten manuell einfügen. Das Add-in liest den geöffneten Dokumentenkontext automatisch — Claude weiß, welche Zellen markiert sind und kann direkt eingreifen.</p>
+      </div>
+
+      <h3>2. Einrichtung des Claude Add-ins</h3>
+      <ul>
+        <li><strong>Installation:</strong> Das Add-in wird im Microsoft AppSource Store gesucht (Suchbegriff: „Claude") und mit einem Klick installiert.</li>
+        <li><strong>Voraussetzung:</strong> Ein aktives <strong>Claude Pro- oder Team-Abo</strong> ist erforderlich — die kostenlose Version unterstützt das Add-in nicht.</li>
+        <li><strong>Authentifizierung:</strong> Beim ersten Start wird die Anthropic-Anmeldung einmalig verknüpft. Das Add-in erscheint danach als Seitenleiste in Excel und PowerPoint.</li>
+        <li><strong>Kein IT-Aufwand:</strong> Da es sich um ein Standard-Office-Add-in handelt, ist keine lokale Installation durch die IT-Abteilung nötig.</li>
+      </ul>
+
+      <h3>3. Claude in Excel — Kernfunktionen</h3>
+      <h4>Formeln per Sprache generieren</h4>
+      <p>Statt Syntax nachzuschlagen, reicht eine natürlichsprachliche Beschreibung: <em>„Gib mir die Summe aller Zellen in Spalte C, bei denen Spalte A ‚Berlin' enthält"</em> — Claude schreibt die passende SUMIF-Formel und setzt sie direkt in die Zielzelle.</p>
+
+      <h4>Daten transformieren und bereinigen</h4>
+      <p>Claude kann markierte Bereiche strukturieren: Duplikate entfernen, Spalten aufteilen, fehlende Werte ergänzen oder Datumsspalten vereinheitlichen — alles per Anweisung im natürlichen Sprachtext.</p>
+
+      <h4>VBA-Makros schreiben</h4>
+      <p>Wiederkehrende Aufgaben lassen sich als Makro automatisieren. Claude schreibt den vollständigen VBA-Code auf Basis einer Aufgabenbeschreibung. <strong>Wichtig:</strong> Claude schreibt das Makro, kann es aber nicht selbst ausführen — der Nutzer startet es manuell über den VBA-Editor.</p>
+
+      <h4>Fehler erkennen und korrigieren</h4>
+      <p>Klassische Probleme wie <strong>Zirkelbezüge</strong> erkennt Claude auf Anhieb: Es identifiziert, welche Formel den Fehler verursacht, erklärt die Ursache und korrigiert die betroffene Zelle direkt — im Modus <strong>„Accept all edits"</strong> sogar ohne weitere Rückfrage.</p>
+      <div class="callout callout-success">
+        <div class="callout-title">Accept all edits — Modus</div>
+        <p>Wenn dieser Modus aktiviert ist, übernimmt Claude Korrekturen, Formeln und Datentransformationen sofort in die Zellen — ohne jede Zwischenfrage. Deaktiviert man ihn, schlägt Claude Änderungen vor, die der Nutzer einzeln freigeben muss.</p>
+      </div>
+
+      <h3>4. Claude in PowerPoint — Präsentationen automatisieren</h3>
+      <ul>
+        <li><strong>Folien aus Daten generieren:</strong> Eine Tabelle (z.&thinsp;B. Quartalszahlen) oder eine kurze Gliederung reichen, um Claude vollständige Folien mit Überschriften, Bullet-Points und passenden Zahlen erstellen zu lassen.</li>
+        <li><strong>Sprechernotizen:</strong> Claude ergänzt zu jeder Folie automatisch prägnante Sprechernotizen, die den Vortragenden durch die Kernaussagen führen.</li>
+        <li><strong>Inhalte überarbeiten:</strong> Texte kürzen, umformulieren oder in ein konsistentes Corporate-Design-Sprachmuster bringen — direkt im Seitenbereich.</li>
+        <li><strong>Daten zu Charts:</strong> Aus einer eingefügten Datentabelle schlägt Claude geeignete Diagrammtypen vor und erstellt die Visualisierung als Folieninhalt.</li>
+      </ul>
+
+      <h3>5. Workflows und Datensicherheit</h3>
+      <p>Das Add-in überträgt <strong>nur den markierten oder aktiven Zellbereich</strong> an Claudes Server — nicht die gesamte Arbeitsmappe. Das reduziert die übermittelten Daten, erfordert jedoch bewusstes Handeln bei vertraulichen Finanzmodellen.</p>
+      <div class="callout callout-warn">
+        <div class="callout-title">Datenschutz-Pflicht bei IEG</div>
+        <p>Auch im Add-in gilt: Keine echten Mandantendaten, Deal-Konditionen oder nicht-öffentlichen Finanzzahlen eingeben. Für sensible Modelle immer den <strong>IEG Claude Enterprise Account</strong> verwenden, der Datenverarbeitungsverträge und keine Trainingsnutzung der Daten gewährleistet.</p>
+      </div>
+      <p>Als Best Practice empfiehlt sich, <strong>kritische Werte vorab zu anonymisieren</strong> oder durch Platzhalter zu ersetzen, bevor ein Modell an Claude übergeben wird.</p>
+
+      <h3>6. Grenzen der Integration</h3>
+      <ul>
+        <li><strong>Keine direkte Makro-Ausführung:</strong> Claude kann VBA-Code schreiben, aber nicht ausführen — das bleibt eine manuelle Aktion.</li>
+        <li><strong>Kein Datenbankzugriff:</strong> Das Add-in hat keine Verbindung zu externen Systemen wie SAP, Bloomberg oder SQL-Datenbanken.</li>
+        <li><strong>Nur sichtbarer Kontext:</strong> Claude verarbeitet nur markierte oder aktive Inhalte — nicht implizit alle Tabellenblätter im Hintergrund.</li>
+        <li><strong>Keine Echtzeit-Synchronisation:</strong> Änderungen werden einmalig angewendet; automatische Aktualisierungen bei sich ändernden Quelldaten erfordern erneute Prompts.</li>
+      </ul>
+    `,
+    quiz: [
+      {
+        q: 'Was ist der entscheidende Unterschied zwischen dem Claude Add-in und dem eigenständigen Web-Chat beim Arbeiten in Excel?',
+        options: [
+          'Das Add-in schaltet automatisch auf das leistungsstärkste Modell um, sobald eine Datei geöffnet wird',
+          'Das Add-in speichert sämtliche Eingaben ausschließlich lokal ohne Serverübertragung',
+          'Das Add-in läuft direkt in Excel und kann den Dokumentenkontext lesen sowie Zellen direkt bearbeiten',
+          'Das Add-in ist auf Excel 2019 beschränkt und unterstützt kein Microsoft 365 Abonnement'
+        ],
+        correct: 2,
+        explanation: 'Im Add-in sieht Claude den geöffneten Dokumentenkontext — Zellen, Formeln, Struktur — und kann direkt eingreifen. Der Standalone-Chat kennt nur das, was manuell eingefügt wird.'
+      },
+      {
+        q: 'Was bewirkt der aktivierte Modus „Accept all edits" im Claude Excel-Add-in?',
+        options: [
+          'Claude übernimmt Formelkorrekturen und Datenänderungen sofort in die Zellen, ohne erneut nachzufragen',
+          'Claude speichert die gesamte Arbeitsmappe und lädt sie automatisch auf OneDrive hoch',
+          'Claude akzeptiert jede Nutzereingabe ohne Inhaltsmoderation oder Sicherheitsfilter',
+          'Claude importiert externe Dateien aus Netzlaufwerken und führt sie mit dem aktiven Blatt zusammen'
+        ],
+        correct: 0,
+        explanation: 'Im Modus „Accept all edits" werden Korrekturen, Formeln und Transformationen sofort in die Zellen übernommen — ohne Zwischenfrage oder Einzelfreigabe.'
+      },
+      {
+        q: 'Welche Daten überträgt das Claude Excel-Add-in an Anthropics Server, wenn eine Formel generiert wird?',
+        options: [
+          'Die gesamte Arbeitsmappe inklusive aller Tabellenblätter, ausgeblendeter Tabs und eingebetteter Makros',
+          'Alle in Microsoft 365 geöffneten Dateien — auch Word- und PowerPoint-Dokumente im Hintergrund',
+          'Alle Kalendereinträge und E-Mails, die mit dem Outlook-Konto des aktuellen Nutzers verknüpft sind',
+          'Nur den markierten Zellbereich oder den aktiv bearbeiteten Inhalt der aktuellen Ansicht'
+        ],
+        correct: 3,
+        explanation: 'Das Add-in überträgt nur den selektierten oder aktiven Bereich an Claude — nicht die gesamte Arbeitsmappe. Das reduziert die Datenmenge, erfordert aber bewusstes Handeln bei sensiblen Modellen.'
+      },
+      {
+        q: 'Was ist eine zentrale Einschränkung beim Einsatz von Claude für VBA-Makros in Excel?',
+        options: [
+          'Claude verweigert generell das Schreiben von VBA-Code und verweist stattdessen auf Power Query',
+          'Claude schreibt den Makro-Code, kann ihn aber nicht selbst ausführen — der Nutzer muss ihn manuell starten',
+          'Von Claude generierte VBA-Makros sind aus Sicherheitsgründen auf reine Lesezugriffe beschränkt',
+          'Claude unterstützt VBA ausschließlich in älteren Excel-Versionen vor Microsoft 365'
+        ],
+        correct: 1,
+        explanation: 'Claude erstellt den vollständigen VBA-Code auf Basis einer Aufgabenbeschreibung, kann ihn jedoch nicht selbst ausführen — das Starten über den VBA-Editor bleibt eine manuelle Aktion.'
+      },
+      {
+        q: 'Was wird bei der Einrichtung des Claude Add-ins im Microsoft AppSource Store vorausgesetzt?',
+        options: [
+          'Ein kostenloses Anthropic-Konto reicht aus, da Office-Integration Teil des Basis-Tiers ist',
+          'Eine Enterprise-Lizenz von Microsoft, die Premium-KI-Funktionen als Standard enthält',
+          'Ein aktives Claude Pro- oder Team-Abonnement sowie das über AppSource installierte Add-in',
+          'Ein spezieller Entwickler-API-Key, der individuell beim Anthropic-Support angefordert wird'
+        ],
+        correct: 2,
+        explanation: 'Das Add-in erfordert ein aktives Claude Pro- oder Team-Abo. Es wird über den Microsoft AppSource Store installiert — ohne lokalen IT-Aufwand.'
+      },
+      {
+        q: 'Welchen Hauptvorteil bietet das Claude PowerPoint-Add-in im Präsentationsworkflow?',
+        options: [
+          'Claude erstellt vollständige Folien und Sprechernotizen direkt aus Textzusammenfassungen oder Datentabellen',
+          'Claude komprimiert automatisch alle Bilder in der Präsentation für schnellere Ladezeiten',
+          'Claude exportiert fertige Präsentationen direkt als PDF und versendet sie per Outlook-Konnektor',
+          'Claude scannt alle vorhandenen Folien und erstellt automatisch eine Inhaltsfolie am Anfang'
+        ],
+        correct: 0,
+        explanation: 'Das PowerPoint-Add-in kann aus einer Datentabelle oder Gliederung vollständige Folien mit Inhalten und Sprechernotizen erzeugen — direkt im Seitenbereich der Anwendung.'
+      },
+      {
+        q: 'Wie reagiert Claude bei einem erkannten Zirkelbezug-Fehler in einer Excel-Tabelle?',
+        options: [
+          'Claude löscht die betroffenen Zeilen und baut die Berechnung vollständig von Grund auf neu',
+          'Claude speichert die Datei unter einem neuen Namen und markiert den Fehler mit einem roten Kommentarfeld',
+          'Claude wandelt die Formel in einen statischen Wert um und verhindert so jede weitere Neuberechnung',
+          'Claude identifiziert die fehlerauslösende Formel, erklärt die Ursache und korrigiert die Zelle direkt'
+        ],
+        correct: 3,
+        explanation: 'Claude erkennt Zirkelbezüge auf Anhieb: Es identifiziert die Problemformel, erklärt warum der Fehler entstand und korrigiert sie direkt in der Zelle — im „Accept all edits"-Modus ohne Rückfrage.'
+      },
+      {
+        q: 'Warum ist das Add-in dem eigenständigen Chat bei komplexen Datentransformationen überlegen?',
+        options: [
+          'Das Add-in speichert Eingaben ausschließlich lokal und sendet keinerlei Daten an externe Server',
+          'Claude sieht die Tabellenstruktur direkt und kann Spalten, Zeilen und Zelladressen gezielt referenzieren',
+          'Das Add-in aktiviert exklusiv das Opus-Modell, das im Standalone-Chat nicht verfügbar ist',
+          'Das Add-in ersetzt Excels eingebaute Formelbibliothek durch eine eigene Berechnungsengine'
+        ],
+        correct: 1,
+        explanation: 'Im Add-in kennt Claude die tatsächliche Tabellenstruktur — Spaltenköpfe, Zelladressen, Formeln. Das ermöglicht präzise Transformationen, die im Chat ohne diesen Kontext nicht möglich wären.'
+      },
+      {
+        q: 'Welche Einschränkung gilt besonders beim Einsatz des Add-ins für vertrauliche Finanzmodelle?',
+        options: [
+          'Claude verweigert die Analyse von Tabellenblättern mit Werten über zehn Millionen Euro',
+          'Finanzformeln sind aus Haftungsgründen durch Claude nicht editierbar und werden übersprungen',
+          'Die übermittelten Zellbereiche landen auf Anthropic-Servern — vertrauliche Daten müssen vorab anonymisiert werden',
+          'Claude kann keine Währungssymbole verarbeiten und erfordert Zahlen im reinen Zahlenformat'
+        ],
+        correct: 2,
+        explanation: 'Das Add-in überträgt markierte Bereiche an Claude-Server. Bei sensiblen Finanzdaten gilt daher: vorab anonymisieren oder den IEG Enterprise Account nutzen, der Datenverarbeitungsgarantien bietet.'
+      },
+      {
+        q: 'Welcher Anwendungsfall zeigt den stärksten Wettbewerbsvorteil des Office Add-ins gegenüber Copy-Paste in den Chat?',
+        options: [
+          'Unstrukturierte Transaktionsdaten direkt in Excel bereinigen, ohne Daten manuell kopieren zu müssen',
+          'Die Excel-Formelleiste vollständig durch Claudes natürlichsprachliche Suche ersetzen',
+          'Excel-Daten kontinuierlich mit Claudes Gedächtnis synchronisieren für sitzungsübergreifenden Abruf',
+          'Excel-Tabellenblätter im PowerPoint-Viewer in interaktive Dashboards umwandeln'
+        ],
+        correct: 0,
+        explanation: 'Das Add-in liest den Dateikontext direkt — unstrukturierte Daten lassen sich direkt im Sheet bereinigen und transformieren, ohne umständliches Kopieren in den Chat und zurück.'
+      }
+    ]
   }
 ];
 
@@ -1044,14 +1234,14 @@ const FINAL_EXAM = [
   // Modul 00 — Ökosystem & Grundkurs
   // Q1 correct: A
   { q: 'Warum sollte für jedes neue Thema ein neuer Chat gestartet werden?', options: ['Themenmischung im selben Chat verwirrt das Modell und senkt die Ergebnisqualität deutlich', 'Das Datenlimit pro Chat ist auf 10 Nachrichten begrenzt und bricht danach automatisch ab', 'Claude verliert bei langen Chats den Zugriff auf Websuche und Dateianalyse-Funktion', 'Neue Chats werden schneller verarbeitet, da weniger Serverkapazität benötigt wird'], correct: 0, explanation: 'Chat-Disziplin: Ein Thema pro Chat. Mehrere Themen in einem Chat reduzieren die Antwortqualität erheblich.' },
-  // Q2 correct: B
-  { q: 'Welches Claude-Modell eignet sich für schnelle Formatierungsaufgaben wie eine einfache Kontaktliste?', options: ['Opus, weil es auch einfache Aufgaben mit maximaler Sorgfalt ausführt', 'Haiku, weil es das schnellste und für Routineaufgaben optimierte Modell ist', 'Sonnet, weil es standardmäßig in der kostenlosen Version aktiv ist', 'Alle drei Modelle liefern bei einfachen Formatierungen identische Ergebnisse'], correct: 1, explanation: 'Haiku ist das schnellste Modell — ideal für einfache, repetitive Aufgaben wie Formatierungen.' },
-  // Q3 correct: C
-  { q: 'Welches Claude-Modell ist standardmäßig in der kostenlosen Version verfügbar?', options: ['Haiku, weil es die geringsten Serverressourcen benötigt', 'Opus, weil Anthropic das leistungsstärkste Modell gratis anbieten will', 'Sonnet als ausgewogener Allrounder mit guter Balance aus Qualität und Geschwindigkeit', 'Claude Code, weil er ohne Bezahlung für Endnutzer freigeschaltet ist'], correct: 2, explanation: 'Sonnet ist der Standard in der Gratisversion — gute Balance aus Geschwindigkeit und Qualität.' },
+  // Q2 correct: C — Modul 07 Office Add-in
+  { q: 'Welchen entscheidenden Vorteil bietet das Claude Add-in gegenüber dem eigenständigen Chat beim Arbeiten in Excel?', options: ['Das Add-in schaltet automatisch auf das leistungsstärkste Modell um, sobald eine Tabelle geöffnet wird', 'Das Add-in speichert alle Eingaben ausschließlich lokal und sendet keinerlei Daten an externe Server', 'Claude sieht die Tabellenstruktur direkt und kann Zellinhalte kontextbezogen lesen und bearbeiten', 'Das Add-in ersetzt Excels eingebaute Formelbibliothek vollständig durch eine eigene Berechnungsengine'], correct: 2, explanation: 'Im Add-in kennt Claude die geöffnete Datei — Spaltenköpfe, Zelladressen, Formeln. Im Standalone-Chat ist nur das verfügbar, was manuell eingefügt wird.' },
+  // Q3 correct: D — Modul 07 Accept all edits
+  { q: 'Was versteht man unter dem Modus „Accept all edits" im Claude Excel-Add-in?', options: ['Claude fragt vor jeder einzelnen Zelländerung explizit nach Bestätigung und wartet auf Freigabe', 'Claude speichert die gesamte Arbeitsmappe automatisch und lädt sie parallel auf OneDrive hoch', 'Claude akzeptiert jede Nutzereingabe ohne Inhaltsmoderation oder Sicherheitsfilter', 'Claude wendet Formelkorrekturen und Datenänderungen direkt in den Zellen an, ohne erneut nachzufragen'], correct: 3, explanation: 'Im „Accept all edits"-Modus übernimmt Claude Korrekturen, Formeln und Transformationen sofort — ohne Zwischenfrage. Deaktiviert man ihn, werden Änderungen zur Einzelfreigabe vorgeschlagen.' },
   // Q4 correct: D
   { q: 'Welche Datenschutz-Einstellung muss bei IEG vor der ersten Nutzung verbindlich deaktiviert werden?', options: ['Der Inkognitomodus, damit keine Sitzungen dauerhaft in der Cloud gespeichert werden', 'Die Websuche-Funktion, damit externe Daten nicht in Claudes Training einfließen', 'Die globalen Präferenzen, um ungewollte Verhaltensanpassungen dauerhaft zu verhindern', 'Die Option „hilft dabei Claude zu verbessern", damit Eingaben nicht zum Modelltraining genutzt werden'], correct: 3, explanation: 'Die Trainings-Option muss einmalig deaktiviert werden, damit eigene Eingaben nicht zum Modelltraining verwendet werden.' },
-  // Q5 correct: A
-  { q: 'Was bewirkt der Inkognitomodus (Geist-Symbol) in Claude?', options: ['Chats werden nach dem Schließen nicht in der Seitenleiste gespeichert — ideal für einmalige Anfragen', 'Alle gesendeten Nachrichten werden Ende-zu-Ende verschlüsselt und sind für Dritte nicht lesbar', 'Das Modell wechselt automatisch auf Haiku für schnellere und datenschutzkonformere Antworten', 'Websuche und externe Konnektoren werden deaktiviert, um mögliche Datenlecks zu verhindern'], correct: 0, explanation: 'Inkognito-Chats werden nach dem Schließen nicht gespeichert — ideal für private oder einmalige Anfragen.' },
+  // Q5 correct: B — Modul 07 VBA limitation
+  { q: 'Welche Einschränkung gilt beim Einsatz von Claude für VBA-Makros in Excel?', options: ['Claude verweigert generell das Schreiben von VBA-Code und verweist stattdessen auf Power Query', 'Claude schreibt den Makro-Code vollständig, kann ihn aber nicht selbst ausführen — der Nutzer startet ihn manuell', 'Von Claude generierte VBA-Makros sind aus Sicherheitsgründen auf reine Lesezugriffe beschränkt', 'Claude unterstützt VBA ausschließlich für ältere Excel-Versionen vor Microsoft 365'], correct: 1, explanation: 'Claude erstellt VBA-Code auf Basis einer Aufgabenbeschreibung, kann ihn jedoch nicht selbst ausführen. Das Starten über den VBA-Editor bleibt eine manuelle Aktion des Nutzers.' },
   // Q6 correct: B
   { q: 'Welche Funktion ermöglicht Claude, hunderte Quellen in Sekunden zu durchsuchen?', options: ['Der erweiterte Nachdenkenmodus, der Claudes interne Wissensbasis tiefergehend aktiviert', 'Die Websuche über das Plus-Symbol, die aktuelle Daten mit belegten Quellenlinks liefert', 'Ein vorab eingerichteter Konnektor zu Google Scholar für wissenschaftliche Fachdatenbanken', 'Das Opus-Modell, das bei aktivierter Pro-Version automatisch Quellen eigenständig recherchiert'], correct: 1, explanation: 'Die Websuche (Plus-Symbol) erlaubt Claude, aktuelle Daten und Quellen live zu recherchieren.' },
   // Q7 correct: C
@@ -1104,8 +1294,8 @@ const FINAL_EXAM = [
   { q: 'Wie erstellt man einen neuen Skill am effizientesten?', options: ['Die Anweisungen manuell als YAML-Datei schreiben und über die Einstellungen importieren', 'Die Aufgabe zunächst im Chat lösen und prüfen, dann Claude anweisen, daraus einen Skill zu erstellen', 'Warten bis Claude nach 10 ähnlichen Chats automatisch einen Skill-Vorschlag generiert', 'Einen vorgefertigten Skill aus dem Claude Marketplace kaufen und an die eigenen Bedürfnisse anpassen'], correct: 1, explanation: 'Best Practice: Erst im Chat lösen und das Ergebnis prüfen, dann Claude bitten, den Workflow als Skill zu speichern.' },
   // Q27 correct: C
   { q: 'Was macht einen Skill im Team-Kontext besonders wertvoll?', options: ['Er ist an ein spezifisches Gerät gebunden und kann nicht versehentlich auf Fremdgeräten genutzt werden', 'Er läuft vollautomatisch im Hintergrund ohne Nutzer-Eingabe, solange das Gerät eingeschaltet ist', 'Er kann in jedem Chat genutzt und mit Kollegen geteilt werden, wodurch Expertenwissen skaliert', 'Er funktioniert ausschließlich mit dem Opus-Modell, das die nötige Rechenleistung für Skills bereitstellt'], correct: 2, explanation: 'Skills sind chatübergreifend verfügbar und können im Team geteilt werden — so wird Expertenwissen skalierbar.' },
-  // Q28 correct: D
-  { q: 'Wo findet man alle gespeicherten Skills in Claude?', options: ['In der Chat-Seitenleiste unter „Letzte Chats" als eigene Kategorie neben normalen Gesprächen', 'Auf der Anthropic-Website unter dem Bereich „My Account" → Downloads → Gespeicherte Skills', 'Im jeweiligen Project unter den Projekt-Einstellungen als projektlokale Fähigkeiten gespeichert', 'Unter Einstellungen → Customize → Skills als zentrale Verwaltungsseite für alle eigenen Skills'], correct: 3, explanation: 'Skills sind unter Einstellungen → Customize → Skills zu finden und zu verwalten.' },
+  // Q28 correct: A — Modul 07 data privacy
+  { q: 'Welcher Datenschutzaspekt muss beim Einsatz des Claude Excel-Add-ins für Finanzmodelle beachtet werden?', options: ['Die markierten Zellbereiche werden an Anthropic-Server übertragen — der Umgang mit sensiblen Daten muss bewusst erfolgen', 'Das Add-in speichert alle Zellinhalte dauerhaft im Claude-Gedächtnis und gibt sie in anderen Chats wieder aus', 'Alle im Hintergrund geöffneten Excel-Dateien werden automatisch mitübertragen, nicht nur die aktive Auswahl', 'Claude kann auf Basis der Tabellendaten selbstständig externe Datenbankabfragen starten und Daten nachladen'], correct: 0, explanation: 'Das Add-in überträgt markierte Bereiche an Claude-Server. Bei sensiblen Finanzdaten gilt daher: vorab anonymisieren oder den IEG Enterprise Account nutzen, der Datenverarbeitungsgarantien bietet.' },
 
   // Modul 05 — Finance Automation
   // Q29 correct: A
@@ -1114,8 +1304,8 @@ const FINAL_EXAM = [
   { q: 'Was ist der Hauptvorteil des Dynamic Dashboard Builders in der Finanzautomatisierung?', options: ['Er erstellt vorgefertigte statische PDF-Berichte mit professionellem Corporate Design für Kunden', 'Er erzeugt interaktive HTML-Dashboards mit Drill-Down-Funktionalität — Klick zeigt Detailberichte', 'Er lädt Echtzeitdaten direkt aus SAP, Bloomberg oder anderen ERP-Systemen via Konnektoren', 'Er sendet fertige Berichte automatisch per Outlook-Konnektor an vordefinierte Verteiler'], correct: 1, explanation: 'Der Dashboard Builder erstellt interaktives HTML — Klick auf Namen zeigt alle Detailberichte (Drill-Down).' },
   // Q31 correct: C
   { q: 'Warum wird ein separater Branding-Skill erstellt?', options: ['Weil Claude ohne gespeichertes Branding grundsätzlich keine formatierten Ausgaben generieren kann', 'Weil Unternehmensdesigns gesetzlich als Betriebsgeheimnisse registriert werden müssen', 'Damit alle Ausgaben automatisch das Corporate Design tragen — Farben, Stile und Regeln zentral gespeichert', 'Um das Claude-Interface für alle Nutzer im Unternehmen farblich und visuell anzupassen'], correct: 2, explanation: 'Der Branding-Skill hinterlegt Farben, Stile und Designregeln — jede Ausgabe sieht automatisch professionell und einheitlich aus.' },
-  // Q32 correct: D
-  { q: 'Was passiert, wenn man nach dem Setup des Super Skills "credit card report cycle" in Claude eingibt?', options: ['Claude fragt nach weiteren Präzisierungen, bevor er mit dem Workflow beginnt', 'Claude öffnet automatisch die Banking-Website und loggt sich mit gespeicherten Zugangsdaten ein', 'Claude zeigt die letzte verfügbare Abrechnung aus dem Konnektor-Speicher an', 'Claude führt autark den vollständigen Workflow aus: Cleaning, Excel, Dashboard und PowerPoint'], correct: 3, explanation: 'Der Super Skill verknüpft alle Einzelskills — ein kurzer Prompt löst den vollständigen Automatisierungszyklus aus.' },
+  // Q32 correct: C — Modul 07 PowerPoint Add-in
+  { q: 'Was ist eine typische Stärke des Claude PowerPoint-Add-ins im Präsentationsworkflow?', options: ['Claude komprimiert sämtliche Bilder in der Präsentation automatisch für schnellere Ladezeiten', 'Claude exportiert fertige Präsentationen direkt als PDF und versendet sie per Outlook-Konnektor', 'Claude erstellt vollständige Folien inklusive Sprechernotizen aus Textzusammenfassungen oder Datentabellen', 'Claude scannt alle vorhandenen Folien und generiert automatisch eine strukturierte Inhaltsfolie am Anfang'], correct: 2, explanation: 'Das PowerPoint-Add-in erzeugt aus einer Gliederung oder Datentabelle vollständige Folien mit Inhalten und Sprechernotizen — direkt im Seitenbereich ohne Copy-Paste.' },
   // Q33 correct: A — modular skills
   { q: 'Welchen Vorteil bietet der modulare Skill-Ansatz (mehrere Einzelskills statt ein großer)?', options: ['Modulare Skills können unabhängig aktualisiert, kombiniert und in verschiedenen Workflows wiederverwendet werden', 'Ein einzelner großer Skill ist immer zuverlässiger, weil weniger Übergabepunkte entstehen', 'Modulare Skills laufen ausschließlich auf dem Opus-Modell für maximale Prozessstabilität', 'Es gibt keinen qualitativen Unterschied — Modularität ist nur ein Stilmerkmal ohne Funktionsvorteil'], correct: 0, explanation: 'Modularität: Jeden Skill einzeln verbessern, frei kombinieren, in verschiedenen Kontexten einsetzen.' },
 

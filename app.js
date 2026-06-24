@@ -112,7 +112,7 @@ function renderModules() {
   var fcard = document.createElement('div');
   fcard.className = 'module-card final-exam ' + fc;
   fcard.innerHTML =
-    '<div class="module-header"><div class="module-number">07</div><div class="module-status-icon ' + fc + '">' + fi + '</div></div>' +
+    '<div class="module-header"><div class="module-number">08</div><div class="module-status-icon ' + fc + '">' + fi + '</div></div>' +
     '<div class="module-meta">Abschlussprüfung · 40 Fragen</div>' +
     '<div class="module-title">IEG Claude Academy — Abschlussprüfung</div>' +
     '<div class="module-desc">Das Abschluss-Examen über alle Module. Pass-Threshold: 70 %.</div>' +
@@ -463,7 +463,6 @@ function renderExamQuestion() {
   var answeredCount = currentQuiz.answers.filter(function(a) { return a !== null; }).length;
   var remaining = examRemainingSec();
   var pctDone = Math.round(answeredCount / n * 100);
-  var open = !!currentQuiz.paletteOpen;
 
   var head =
     '<div class="exam-head">' +
@@ -490,30 +489,6 @@ function renderExamQuestion() {
       '</div>'
     : '';
 
-  var legend =
-    '<div class="exam-legend">' +
-      '<span><i class="dot open"></i> offen</span>' +
-      '<span><i class="dot answered"></i> beantwortet</span>' +
-      '<span><i class="dot flagged"></i> markiert</span>' +
-    '</div>';
-
-  var palette = '<div class="exam-palette">' + currentQuiz.questions.map(function(_, j) {
-    var cls = 'exam-pal-btn';
-    if (currentQuiz.answers[j] !== null) cls += ' answered';
-    if (currentQuiz.flagged[j]) cls += ' flagged';
-    if (j === i) cls += ' current';
-    return '<button class="' + cls + '" onclick="examGoto(' + j + ')" title="Frage ' + (j + 1) + '">' + (j + 1) + '</button>';
-  }).join('') + '</div>';
-
-  var navPanel =
-    '<div class="exam-nav-panel">' +
-      '<button class="exam-nav-toggle' + (open ? ' open' : '') + '" onclick="toggleExamPalette()">' +
-        '<span>Fragenübersicht · ' + answeredCount + '/' + n + ' beantwortet</span>' +
-        '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>' +
-      '</button>' +
-      (open ? '<div class="exam-nav-body">' + legend + palette + '</div>' : '') +
-    '</div>';
-
   var ua = currentQuiz.answers[i];
   var opts = q.options.map(function(o, j) {
     var cls = 'quiz-option' + (j === ua ? ' selected' : '');
@@ -536,7 +511,7 @@ function renderExamQuestion() {
     '</div>';
 
   renderExamHtml(
-    head + banner + navPanel +
+    head + banner +
     '<div class="quiz-question">' + q.q + '</div>' +
     '<div class="quiz-options">' + opts + '</div>' +
     '<div class="exam-flag-row">' + flagBtn + '</div>' +
@@ -544,13 +519,6 @@ function renderExamQuestion() {
   );
 
   currentQuiz.restored = false;   // Banner nur einmalig zeigen
-}
-
-// Fragenübersicht ein-/ausklappen (reiner UI-Zustand, nicht persistiert)
-function toggleExamPalette() {
-  if (!currentQuiz) return;
-  currentQuiz.paletteOpen = !currentQuiz.paletteOpen;
-  renderExamQuestion();
 }
 
 function renderExamConfirm() {
@@ -619,7 +587,7 @@ function renderCertificate() {
   if (!state.finalPassed) {
     lo.style.display = 'block'; un.style.display = 'none';
     var s = document.getElementById('certStatus');
-    if (s) s.textContent = isFinalUnlocked() ? 'Status: Prüfung verfügbar' : 'Status: ' + state.completed.length + '/7 Module';
+    if (s) s.textContent = isFinalUnlocked() ? 'Status: Prüfung verfügbar' : 'Status: ' + state.completed.length + '/8 Module';
     return;
   }
   lo.style.display = 'none'; un.style.display = 'block';
