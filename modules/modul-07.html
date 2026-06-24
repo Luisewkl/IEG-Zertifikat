@@ -2,10 +2,235 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="refresh" content="0; url=../index.html">
-<title>Weitergeleitet — IEG Claude Academy</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 07 · Claude in Microsoft Office (Excel &amp; PowerPoint) — IEG Claude Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="module-styles.css">
 </head>
 <body>
-<p>Diese Seite wurde verschoben. <a href="../index.html">Zum Curriculum</a></p>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <img src="../assets/ieg-logo.png" alt="IEG" class="nav-logo-img">
+      <span class="logo-divider"></span>
+      <div class="logo-text">
+        <span class="logo-primary">Claude Academy</span>
+        <span class="logo-secondary">Modul 07</span>
+      </div>
+    </a>
+    <a href="../index.html#curriculum" class="nav-back">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Zurück zum Curriculum
+    </a>
+  </div>
+</nav>
+
+<section class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-breadcrumb">
+      <span>PRAXIS</span>
+      <span>·</span>
+      <span>MODULE 7</span>
+    </div>
+    <div class="module-hero-number">07</div>
+    <h1 class="module-hero-title">Claude in Microsoft Office (Excel &amp; PowerPoint)</h1>
+    <p class="module-hero-lede">Das Claude Add-in direkt in Excel und PowerPoint: Formeln per Sprache generieren, VBA-Makros schreiben, Zirkelbezüge korrigieren und vollständige Präsentationen aus Datentabellen erzeugen — inklusive Setup, Sicherheit und Grenzen der Integration.</p>
+    <div class="module-hero-meta">
+      <span class="module-hero-meta-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        25 Minuten Lernzeit
+      </span>
+      <span class="module-hero-meta-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        10 Quiz-Fragen
+      </span>
+      <span class="module-hero-meta-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+        Mit 2 Videos
+      </span>
+    </div>
+  </div>
+</section>
+
+<main class="module-content">
+
+  <div id="dynamicContent"></div>
+
+  <h3>1. Zwei Betriebsmodi: Add-in vs. Direktintegration</h3>
+  <p>Claude lässt sich auf zwei grundlegend verschiedene Arten mit Microsoft Office kombinieren:</p>
+  <table>
+    <thead>
+      <tr><th>Modus</th><th>Zugang</th><th>Kernvorteil</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Eigenständiger Chat</strong></td>
+        <td>Browser oder Desktop-App</td>
+        <td>Flexible Allzwecklösung — ideal für Text, Recherche und Analyse ohne Dateikontext</td>
+      </tr>
+      <tr>
+        <td><strong>Office Add-in</strong></td>
+        <td>Direkt in Excel / PowerPoint</td>
+        <td>Claude sieht die geöffnete Datei und kann Zellen, Formeln und Folien <em>direkt bearbeiten</em></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="callout">
+    <div class="callout-title">Der entscheidende Unterschied</div>
+    <p>Im eigenständigen Chat muss man Daten manuell einfügen. Das Add-in liest den geöffneten Dokumentenkontext automatisch — Claude weiß, welche Zellen markiert sind, und kann direkt eingreifen.</p>
+  </div>
+
+  <h3>2. Einrichtung des Claude Add-ins</h3>
+  <ul>
+    <li><strong>Installation:</strong> Das Add-in wird im <strong>Microsoft AppSource Store</strong> gesucht (Suchbegriff: „Claude") und mit einem Klick installiert.</li>
+    <li><strong>Voraussetzung:</strong> Ein aktives <strong>Claude Pro- oder Team-Abonnement</strong> ist erforderlich — die kostenlose Version unterstützt das Add-in nicht.</li>
+    <li><strong>Authentifizierung:</strong> Beim ersten Start wird die Anthropic-Anmeldung einmalig verknüpft. Das Add-in erscheint danach als Seitenleiste direkt in Excel und PowerPoint.</li>
+    <li><strong>Kein IT-Aufwand:</strong> Da es sich um ein Standard-Office-Add-in handelt, ist keine lokale Installation durch die IT-Abteilung nötig.</li>
+  </ul>
+
+  <h3>3. Claude in Excel — Kernfunktionen</h3>
+
+  <h4>Formeln per Sprache generieren</h4>
+  <p>Statt Syntax nachzuschlagen, reicht eine natürlichsprachliche Beschreibung: <em>„Gib mir die Summe aller Zellen in Spalte C, bei denen Spalte A ‚Berlin' enthält"</em> — Claude schreibt die passende SUMIF-Formel und setzt sie direkt in die Zielzelle.</p>
+
+  <h4>Daten transformieren und bereinigen</h4>
+  <p>Claude kann markierte Bereiche strukturieren: Duplikate entfernen, Spalten aufteilen, fehlende Werte ergänzen oder Datumsspalten vereinheitlichen — alles per Anweisung im natürlichen Sprachtext.</p>
+
+  <h4>VBA-Makros schreiben</h4>
+  <p>Wiederkehrende Aufgaben lassen sich als Makro automatisieren. Claude schreibt den vollständigen VBA-Code auf Basis einer Aufgabenbeschreibung.</p>
+  <div class="callout callout-warn">
+    <div class="callout-title">Wichtige Einschränkung</div>
+    <p>Claude <strong>schreibt</strong> das Makro — kann es aber <strong>nicht selbst ausführen</strong>. Der Nutzer muss den generierten Code im VBA-Editor manuell starten.</p>
+  </div>
+
+  <h4>Fehler erkennen und korrigieren</h4>
+  <p>Klassische Probleme wie <strong>Zirkelbezüge</strong> erkennt Claude auf Anhieb: Es identifiziert, welche Formel den Fehler verursacht, erklärt die Ursache und korrigiert die betroffene Zelle direkt.</p>
+  <div class="callout callout-success">
+    <div class="callout-title">Accept all edits — Modus</div>
+    <p>Wenn dieser Modus aktiviert ist, übernimmt Claude Korrekturen, Formeln und Datentransformationen sofort in die Zellen — ohne jede Zwischenfrage. Deaktiviert man ihn, schlägt Claude Änderungen vor, die der Nutzer einzeln freigeben muss.</p>
+  </div>
+
+  <h3>4. Claude in PowerPoint — Präsentationen automatisieren</h3>
+  <ul>
+    <li><strong>Folien aus Daten generieren:</strong> Eine Tabelle (z.&thinsp;B. Quartalszahlen) oder eine kurze Gliederung reichen, um Claude vollständige Folien mit Überschriften, Bullet-Points und passenden Zahlen erstellen zu lassen.</li>
+    <li><strong>Sprechernotizen:</strong> Claude ergänzt zu jeder Folie automatisch prägnante Sprechernotizen, die den Vortragenden durch die Kernaussagen führen.</li>
+    <li><strong>Inhalte überarbeiten:</strong> Texte kürzen, umformulieren oder in ein konsistentes Corporate-Sprachmuster bringen — direkt im Seitenbereich.</li>
+    <li><strong>Daten zu Charts:</strong> Aus einer eingefügten Datentabelle schlägt Claude geeignete Diagrammtypen vor und erstellt die Visualisierung als Folieninhalt.</li>
+  </ul>
+
+  <h3>5. Workflows und Datensicherheit</h3>
+  <p>Das Add-in überträgt <strong>nur den markierten oder aktiven Zellbereich</strong> an Claudes Server — nicht die gesamte Arbeitsmappe. Das reduziert die übermittelten Daten, erfordert jedoch bewusstes Handeln bei vertraulichen Finanzmodellen.</p>
+  <div class="callout callout-warn">
+    <div class="callout-title">Datenschutz-Pflicht bei IEG</div>
+    <p>Auch im Add-in gilt: Keine echten Mandantendaten, Deal-Konditionen oder nicht-öffentlichen Finanzzahlen eingeben. Für sensible Modelle immer den <strong>IEG Claude Enterprise Account</strong> verwenden, der Datenverarbeitungsverträge und keine Trainingsnutzung der Daten gewährleistet.</p>
+  </div>
+  <p>Als Best Practice empfiehlt sich, <strong>kritische Werte vorab zu anonymisieren</strong> oder durch Platzhalter zu ersetzen, bevor ein Modell an Claude übergeben wird.</p>
+
+  <h3>6. Grenzen der Integration</h3>
+  <ul>
+    <li><strong>Keine direkte Makro-Ausführung:</strong> Claude kann VBA-Code schreiben, aber nicht ausführen — das bleibt eine manuelle Aktion.</li>
+    <li><strong>Kein Datenbankzugriff:</strong> Das Add-in hat keine Verbindung zu externen Systemen wie SAP, Bloomberg oder SQL-Datenbanken.</li>
+    <li><strong>Nur sichtbarer Kontext:</strong> Claude verarbeitet nur markierte oder aktive Inhalte — nicht implizit alle Tabellenblätter im Hintergrund.</li>
+    <li><strong>Keine Echtzeit-Synchronisation:</strong> Änderungen werden einmalig angewendet; automatische Aktualisierungen bei sich ändernden Quelldaten erfordern erneute Prompts.</li>
+  </ul>
+
+  <section class="exercise-section">
+    <div class="section-intro">
+      <div class="section-eyebrow">Praxisübung</div>
+      <h2>Das Gelernte anwenden</h2>
+      <p>Testen Sie das Claude Excel-Add-in mit einer echten Datenbereinigung und erleben Sie, wie stark der Kontextvorteil gegenüber dem Standalone-Chat ist.</p>
+    </div>
+    <div class="exercise-grid">
+      <article class="exercise-card">
+        <div class="exercise-kicker">Übung 1</div>
+        <h3 class="exercise-title">Formel- und Datenbereinigung im Add-in</h3>
+        <p class="exercise-text">Nutzen Sie das Claude Excel-Add-in, um eine unstrukturierte Datentabelle zu bereinigen und eine Summenformel mit Bedingung zu erstellen.</p>
+        <ul class="exercise-list">
+          <li>Öffnen Sie eine Excel-Datei mit gemischten Transaktionsdaten (verschiedene Datumsformate, fehlende Kategorien).</li>
+          <li>Markieren Sie den relevanten Bereich und fragen Sie Claude: „Vereinheitliche alle Datumsformate in Spalte A auf TT.MM.JJJJ".</li>
+          <li>Bitten Sie Claude anschließend: „Erstelle in Zelle F2 eine Formel, die alle Beträge aus Spalte C summiert, bei denen Spalte B ‚Reisekosten' enthält".</li>
+          <li>Aktivieren Sie „Accept all edits" und beobachten Sie, wie Änderungen ohne Bestätigung direkt übernommen werden.</li>
+        </ul>
+        <div class="exercise-prompt">
+          <strong>Beispiel-Prompt:</strong>
+          <p>Bereinige die markierten Zellen: Vereinheitliche Datumsformate auf TT.MM.JJJJ, entferne führende und nachfolgende Leerzeichen aus allen Textfeldern und markiere leere Pflichtfelder in Spalte B mit dem Hinweis „FEHLT".</p>
+        </div>
+        <div class="exercise-note">
+          <strong>Ziel:</strong> Den Kontextvorteil des Add-ins erleben — Claude sieht die echte Tabellenstruktur und muss keine Daten erst per Copy-Paste erhalten.
+        </div>
+      </article>
+      <article class="exercise-card">
+        <div class="exercise-kicker">Übung 2</div>
+        <h3 class="exercise-title">Präsentation aus Datentabelle erzeugen</h3>
+        <p class="exercise-text">Nutzen Sie das Claude PowerPoint-Add-in, um aus einer vorhandenen Datentabelle vollständige Folien mit Sprechernotizen zu generieren.</p>
+        <ul class="exercise-list">
+          <li>Öffnen Sie PowerPoint und aktivieren Sie das Claude Add-in als Seitenleiste.</li>
+          <li>Fügen Sie eine einfache Datentabelle (z.&thinsp;B. Quartalsumsätze nach Kategorie) in eine leere Folie ein.</li>
+          <li>Bitten Sie Claude: „Erstelle aus dieser Tabelle drei Folien: eine Übersichtsfolie, eine Detailfolie mit Top-3-Kategorien und eine Abschlussfolie mit Handlungsempfehlung."</li>
+          <li>Fordern Sie anschließend für jede Folie eine Sprechernotiz in drei Sätzen an.</li>
+        </ul>
+        <div class="exercise-prompt">
+          <strong>Beispiel-Prompt:</strong>
+          <p>Erstelle aus den Quartalsdaten in dieser Folie eine Präsentation für das Management-Meeting: Folie 1 — Gesamtperformance im Überblick, Folie 2 — Die drei stärksten Kategorien mit prozentualer Veränderung, Folie 3 — Empfohlene nächste Schritte. Ergänze zu jeder Folie Sprechernotizen in drei prägnanten Sätzen.</p>
+        </div>
+        <div class="exercise-note">
+          <strong>Ziel:</strong> Den Unterschied zwischen manuellem Folienbauen und KI-gestützter Präsentationsautomatisierung direkt erfahren.
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <div class="quiz-section">
+    <div class="quiz-eyebrow">Bereit für das Quiz?</div>
+    <h2>Testen Sie Ihr Verständnis</h2>
+    <p class="quiz-lede">
+      10 Fragen · Pass-Threshold 70 %. Bei Bestehen wird die Abschlussprüfung freigeschaltet.
+    </p>
+    <button class="btn btn-primary" onclick="startQuiz()">
+      Quiz starten
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </button>
+  </div>
+
+</main>
+
+<div class="module-navigation">
+  <a href="modul-06.html" class="nav-card nav-card-prev">
+    <div class="nav-card-label">← Vorheriges Modul</div>
+    <div class="nav-card-title">06 · Claude Cowork — Der autonome Desktop-Agent</div>
+  </a>
+  <a href="../index.html#certificate" class="nav-card nav-card-next">
+    <div class="nav-card-label">Nächster Schritt →</div>
+    <div class="nav-card-title">★ Abschlussprüfung</div>
+  </a>
+</div>
+
+<div class="modal-overlay" id="quizModal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeQuiz()">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <div id="quizModalBody"></div>
+  </div>
+</div>
+
+<footer class="module-footer">
+  <img src="../assets/ieg-logo.png" alt="IEG" class="module-footer-logo">
+  <div class="module-footer-text">© 2026 IEG Investment Banking Group · Internal Training Material</div>
+</footer>
+
+<script>
+  const MODULE_ID = 7;
+  const MODULE_TITLE = "Claude in Microsoft Office (Excel & PowerPoint)";
+</script>
+<script src="../content.js"></script>
+<script>
+  const MODULE_QUIZ = CURRICULUM.find(m => m.id === 7).quiz;
+</script>
+<script src="module.js"></script>
+
 </body>
 </html>
