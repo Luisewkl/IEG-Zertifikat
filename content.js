@@ -198,9 +198,13 @@ const CURRICULUM = [
     id: 1,
     number: '01',
     meta: 'Einführung · Grundlagen',
+    meta_en: 'Introduction · Fundamentals',
     title: 'Claude — Der komplette Grundkurs (2026)',
+    title_en: 'Claude — The Complete Beginner\'s Course (2026)',
     desc: 'Chat-Disziplin, Websuche, Dateianalyse, technischer Support, Personalisierung und Datenschutz — alles was du für einen professionellen Einstieg in Claude brauchst. Die Modellfamilie hast du bereits in Modul 0 kennengelernt.',
+    desc_en: 'Chat discipline, web search, file analysis, technical support, personalization, and privacy — everything you need for a professional start with Claude. You already learned about the model family in Module 0.',
     duration: '45 Min.',
+    duration_en: '45 min.',
     videos: [
       { url: 'https://www.youtube.com/embed/51vysjHcJ5A', title: 'Claude — Der komplette Grundkurs 2026', caption: 'Video 1.1 · Claude — Der komplette Grundkurs (2026)' },
     ],
@@ -214,37 +218,257 @@ const CURRICULUM = [
         <div class="callout-title">Goldene Regel</div>
         <p>Ein Thema — ein Chat. Wer Urlaubsplanung und Quartalsberichte im selben Chat mischt, bekommt schlechtere Ergebnisse für beides.</p>
       </div>
-      <p>Zwei weitere Gewohnheiten zahlen sich vom ersten Tag an aus: <strong>Kontext mitgeben</strong> (wer Sie sind, für wen die Ausgabe gedacht ist, in welchem Format) und <strong>iterativ arbeiten</strong> — eine erste Antwort im selben Chat mit Folgeanweisungen wie „kürzer", „förmlicher" oder „mit Quellenangaben" verfeinern.</p>
+      <p>Zwei weitere Gewohnheiten zahlen sich vom ersten Tag an aus:</p>
+      <ul>
+        <li><strong>Kontext mitgeben:</strong> Sagen Sie Claude, <em>wer</em> Sie sind, <em>für wen</em> die Ausgabe gedacht ist und <em>in welchem Format</em> — z.&thinsp;B. „Schreibe als Analyst für ein internes Memo, maximal 200 Wörter."</li>
+        <li><strong>Iterativ arbeiten:</strong> Eine erste Antwort ist selten perfekt. Verfeinern Sie im selben (themenkonsistenten) Chat mit Folgeanweisungen wie „kürzer", „förmlicher" oder „mit Quellenangaben".</li>
+      </ul>
 
       <h3>2. Zentrale Arbeitsfunktionen</h3>
-      <p>Über das <strong>Plus-Symbol</strong> unter der Texteingabe lassen sich die wichtigsten Werkzeuge aktivieren.</p>
+      <p>Über das <strong>Plus-Symbol</strong> unter der Texteingabe lassen sich die wichtigsten Werkzeuge aktivieren. Diese drei bilden das Rückgrat der täglichen Arbeit:</p>
       <h4>Websuche</h4>
-      <p>Claude kann hunderte Quellen in Sekunden durchsuchen, um aktuelle Daten (z.&thinsp;B. DAX-Umsätze oder tagesaktuelle Branchennews) in Tabellen zusammenzufassen — die Ergebnisse sind <strong>mit Quellenlinks belegt</strong>. Bei kritischen Zahlen immer gegenprüfen und die Anfrage präzise mit Zeitraum und Ausgabeformat formulieren.</p>
+      <p>Claude kann hunderte Quellen in Sekunden durchsuchen, um aktuelle Daten (z.&thinsp;B. DAX-Umsätze oder tagesaktuelle Branchennews) in Tabellen zusammenzufassen. Anders als beim reinen Modellwissen sind die Ergebnisse <strong>mit Quellenlinks belegt</strong> — prüfen Sie diese bei kritischen Zahlen immer gegen. Formulieren Sie die Anfrage präzise mit Zeitraum und gewünschtem Ausgabeformat, etwa „Fasse die Q3-Umsätze der drei größten deutschen Automobilhersteller als Tabelle mit Quellenangabe zusammen."</p>
       <h4>Dateianalyse</h4>
-      <p>PDFs, Excel- oder Word-Dokumente lassen sich direkt hochladen. <strong>Pro-Tipp:</strong> Nutze das Stoppuhr-Symbol (<em>erweiterter Nachdenkenmodus</em>), damit Claude sich mehr Zeit nimmt, die Datei gründlich einzulesen. Stelle konkrete Fragen <em>zu</em> dem Dokument statt einer Pauschal-Zusammenfassung; mehrere Dateien kann Claude auch <strong>vergleichen</strong>.</p>
+      <p>PDFs, Excel- oder Word-Dokumente lassen sich direkt hochladen. <strong>Pro-Tipp:</strong> Nutze das Stoppuhr-Symbol (<em>erweiterter Nachdenkenmodus</em>), damit Claude sich mehr Zeit nimmt, die Datei gründlich einzulesen und präzisere Antworten zu geben. Stellen Sie konkrete Fragen <em>zu</em> dem Dokument statt einer pauschalen Zusammenfassung — z.&thinsp;B. „Welche drei Risiken nennt der Bericht auf den Seiten 10–15?" Bei mehreren Dateien kann Claude diese auch <strong>vergleichen</strong> (etwa zwei Quartalsberichte gegenüberstellen).</p>
       <h4>Technischer Support</h4>
-      <p>Claude hilft bei PC- und Software-Problemen. Erst das Problem allgemein beschreiben, dann einen <strong>Screenshot der Benutzeroberfläche</strong> (z.&thinsp;B. Aktivitätsanzeige oder Fehlermeldung) hochladen — Claude liest die Bildschirminhalte aus und diagnostiziert die Ursache direkt. Anschließend um eine Schritt-für-Schritt-Anleitung bitten.</p>
+      <p>Claude hilft bei PC- und Software-Problemen. Der effizienteste Workflow: Erst das Problem allgemein beschreiben, dann einen <strong>Screenshot der Benutzeroberfläche</strong> (z.&thinsp;B. der Aktivitätsanzeige oder einer Fehlermeldung) hochladen — Claude liest die Bildschirminhalte aus und diagnostiziert die Ursache direkt. Bitten Sie anschließend um eine <strong>Schritt-für-Schritt-Anleitung</strong> und lassen Sie sich technische Begriffe bei Bedarf in einfachen Worten erklären.</p>
 
-      <h3>3. Personalisierung und Produktivität</h3>
+      <h3>3. Personalisierung: Die KI auf dich zuschneiden</h3>
+      <p>Damit Claude nicht generisch klingt, sondern zu dir und deinem Arbeitsstil passt, gibt es drei Werkzeuge:</p>
       <ul>
-        <li><strong>Präferenzen:</strong> Globale Einstellungen (z.&thinsp;B. „Antworte immer in einem Satz"), die für jeden neuen Chat automatisch übernommen werden.</li>
-        <li><strong>Stile:</strong> Claude den eigenen <strong>Schreibstil beibringen</strong> — Beispieltexte (z.&thinsp;B. als PDF) hochladen, die Claude automatisch analysiert.</li>
-        <li><strong>Gedächtnis (Memory):</strong> Durch den Befehl „Bitte erstelle eine Erinnerung" merkt sich Claude Fakten über dich (z.&thinsp;B. „Ich habe Flugangst"), die er in künftigen Chats automatisch berücksichtigt.</li>
-        <li><strong>Projekte:</strong> Ein abgeschirmter Bereich für spezifische Aufgaben (z.&thinsp;B. „LinkedIn Post Generator"). Hier hochgeladene Dateien und Anweisungen gelten für <strong>alle Chats innerhalb dieses Projekts</strong>.</li>
+        <li><strong>Präferenzen:</strong> Globale Regeln in den Einstellungen (z.&thinsp;B. „Antworte immer kurz und auf Deutsch" oder „Ich bin Mac-Nutzer"), die für <strong>jeden neuen Chat</strong> automatisch übernommen werden.</li>
+        <li><strong>Stile:</strong> Du kannst vordefinierte Stile (formal, prägnant) wählen oder einen <strong>benutzerdefinierten Stil</strong> erstellen, indem du eigene Schreibproben (z.&thinsp;B. frühere Memos oder Skripte) hochlädst — Claude analysiert Ton, Struktur und Wortwahl und schreibt fortan in deinem Stil.</li>
+        <li><strong>Erinnerungen (Memory):</strong> Mit dem Befehl „Bitte erstelle eine Erinnerung" merkt sich Claude dauerhaft Fakten über dich (z.&thinsp;B. „Ich habe Flugangst" oder „Mein Team arbeitet im M&amp;A-Bereich"), die er in künftigen Chats automatisch berücksichtigt.</li>
       </ul>
 
       <h3>4. Profi-Funktionen: Programmierung und Excel</h3>
-      <h4>Dashboard- &amp; Website-Bau</h4>
-      <p>Claude kann interaktive Dashboards oder einfache HTML-Websites erstellen — inklusive Schritt-für-Schritt-Anleitungen zur Veröffentlichung. Kein Programmier-Vorwissen nötig.</p>
+      <h4>Programmierung ohne Code</h4>
+      <p>Claude kann interaktive <strong>Dashboards</strong> oder vollständige <strong>HTML-Websites</strong> — inklusive Kontaktformularen — erstellen, ganz ohne Programmier-Vorwissen. Auf Wunsch liefert Claude sogar die Schritt-für-Schritt-Anleitung zur <strong>Veröffentlichung</strong> der Seite.</p>
       <h4>Claude in Excel</h4>
-      <p>Eine <strong>Pro-Funktion</strong>, die direkt in Excel Tabellen füllt, Webdaten abruft, dynamische Charts erstellt und Fehler wie <strong>Zirkelbezüge selbstständig korrigiert</strong> — per natürlichsprachlicher Anweisung.</p>
+      <p>Das <strong>Excel-Add-in</strong> (Pro-Funktion) erlaubt es Claude, direkt in Tabellen zu arbeiten: Daten aus dem Web abrufen, <strong>dynamische, mit Zellen verknüpfte Charts</strong> erstellen und komplexe Fehler wie <strong>Zirkelbezüge selbstständig korrigieren</strong> — alles per natürlichsprachlicher Anweisung.</p>
 
       <h3>5. Sicherheit und Datenschutz</h3>
+      <ul>
+        <li><strong>Training deaktivieren:</strong> Gehe in die Einstellungen unter „Datenschutz" und schalte die Option „hilft dabei Claude zu verbessern" auf <strong>AUS</strong>, damit deine Eingaben nicht zum Training neuer Modelle verwendet werden.</li>
+        <li><strong>Inkognitomodus</strong> (Geist-Symbol): Chats werden nicht dauerhaft in der Seitenleiste gespeichert — ideal für private oder einmalige Anfragen.</li>
+      </ul>
       <div class="callout callout-warn">
         <div class="callout-title">Pflicht bei IEG</div>
-        <p>Deaktiviere in den Einstellungen unter „Datenschutz" die Option <strong>„hilft dabei Claude zu verbessern"</strong>, damit deine Daten nicht zum Training neuer Modelle genutzt werden.</p>
+        <p>Das Deaktivieren der Training-Option ist bei IEG verbindlich. Erledige es vor deiner ersten Nutzung — einmal eingestellt, bleibt es dauerhaft aktiv.</p>
       </div>
-      <p>Der <strong>Inkognitomodus</strong> (Geist-Symbol) sorgt dafür, dass Chats nicht dauerhaft in der Seitenleiste gespeichert werden — ideal für private oder einmalige Anfragen.</p>
+
+      <section class="exercise-section">
+        <div class="section-intro">
+          <div class="section-eyebrow">Praxisübung</div>
+          <h2>Das Gelernte anwenden</h2>
+          <p>Trainieren Sie die Grundlagen: die Wahl der richtigen Funktion, Chat-Disziplin und die erste Einrichtung Ihres Accounts.</p>
+        </div>
+        <div class="exercise-grid">
+          <article class="exercise-card">
+            <div class="exercise-kicker">Übung 1</div>
+            <h3 class="exercise-title">Die richtige Funktion für die richtige Aufgabe</h3>
+            <p class="exercise-text">Websuche, Dateianalyse oder Screenshot-Upload? Trainieren Sie, für verschiedene Arbeitssituationen die passende Claude-Funktion zu wählen und sie mit einer präzisen Anweisung zu kombinieren.</p>
+            <ul class="exercise-list">
+              <li>Erstellen Sie eine Tabelle mit drei Spalten: <strong>Aufgabe</strong>, <strong>Funktion</strong> und <strong>Begründung</strong>.</li>
+              <li>Bewerten Sie diese Szenarien: (a) Aktuelle Branchenmultiples mit Quellenangabe recherchieren, (b) Eine 80-seitige Marktstudie als PDF auswerten, (c) Einen langsamen PC diagnostizieren, (d) Zwei Quartalsberichte gegenüberstellen, (e) Eine kurze interne E-Mail formulieren.</li>
+              <li>Formulieren Sie für ein Szenario Ihrer Wahl die vollständige Anweisung — inkl. Kontext, Format und Quellenwunsch.</li>
+            </ul>
+            <div class="exercise-prompt">
+              <strong>Beispiel-Prompt:</strong>
+              <p>Ich gebe dir 5 Aufgaben aus dem Arbeitsalltag. Empfehle jeweils die passende Claude-Funktion (Websuche, Dateiupload + erweiterter Nachdenkenmodus, Screenshot-Upload, Standard-Chat) und begründe die Wahl in je einem Satz. Format: Tabelle mit drei Spalten.</p>
+            </div>
+            <div class="exercise-note">
+              <strong>Ziel:</strong> Funktion und präzise Anweisung zusammendenken — das richtige Werkzeug allein reicht nicht, der Auftrag muss klar sein.
+            </div>
+            <button class="exercise-solution-toggle" onclick="toggleSolution(this)">
+              Musterlösung anzeigen
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="exercise-solution">
+              <div class="exercise-solution-eyebrow">Musterlösung</div>
+              <table>
+                <thead><tr><th>Aufgabe</th><th>Funktion</th><th>Begründung</th></tr></thead>
+                <tbody>
+                  <tr><td>(a) Branchenmultiples mit Quellenangabe</td><td><strong>Websuche</strong></td><td>Liefert aktuelle Daten mit belegten Quellenlinks zum Gegenprüfen</td></tr>
+                  <tr><td>(b) 80-seitige Marktstudie auswerten</td><td><strong>Dateiupload + erweiterter Nachdenkenmodus</strong></td><td>Gründliches Einlesen großer Dokumente, gezielte Fragen statt Pauschal-Zusammenfassung</td></tr>
+                  <tr><td>(c) Langsamen PC diagnostizieren</td><td><strong>Screenshot-Upload</strong></td><td>Claude liest die Aktivitätsanzeige aus und erkennt UI-Elemente direkt</td></tr>
+                  <tr><td>(d) Zwei Quartalsberichte gegenüberstellen</td><td><strong>Dateiupload (mehrere Dateien)</strong></td><td>Claude vergleicht beide Dokumente und arbeitet Unterschiede heraus</td></tr>
+                  <tr><td>(e) Kurze interne E-Mail</td><td><strong>Standard-Chat</strong></td><td>Einfache Textaufgabe — keine externe Quelle oder Datei nötig</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+          <article class="exercise-card">
+            <div class="exercise-kicker">Übung 2</div>
+            <h3 class="exercise-title">Account einrichten: Datenschutz und erste Präferenz</h3>
+            <p class="exercise-text">Bevor du produktiv mit Claude arbeitest, sollte der Account korrekt eingerichtet sein. Diese Übung führt durch die zwei wichtigsten Einstellungen und testet die Wirkung einer globalen Präferenz.</p>
+            <ul class="exercise-list">
+              <li><strong>Datenschutz:</strong> Öffne die Einstellungen → Datenschutz → deaktiviere „hilft dabei Claude zu verbessern". Mache einen Screenshot als Nachweis.</li>
+              <li><strong>Präferenz:</strong> Lege eine globale Präferenz fest, die für Ihren Arbeitsalltag sinnvoll ist (z.&thinsp;B. „Antworte immer auf Deutsch, strukturiere Antworten mit Aufzählungspunkten, maximal 5 Sätze").</li>
+              <li>Öffne danach einen <em>neuen</em> Chat und stelle eine beliebige Frage — prüfe, ob Claude die Präferenz ohne Aufforderung anwendet.</li>
+              <li>Teste zusätzlich den Inkognitomodus: Starte einen Chat mit dem Geist-Symbol und prüfe, ob er nach dem Schließen in der Seitenleiste erscheint.</li>
+            </ul>
+            <div class="exercise-prompt">
+              <strong>Beispiel-Prompt (zum Testen der Präferenz):</strong>
+              <p>Erkläre mir kurz, was ein DCF-Modell ist.</p>
+            </div>
+            <div class="exercise-note">
+              <strong>Ziel:</strong> Datenschutz sicherstellen und Claude so einrichten, dass er ab sofort ohne Briefing genau so antwortet, wie du es brauchst.
+            </div>
+            <button class="exercise-solution-toggle" onclick="toggleSolution(this)" data-label-closed="Lösungsansatz anzeigen" data-label-open="Lösungsansatz ausblenden">
+              Lösungsansatz anzeigen
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="exercise-solution">
+              <div class="exercise-solution-eyebrow">Lösungsansatz</div>
+              <ul>
+                <li><strong>Datenschutz:</strong> Einstellungen (Zahnrad) → Datenschutz → Häkchen bei „hilft dabei Claude zu verbessern" entfernen → Speichern.</li>
+                <li><strong>Präferenz-Beispiel:</strong> „Antworte immer auf Deutsch. Strukturiere Antworten als Aufzählungsliste. Fasse dich auf maximal 5 Punkte." → Ab dem nächsten Chat automatisch aktiv.</li>
+                <li><strong>Wirkungstest:</strong> Der DCF-Prompt sollte jetzt auf Deutsch als Aufzählung kommen — ohne dass du das in der Anfrage erwähnt hast.</li>
+                <li><strong>Inkognito:</strong> Geist-Symbol → Chat starten → Fenster schließen → Chat erscheint <em>nicht</em> in der Seitenleiste.</li>
+              </ul>
+              <p style="margin-top:12px"><strong>Fazit:</strong> Diese zwei Einstellungen dauern 2 Minuten, sparen aber täglich Zeit und schützen Firmendaten — einmalig erledigt, dauerhaft wirksam.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <div class="quiz-section">
+        <div class="quiz-eyebrow">Bereit für das Quiz?</div>
+        <h2>Testen Sie Ihr Verständnis</h2>
+        <p class="quiz-lede">10 Fragen · Pass-Threshold 70 %.</p>
+        <button class="btn btn-primary" onclick="startQuiz()">Quiz starten <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+      </div>
+    `,
+    content_en: `
+      <h3>1. Fundamentals and Chat Discipline</h3>
+      <p>Claude is an AI tool from Anthropic that you use through a simple text box. One of the most important success factors is <strong>chat discipline</strong>: start a <strong>new chat for every new topic</strong>. Mixing topics within a single chat confuses the AI and significantly degrades the quality of the results.</p>
+      <p>The reason lies in the so-called <strong>context window</strong>: with every reply, Claude re-reads the <em>entire</em> conversation history so far. The longer and more thematically scattered a chat becomes, the more irrelevant information the model has to take into account — answers become less precise and slower. A fresh chat per topic keeps the context clean and focused.</p>
+      <div class="callout">
+        <div class="callout-title">Golden Rule</div>
+        <p>One topic — one chat. Mixing vacation planning and quarterly reports in the same chat produces worse results for both.</p>
+      </div>
+      <p>Two further habits pay off from day one:</p>
+      <ul>
+        <li><strong>Provide context:</strong> Tell Claude <em>who</em> you are, <em>who</em> the output is for, and <em>in what format</em> — e.g. "Write this as an analyst for an internal memo, maximum 200 words."</li>
+        <li><strong>Work iteratively:</strong> A first answer is rarely perfect. Refine it within the same (topic-consistent) chat with follow-up instructions like "shorter," "more formal," or "with sources."</li>
+      </ul>
+
+      <h3>2. Core Working Functions</h3>
+      <p>The most important tools can be activated via the <strong>plus icon</strong> below the text input. These three form the backbone of daily work:</p>
+      <h4>Web Search</h4>
+      <p>Claude can search hundreds of sources within seconds to compile current data (e.g. DAX revenues or today's industry news) into tables. Unlike pure model knowledge, the results <strong>come with source links</strong> — always cross-check these for critical figures. Phrase your request precisely with a time range and the desired output format, for example: "Summarize the Q3 revenues of the three largest German automakers as a table with sources."</p>
+      <h4>File Analysis</h4>
+      <p>PDFs, Excel, or Word documents can be uploaded directly. <strong>Pro tip:</strong> use the stopwatch icon (<em>extended thinking mode</em>) so Claude takes more time to read the file thoroughly and give more precise answers. Ask concrete questions <em>about</em> the document instead of requesting a generic summary — e.g. "What three risks does the report mention on pages 10–15?" With multiple files, Claude can also <strong>compare</strong> them (for example, contrasting two quarterly reports).</p>
+      <h4>Technical Support</h4>
+      <p>Claude helps with PC and software problems. The most efficient workflow: first describe the problem in general terms, then upload a <strong>screenshot of the interface</strong> (e.g. the activity monitor or an error message) — Claude reads the screen contents and diagnoses the cause directly. Then ask for a <strong>step-by-step guide</strong> and have technical terms explained in plain language if needed.</p>
+
+      <h3>3. Personalization: Tailoring the AI to You</h3>
+      <p>So that Claude doesn't sound generic but instead matches you and your working style, there are three tools:</p>
+      <ul>
+        <li><strong>Preferences:</strong> Global rules in settings (e.g. "Always reply briefly and in German" or "I'm a Mac user") that are automatically applied to <strong>every new chat</strong>.</li>
+        <li><strong>Styles:</strong> You can choose predefined styles (formal, concise) or create a <strong>custom style</strong> by uploading your own writing samples (e.g. previous memos or scripts) — Claude analyzes tone, structure, and word choice and writes in your style from then on.</li>
+        <li><strong>Memory:</strong> With the instruction "Please create a memory," Claude permanently remembers facts about you (e.g. "I'm afraid of flying" or "My team works in M&amp;A") and automatically takes them into account in future chats.</li>
+      </ul>
+
+      <h3>4. Pro Features: Coding and Excel</h3>
+      <h4>Coding Without Code</h4>
+      <p>Claude can build interactive <strong>dashboards</strong> or complete <strong>HTML websites</strong> — including contact forms — with no programming knowledge required. On request, Claude even provides step-by-step instructions for <strong>publishing</strong> the site.</p>
+      <h4>Claude in Excel</h4>
+      <p>The <strong>Excel add-in</strong> (Pro feature) lets Claude work directly within spreadsheets: pulling data from the web, creating <strong>dynamic, cell-linked charts</strong>, and independently fixing complex errors such as <strong>circular references</strong> — all via natural-language instructions.</p>
+
+      <h3>5. Security and Privacy</h3>
+      <ul>
+        <li><strong>Disable training:</strong> Go to settings under "Privacy" and turn the "helps improve Claude" option <strong>OFF</strong> so your inputs are not used to train new models.</li>
+        <li><strong>Incognito mode</strong> (ghost icon): chats are not permanently saved in the sidebar — ideal for private or one-off requests.</li>
+      </ul>
+      <div class="callout callout-warn">
+        <div class="callout-title">Mandatory at IEG</div>
+        <p>Disabling the training option is mandatory at IEG. Do this before your first use — once set, it remains permanently active.</p>
+      </div>
+
+      <section class="exercise-section">
+        <div class="section-intro">
+          <div class="section-eyebrow">Hands-On Exercise</div>
+          <h2>Applying What You've Learned</h2>
+          <p>Practice the fundamentals: choosing the right function, chat discipline, and setting up your account for the first time.</p>
+        </div>
+        <div class="exercise-grid">
+          <article class="exercise-card">
+            <div class="exercise-kicker">Exercise 1</div>
+            <h3 class="exercise-title">The Right Function for the Right Task</h3>
+            <p class="exercise-text">Web search, file analysis, or screenshot upload? Practice choosing the right Claude function for different work situations and combining it with a precise instruction.</p>
+            <ul class="exercise-list">
+              <li>Create a table with three columns: <strong>Task</strong>, <strong>Function</strong>, and <strong>Reasoning</strong>.</li>
+              <li>Evaluate these scenarios: (a) researching current industry multiples with sources, (b) analyzing an 80-page market study as a PDF, (c) diagnosing a slow PC, (d) comparing two quarterly reports, (e) drafting a short internal email.</li>
+              <li>For one scenario of your choice, formulate the complete instruction — including context, format, and source requirements.</li>
+            </ul>
+            <div class="exercise-prompt">
+              <strong>Example prompt:</strong>
+              <p>I'll give you 5 everyday work tasks. Recommend the appropriate Claude function for each (web search, file upload + extended thinking mode, screenshot upload, standard chat) and justify the choice in one sentence each. Format: table with three columns.</p>
+            </div>
+            <div class="exercise-note">
+              <strong>Goal:</strong> Combine the right function with a precise instruction — the right tool alone isn't enough, the request itself must be clear.
+            </div>
+            <button class="exercise-solution-toggle" onclick="toggleSolution(this)">
+              Show sample solution
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="exercise-solution">
+              <div class="exercise-solution-eyebrow">Sample Solution</div>
+              <table>
+                <thead><tr><th>Task</th><th>Function</th><th>Reasoning</th></tr></thead>
+                <tbody>
+                  <tr><td>(a) Industry multiples with sources</td><td><strong>Web search</strong></td><td>Provides current data with verifiable source links for cross-checking</td></tr>
+                  <tr><td>(b) Analyze an 80-page market study</td><td><strong>File upload + extended thinking mode</strong></td><td>Thorough reading of large documents, targeted questions instead of a blanket summary</td></tr>
+                  <tr><td>(c) Diagnose a slow PC</td><td><strong>Screenshot upload</strong></td><td>Claude reads the activity monitor and recognizes UI elements directly</td></tr>
+                  <tr><td>(d) Compare two quarterly reports</td><td><strong>File upload (multiple files)</strong></td><td>Claude compares both documents and highlights the differences</td></tr>
+                  <tr><td>(e) Short internal email</td><td><strong>Standard chat</strong></td><td>Simple text task — no external source or file needed</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+          <article class="exercise-card">
+            <div class="exercise-kicker">Exercise 2</div>
+            <h3 class="exercise-title">Setting Up Your Account: Privacy and Your First Preference</h3>
+            <p class="exercise-text">Before working productively with Claude, your account should be set up correctly. This exercise walks through the two most important settings and tests the effect of a global preference.</p>
+            <ul class="exercise-list">
+              <li><strong>Privacy:</strong> Open settings → Privacy → disable "helps improve Claude". Take a screenshot as proof.</li>
+              <li><strong>Preference:</strong> Set a global preference that's useful for your daily work (e.g. "Always reply in German, structure answers with bullet points, maximum 5 sentences").</li>
+              <li>Then open a <em>new</em> chat and ask any question — check whether Claude applies the preference without being asked.</li>
+              <li>Also test incognito mode: start a chat using the ghost icon and check whether it appears in the sidebar after closing it.</li>
+            </ul>
+            <div class="exercise-prompt">
+              <strong>Example prompt (to test the preference):</strong>
+              <p>Briefly explain what a DCF model is.</p>
+            </div>
+            <div class="exercise-note">
+              <strong>Goal:</strong> Ensure privacy and set up Claude so it responds exactly the way you need from now on, without re-briefing it.
+            </div>
+            <button class="exercise-solution-toggle" onclick="toggleSolution(this)" data-label-closed="Show approach" data-label-open="Hide approach">
+              Show approach
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="exercise-solution">
+              <div class="exercise-solution-eyebrow">Approach</div>
+              <ul>
+                <li><strong>Privacy:</strong> Settings (gear icon) → Privacy → uncheck "helps improve Claude" → Save.</li>
+                <li><strong>Preference example:</strong> "Always reply in German. Structure answers as a bullet list. Keep it to a maximum of 5 points." → Active automatically from the next chat onward.</li>
+                <li><strong>Effect test:</strong> The DCF prompt should now come back in German as a bullet list — without you mentioning that in the request.</li>
+                <li><strong>Incognito:</strong> Ghost icon → start chat → close window → the chat does <em>not</em> appear in the sidebar.</li>
+              </ul>
+              <p style="margin-top:12px"><strong>Takeaway:</strong> These two settings take 2 minutes but save time daily and protect company data — set up once, effective permanently.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <div class="quiz-section">
+        <div class="quiz-eyebrow">Ready for the Quiz?</div>
+        <h2>Test Your Understanding</h2>
+        <p class="quiz-lede">10 questions · Pass threshold 70%.</p>
+        <button class="btn btn-primary" onclick="startQuiz()">Start Quiz <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+      </div>
     `,
     quiz: [
       {
@@ -356,6 +580,118 @@ const CURRICULUM = [
         ],
         correct: 1,
         explanation: '„Bitte erstelle eine Erinnerung" ist der Trigger — Claude speichert den Fakt dann dauerhaft und berücksichtigt ihn in zukünftigen Chats.'
+      }
+    ],
+    quiz_en: [
+      {
+        q: 'You are analyzing a 100-page market study as a PDF and want to extract extremely precise details about a niche metric. What approach is most effective?',
+        options: [
+          'Use the Haiku model for maximum scanning speed.',
+          'Enable "extended thinking mode" (stopwatch) in the Opus model.',
+          'Upload the file in incognito mode so the AI doesn\'t remember old chats.',
+          'Manually copy the entire PDF text into the chat line instead of uploading the file.'
+        ],
+        correct: 1,
+        explanation: 'Opus + extended thinking mode = Claude reads the file more thoroughly and delivers more precise answers for complex documents.'
+      },
+      {
+        q: 'You want Claude to take into account from now on, in every technical guide, that you are a Linux user — without having to mention it every time. Where do you set this?',
+        options: [
+          'In "Memory" via the instruction "Please create a memory."',
+          'In the global "Preferences" in settings.',
+          'In a dedicated "Project" for technical guides.',
+          'A, B, and C are all technically correct — B is most sensible for system-wide OS info.'
+        ],
+        correct: 3,
+        explanation: 'All three approaches work technically. Global preferences (B) make the most sense for system-wide info like the operating system.'
+      },
+      {
+        q: 'Why is it a strategic mistake to leave requests about different projects (e.g. vacation planning and a quarterly report) in a single chat?',
+        options: [
+          'Claude consumes more tokens in long chats, making it more expensive.',
+          'The AI loses focus when topics are mixed, leading to less accurate results.',
+          'Incognito mode only works in short chats.',
+          'Web search can no longer be enabled in chats with more than 10 messages.'
+        ],
+        correct: 1,
+        explanation: 'Chat discipline is crucial: a separate chat for every new topic — mixing topics significantly degrades result quality.'
+      },
+      {
+        q: 'You are using Claude in Excel in "Accept all edits" mode. You ask the AI to fix a table where the totals are wrong. What does Claude do?',
+        options: [
+          'It writes you instructions in the side panel on how to change the formula.',
+          'It creates a new Excel file and sends it to you as a download link.',
+          'It identifies the error (e.g. a circular reference) and corrects the formula directly in the cell, without asking again.',
+          'It merely marks the faulty cell in red.'
+        ],
+        correct: 2,
+        explanation: 'In "Accept all edits" mode, Claude fixes errors directly in Excel — including circular references, without follow-up questions.'
+      },
+      {
+        q: 'You are creating a "custom style" for your emails. What is the necessary step for Claude to recognize your style?',
+        options: [
+          'You must dictate at least 500 words of your style to Claude in the chat.',
+          'You upload a writing sample (e.g. as a PDF), which Claude analyzes automatically.',
+          'You select the predefined "formal" style and edit it manually.',
+          'You must describe the style in the global preferences under "General."'
+        ],
+        correct: 1,
+        explanation: 'Upload a writing sample → Claude automatically analyzes tone, structure, and word choice and adapts to that style.'
+      },
+      {
+        q: 'What happens to a chat conducted in incognito mode (ghost icon) when you close the chat window?',
+        options: [
+          'It is automatically moved to the "Unsorted" project.',
+          'It remains visible in the sidebar for 24 hours and is then deleted.',
+          'It never appears in the sidebar in the first place and is not permanently stored.',
+          'It is anonymized and used to train the AI.'
+        ],
+        correct: 2,
+        explanation: 'Incognito mode = no permanent storage. The chat does not appear in the sidebar and is not retained.'
+      },
+      {
+        q: 'Your printer only prints streaks now. What is the most efficient 2-step workflow with Claude?',
+        options: [
+          '1. Web search for reviews of the printer, 2. Buy a new device through Claude.',
+          '1. General problem description, 2. Upload a photo of the faulty printout or the error message on the PC.',
+          '1. Enable Opus, 2. Create a Python script to control the printer.',
+          '1. Use the Haiku model for a quick answer, 2. Create a memory "My printer is broken."'
+        ],
+        correct: 1,
+        explanation: 'Describe the problem generally first, then upload a screenshot — Claude recognizes UI elements and error messages directly and gives concrete instructions.'
+      },
+      {
+        q: 'What is a key advantage of "Projects" over simple chats?',
+        options: [
+          'Projects permanently store instructions and files, so all chats within the project benefit from them.',
+          'The Opus model runs twice as fast within Projects.',
+          'Projects can be shared with other users to work on simultaneously.',
+          'HTML websites can only be built within Projects.'
+        ],
+        correct: 0,
+        explanation: 'Projects = persistent context. Set it up once, never re-brief again — it applies to all chats within the project.'
+      },
+      {
+        q: 'You have Claude generate a table of DAX companies and a number appears incorrect. How do you check the reliability of the answer?',
+        options: [
+          'Click on the web search display to see which sources Claude scanned for the answer.',
+          'Ask Claude to repeat the answer using the Haiku model.',
+          'Enable incognito mode and ask the question again.',
+          'Claude never provides sources for tables — you always have to google manually.'
+        ],
+        correct: 0,
+        explanation: 'With web search enabled, Claude displays the sources it used — so every figure can be traced and verified.'
+      },
+      {
+        q: 'How do you start the process of saving a "memory" in Claude\'s memory?',
+        options: [
+          'By clicking the heart icon in the chat bar.',
+          'By starting the prompt with the phrase "Please create a memory."',
+          'Memories can only be entered manually in settings under "Skills."',
+          'Claude decides on its own after every chat what to save as a memory.'
+        ],
+        correct: 1,
+        explanation: '"Please create a memory" is the trigger — Claude then permanently stores the fact and takes it into account in future chats.'
       }
     ]
   },
